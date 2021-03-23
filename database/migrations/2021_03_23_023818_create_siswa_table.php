@@ -14,11 +14,11 @@ class CreateSiswaTable extends Migration
     public function up()
     {
         Schema::create('siswa', function (Blueprint $table) {
-            $table->integer('id', true);
-            $table->integer('ayah_id')->nullable();
-            $table->integer('ibu_id')->nullable();
-            $table->integer('wali_id')->nullable();
-            $table->integer('rombel_id')->nullable();
+            $table->id();
+            $table->foreignId('ayah_id')->nullable()->constrained('ayah')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('ibu_id')->nullable()->constrained('ibu')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('wali_id')->nullable()->constrained('wali')->nullOnDelete()->cascadeOnUpdate();
+            $table->foreignId('rombel_id')->nullable()->constrained('rombel')->nullOnDelete()->cascadeOnUpdate();
             $table->enum('status', ['Aktif', 'Pindah', 'Tamat', 'Pindahan', 'Keluar', 'Dikeluarkan']);
             $table->string('nama')->nullable();
             $table->bigInteger('nipd')->nullable();
