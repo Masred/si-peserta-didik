@@ -14,7 +14,7 @@ class CreateWaliTable extends Migration
     public function up()
     {
         Schema::create('wali', function (Blueprint $table) {
-            $table->integer('id', true);
+            $table->id();
             $table->string('nama')->nullable();
             $table->year('tahun_lahir')->nullable();
             $table->string('jenjang_pendidikan', 50)->nullable();
