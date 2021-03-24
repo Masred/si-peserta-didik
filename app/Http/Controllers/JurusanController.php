@@ -14,7 +14,8 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        //
+        $jurusans = JurusanModel::all();
+        return view('jurusan.index', ['jurusans' => $jurusans]);
     }
 
     /**
