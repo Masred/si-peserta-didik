@@ -31,15 +31,21 @@ class JurusanController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $request->validate([
-           'kode_jurusan' => 'required|unique:jurusan|min:3',
-           'nama_jurusan' => 'required'
-        ]);
+        $rules = [
+            'kode_jurusan' => 'required|unique:jurusan|min:3',
+            'nama_jurusan' => 'required'
+        ];
+        $customMessages = [
+            'required' => ':attribute jurusan harus diisi!',
+            'unique' => ':attribute tidak tersedia',
+            'min' => ':attribute minimal :min huruf',
+        ];
+        $request->validate($rules, $customMessages);
         JurusanModel::create($request->all());
 
         return redirect('/jurusan')->with('status', 'data berhasil disimpan');
@@ -48,7 +54,7 @@ class JurusanController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\JurusanModel  $jurusanModel
+     * @param \App\Models\JurusanModel $jurusanModel
      * @return \Illuminate\Http\Response
      */
     public function show(JurusanModel $jurusanModel)
@@ -59,7 +65,7 @@ class JurusanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\JurusanModel  $jurusanModel
+     * @param \App\Models\JurusanModel $jurusanModel
      * @return \Illuminate\Http\Response
      */
     public function edit(JurusanModel $jurusanModel)
@@ -70,8 +76,8 @@ class JurusanController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JurusanModel  $jurusanModel
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\JurusanModel $jurusanModel
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, JurusanModel $jurusanModel)
@@ -82,11 +88,12 @@ class JurusanController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JurusanModel  $jurusanModel
+     * @param \App\Models\JurusanModel $jurusanModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JurusanModel $jurusanModel)
+    public function destroy(JurusanModel $jurusan)
     {
-        //
+        JurusanModel::destroy($jurusan->kode_jurusan);
+        return redirect('/jurusan')->with('status', 'data berhasil dihapus.');
     }
 }
