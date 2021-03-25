@@ -94,11 +94,7 @@ class JurusanController extends Controller
         ];
 
         $request->validate($rules, $customMessages);
-        JurusanModel::where('kode_jurusan', $jurusan->kode_jurusan)
-            ->update([
-                'kode_jurusan' => $request->kode_jurusan,
-                'nama_jurusan' => $request->nama_jurusan
-            ]);
+        JurusanModel::find($jurusan->kode_jurusan)->update($request->all());
 
         return redirect('/jurusan')->with('status', 'data berhasil diubah');
     }
