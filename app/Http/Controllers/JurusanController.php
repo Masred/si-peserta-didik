@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JurusanModel;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class JurusanController extends Controller
 {
@@ -37,8 +38,8 @@ class JurusanController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'kode_jurusan' => 'required|unique:jurusan|min:3',
-            'nama_jurusan' => 'required'
+            'kode_jurusan' => ['required', 'unique:jurusan', 'min:3'],
+            'nama_jurusan' => ['required']
         ];
         $customMessages = [
             'required' => ':attribute jurusan harus diisi!',
@@ -68,9 +69,9 @@ class JurusanController extends Controller
      * @param \App\Models\JurusanModel $jurusanModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(JurusanModel $jurusanModel)
+    public function edit(JurusanModel $jurusan)
     {
-        //
+        return view('jurusan.edit', compact('jurusan'));
     }
 
     /**
@@ -80,9 +81,26 @@ class JurusanController extends Controller
      * @param \App\Models\JurusanModel $jurusanModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JurusanModel $jurusanModel)
+    public function update(Request $request, JurusanModel $jurusan)
     {
-        //
+        $rules = [
+            'kode_jurusan' => ['required', 'min:3', Rule::unique('jurusan')->ignore($jurusan->kode_jurusan,'kode_jurusan')],
+            'nama_jurusan' => ['required']
+        ];
+        $customMessages = [
+            'required' => ':attribute jurusan harus diisi!',
+            'unique' => ':attribute tidak tersedia',
+            'min' => ':attribute minimal :min huruf',
+        ];
+
+        $request->validate($rules, $customMessages);
+        JurusanModel::where('kode_jurusan', $jurusan->kode_jurusan)
+            ->update([
+                'kode_jurusan' => $request->kode_jurusan,
+                'nama_jurusan' => $request->nama_jurusan
+            ]);
+
+        return redirect('/jurusan')->with('status', 'data berhasil diubah');
     }
 
     /**
