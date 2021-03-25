@@ -16,14 +16,14 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="kode_jurusan">Kode Jurusan</label>
-                            <input type="text" class="form-control @error('kode_jurusan') is-invalid @enderror" id="kode_jurusan" placeholder="Masukan kode jurusan" name="kode_jurusan" required>
+                            <input type="text" class="form-control @error('kode_jurusan') is-invalid @enderror" id="kode_jurusan" placeholder="Masukan kode jurusan" name="kode_jurusan" value="{{ old('kode_jurusan') }}" required>
                             @error('kode_jurusan')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label for="nama_jurusan">Nama Jurusan</label>
-                            <input type="text" class="form-control @error('nama_jurusan') is-invalid @enderror" id="nama_jurusan" placeholder="Masukan nama jurusan" name="nama_jurusan" required>
+                            <input type="text" class="form-control @error('nama_jurusan') is-invalid @enderror" id="nama_jurusan" placeholder="Masukan nama jurusan" name="nama_jurusan" value="{{ old('nama_jurusan') }}">
                             @error('nama_jurusan')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
