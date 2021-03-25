@@ -19,7 +19,7 @@
                             <th style="width: 70px">No</th>
                             <th>Kode Jurusan</th>
                             <th>Nama Jurusan</th>
-                            <th style="width: 160px">Aksi</th>
+                            <th style="width: 168px">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,18 +29,43 @@
                                 <td>{{ $jurusan->kode_jurusan }}</td>
                                 <td>{{ $jurusan->nama_jurusan }}</td>
                                 <td>
-                                    <div class="row">
-                                        <div class="col">
-                                            <a href="{{ route('jurusan.edit', $jurusan->kode_jurusan) }}"
-                                               class="btn btn-success btn-sm">Edit</a>
-                                        </div>
-                                        <div class="col">
-                                            <form action="{{ route('jurusan.destroy', $jurusan->kode_jurusan) }}"
-                                                  method="post">
-                                                @method('delete')
-                                                @csrf
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </form>
+
+                                    <a href="{{ route('jurusan.edit', $jurusan->kode_jurusan) }}"
+                                       class="btn btn-success btn-sm"><i class="far fa-edit"></i>Edit</a>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger btn-sm d-inline" data-toggle="modal"
+                                            data-target="#modalHapus{{ $jurusan->kode_jurusan }}">
+                                        <i class="far fa-trash-alt"></i> Hapus
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="modalHapus{{ $jurusan->kode_jurusan }}" tabindex="-1"
+                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-center" id="exampleModalLabel">Yakin ingin menghapusnya?</h5>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form
+                                                        action="{{ route('jurusan.destroy', $jurusan->kode_jurusan) }}"
+                                                        method="post">
+                                                        @method('delete')
+                                                        @csrf
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-5">
+                                                                <button type="submit" class="btn btn-danger">Ya, Hapus
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-5">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Batal
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -53,19 +78,21 @@
             </div>
         </div>
     </div>
-    @if(session('status'))
-        <script>
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 5000
-            });
-            Toast.fire(
-                'Berhasil!',
-                '{!! session('status') !!}',
-                'success'
-            );
-        </script>
-    @endif
+@endsection
+@section('script')
+    <script>
+        @if(session('status'))
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000
+        });
+        Toast.fire(
+            'Berhasil!',
+            '{!! session('status') !!}',
+            'success'
+        );
+        @endif
+    </script>
 @endsection
