@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <!-- Sweetalert2 -->
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+    <!-- favicon -->
+    <link rel="icon" href="{{ asset('img/logo/Logo_SMK_Negeri_3_Tasikmalaya.png') }}" type="image/x-icon">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -35,12 +37,12 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-light-lightblue elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
+        <p class="brand-link">
             <img src="{{ asset('img/logo/Logo_SMK_Negeri_3_Tasikmalaya.png') }}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
             <span class="brand-text font-weight-light">SMKN 3 Tasikmalaya</span>
-        </a>
+        </p>
 
         <!-- Sidebar -->
         <div class="sidebar">
@@ -72,7 +74,7 @@
                     </li>
                     <li class="nav-item has-treeview menu-open">
                         <a href="#"
-                           class="nav-link{{ (request()->routeIs('jurusan.index') || request()->routeIs('jurusan.create') || request()->routeIs('rombel') || request()->routeIs('siswa')) ? ' active' : '' }}">
+                           class="nav-link{{ (request()->routeIs('jurusan.index') || request()->routeIs('jurusan.create') || request()->routeIs('jurusan.edit') || request()->routeIs('rombel') || request()->routeIs('siswa')) ? ' active' : '' }}">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Master
@@ -82,7 +84,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('jurusan.index')}}"
-                                   class="nav-link{{ (request()->routeIs('jurusan.index') || request()->routeIs('jurusan.create')) ? ' active' : '' }}">
+                                   class="nav-link{{ (request()->routeIs('jurusan.index') || request()->routeIs('jurusan.create' || request()->routeIs('jurusan.edit'))) ? ' active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Jurusan</p>
                                 </a>
