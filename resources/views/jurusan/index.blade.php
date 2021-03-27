@@ -1,6 +1,8 @@
 @extends('layout.main')
 
 @section('title', 'Jurusan')
+@section('master-menu', 'active')
+@section('jurusan-menu', 'active')
 
 @section('content')
     <div class="card">
@@ -68,14 +70,6 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th rowspan="1" colspan="1">No</th>
-                                <th rowspan="1" colspan="1">Kode Jurusan</th>
-                                <th rowspan="1" colspan="1">Nama Jurusan</th>
-                                <th rowspan="1" colspan="1">Aksi</th>
-                            </tr>
-                            </tfoot>
                         </table>
                     </div>
                 </div>

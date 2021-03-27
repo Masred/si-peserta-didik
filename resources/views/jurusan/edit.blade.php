@@ -1,6 +1,8 @@
 @extends('layout.main')
 
 @section('title', 'Edit Jurusan')
+@section('master-menu', 'active')
+@section('jurusan-menu', 'active')
 
 @section('content')
     <div class="row justify-content-center">
