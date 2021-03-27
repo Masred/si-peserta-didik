@@ -57,6 +57,7 @@ class RombelController extends Controller
             'required' => ':attribute harus diisi!',
             'unique' => ':attribute telah digunakan'
         ];
+
         $data->validate($rules, $customMessages);
         Rombel::create($data->all());
 

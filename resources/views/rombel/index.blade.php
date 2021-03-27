@@ -52,9 +52,9 @@
                                 <tr role="row" class="odd">
                                     <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
                                     <td>{{ $rombel->id }}</td>
-                                    <td>{{ $rombel->nama_rombel }}</td>
+                                    <td>{{ $rombel->kelas }} {{ $rombel->kode_jurusan }} {{ $rombel->kelompok }}</td>
                                     <td>{{ $rombel->kelas }}</td>
-                                    <td>{{ $rombel->jurusan->nama_jurusan }} ({{ $rombel->kode_jurusan }})</td>
+                                    <td>{{ $rombel->jurusan->nama_jurusan }}</td>
                                     <td>{{ $rombel->kelompok }}</td>
                                     <td>
                                         <div class="row justify-content-center">
