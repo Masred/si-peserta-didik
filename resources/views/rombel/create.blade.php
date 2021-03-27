@@ -29,8 +29,8 @@
                             <select name="kode_jurusan" id="jurusan"
                                     class="custom-select">
                                 @foreach($jurusans as $jurusan)
-                                    <option value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan') == $jurusan->kode_jurusan)? 'selected': '' }}>{{ $jurusan->kode_jurusan }}
-                                        ({{ $jurusan->nama_jurusan }})
+                                    <option value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan') == $jurusan->kode_jurusan)? 'selected': '' }}>
+                                        {{ $jurusan->nama_jurusan }}
                                     </option>
                                 @endforeach
                             </select>
