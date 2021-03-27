@@ -38,6 +38,7 @@ class Install extends Command
     public function handle()
     {
         $this->call('migrate:fresh');
+        $this->call('db:seed');
         $this->line('Installation completed');
     }
 }
