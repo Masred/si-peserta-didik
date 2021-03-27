@@ -15,10 +15,11 @@ class CreateRombelTable extends Migration
     {
         Schema::create('rombel', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_jurusan', 5)->nullable();
+            $table->string('nama_rombel', 15)->unique();
             $table->string('kelas', 3);
+            $table->string('kode_jurusan', 5);
+            $table->foreign('kode_jurusan')->references('kode_jurusan')->on('jurusan')->cascadeOnDelete()->cascadeOnUpdate();
             $table->smallInteger('kelompok');
-            $table->foreign('kode_jurusan')->references('kode_jurusan')->on('jurusan')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 
