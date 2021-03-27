@@ -75,7 +75,7 @@
                     </li>
                     <li class="nav-item has-treeview menu-open">
                         <a href="#"
-                           class="nav-link{{ (request()->routeIs('jurusan.index') || request()->routeIs('jurusan.create') || request()->routeIs('jurusan.edit') || request()->routeIs('rombel') || request()->routeIs('siswa')) ? ' active' : '' }}">
+                           class="nav-link  @yield('master-menu')">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Master
@@ -85,19 +85,19 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{route('jurusan.index')}}"
-                                   class="nav-link{{ (request()->routeIs('jurusan.index') || request()->routeIs('jurusan.create' || request()->routeIs('jurusan.edit'))) ? ' active' : '' }}">
+                                   class="nav-link @yield('jurusan-menu')">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Jurusan</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link{{ (request()->routeIs('rombel')) ? ' active' : '' }}">
+                                <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Rombel</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link{{ (request()->routeIs('siswa')) ? ' active' : '' }}">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Siswa</p>
                                 </a>
