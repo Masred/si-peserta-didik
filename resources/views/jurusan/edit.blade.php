@@ -9,7 +9,8 @@
         <div class="col-5">
             <div class="card card-lightblue">
                 <div class="card-header">
-                    <h3 class="card-title">Form Jurusan</h3>
+                    <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i class="fa fa-arrow-left"></i> kembali</a></h3>
+                    <h3 class="card-title d-block float-right">Form Jurusan</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->

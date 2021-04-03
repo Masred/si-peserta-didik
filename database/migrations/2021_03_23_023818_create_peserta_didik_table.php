@@ -15,11 +15,12 @@ class CreatePesertaDidikTable extends Migration
     {
         Schema::create('peserta_didik', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['Aktif', 'Pindah', 'Tamat', 'Pindahan', 'Keluar', 'Dikeluarkan']);
+            $table->enum('status', ['aktif', 'pindah', 'tamat', 'pindahan', 'keluar', 'dikeluarkan']);
             $table->string('nama')->nullable();
-            $table->string('nipd')->nullable();
             $table->enum('jenis_kelamin',['L','P'])->nullable();
+            $table->string('nipd')->nullable();
             $table->string('nisn')->nullable();
+            $table->year('tahun_masuk')->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->bigInteger('nik')->nullable();
@@ -29,13 +30,9 @@ class CreatePesertaDidikTable extends Migration
             $table->string('kelurahan')->nullable();
             $table->string('kecamatan')->nullable();
             $table->string('kota')->nullable();
-            $table->string('tempat_tinggal')->nullable();
-            $table->string('moda_transportasi')->nullable();
             $table->string('hp', 20)->nullable();
             $table->string('email', 50)->nullable();
-            $table->unsignedSmallInteger('anak_ke')->nullable();
-            $table->unsignedSmallInteger('jumlah_saudara_kandung')->nullable();
-            $table->unsignedSmallInteger('jarak_rumah_ke_sekolah')->nullable();
+            $table->year('tahun_keluar')->nullable();
             $table->string('nama_ayah')->nullable();
             $table->year('tahun_lahir_ayah')->nullable();
             $table->string('jenjang_pendidikan_ayah')->nullable();

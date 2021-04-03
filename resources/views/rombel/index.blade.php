@@ -61,7 +61,7 @@
                                             <div class="col">
                                                 <a href="{{ route('rombel.edit', $rombel->id) }}"
                                                    class="btn btn-success btn-sm d-inline-block float-right"><i
-                                                        class="far fa-edit"></i>Edit</a>
+                                                        class="far fa-edit"></i></a>
                                             </div>
                                             <div class="col">
                                                 <form
@@ -73,7 +73,7 @@
                                                     <button type="submit"
                                                             title="Delete"
                                                             class="btn btn-danger btn-sm d-inline btn-del">
-                                                        <i class="far fa-trash-alt"></i> Hapus
+                                                        <i class="far fa-trash-alt"></i>
                                                     </button>
                                                 </form>
                                             </div>

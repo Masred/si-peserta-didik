@@ -7,7 +7,8 @@
 @section('content')
     <div class="card card-lightblue">
         <div class="card-header">
-            <h3 class="card-title">Form Edit Peserta Didik</h3>
+            <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i class="fa fa-arrow-left"></i> kembali</a></h3>
+            <h3 class="card-title d-block float-right">Form Peserta Didik</h3>
         </div>
         <!-- /.card-header -->
         <form action="{{ route('peserta-didik.update', $peserta_didik->id) }}" method="post">
@@ -30,6 +31,41 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="nipd">NIPD/NIS</label>
+                            <input type="number" min="1" class="form-control @error('nipd') is-invalid @enderror"
+                                   id="nipd" placeholder="Masukan NIPD/NIS" name="nipd"
+                                   value="{{ old('nipd', $peserta_didik->nipd) }}">
+                            <small class="form-text text-muted">
+                                Nomor induk peserta didik sesuai yang tercantum pada buku induk</small>
+                            @error('nipd')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="nisn">NISN</label>
+                            <input type="number" min="1" class="form-control @error('nisn') is-invalid @enderror"
+                                   id="nisn" placeholder="Masukan NISN" name="nisn"
+                                   value="{{ old('nisn', $peserta_didik->nisn) }}">
+                            <small class="form-text text-muted">Nomor Induk Siswa Nasional peserta didik
+                                (jika memiliki). Jika belum memiliki, maka wajib dikosongkan. NISN memiliki format 10
+                                digit
+                                angka. Contoh: 0009321234.</small>
+                            @error('nisn')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="tahun_masuk">Tahun Masuk</label>
+                            <input type="number" min="2015" max="2099" step="1" placeholder="Mssukan Tahun Masuk"
+                                   class="form-control @error('tahun_masuk') is-invalid @enderror"
+                                   id="tahun_masuk" name="tahun_masuk"
+                                   value="{{ old('tahun_masuk', $peserta_didik->tahun_masuk) }}">
+                            <small class="form-text text-muted">Tahun masuk peserta didik.</small>
+                            @error('tahun_masuk')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <select name="jenis_kelamin" id="jenis_kelamin"
                                     class="custom-select @error('jenis_kelamin') is-invalid @enderror">
@@ -45,77 +81,6 @@
                             </select>
                             <small class="form-text text-muted">Jenis kelamin peserta didik.</small>
                             @error('jenis_kelamin')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="nipd">NIPD/NIS</label>
-                                <input type="number" min="1" class="form-control @error('nipd') is-invalid @enderror"
-                                       id="nipd" placeholder="Masukan NIPD/NIS" name="nipd"
-                                       value="{{ old('nipd', $peserta_didik->nipd) }}">
-                                <small class="form-text text-muted">
-                                    Nomor induk peserta didik sesuai yang tercantum pada buku induk</small>
-                                @error('nipd')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <label for="nisn">NISN</label>
-                            <input type="number" min="1" class="form-control @error('nisn') is-invalid @enderror"
-                                   id="nisn" placeholder="Masukan NISN" name="nisn"
-                                   value="{{ old('nisn', $peserta_didik->nisn) }}">
-                            <small class="form-text text-muted">Nomor Induk Siswa Nasional peserta didik
-                                (jika memiliki). Jika belum memiliki, maka wajib dikosongkan. NISN memiliki format 10
-                                digit
-                                angka. Contoh: 0009321234.</small>
-                            @error('nisn')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="nik">Nomor Induk Kependudukan</label>
-                            <input type="number" min="1" class="form-control @error('nik') is-invalid @enderror"
-                                   id="nik" placeholder="Masukan Nomor Induk Kependudukan" name="nik"
-                                   value="{{ old('nik', $peserta_didik->nik) }}">
-                            <small class="form-text text-muted">Nomor Induk Kependudukan yang tercantum
-                                pada Kartu Keluarga, Kartu Identitas Anak, atau KTP (jika sudah memiliki) bagi WNI. NIK
-                                memiliki format 16 digit angka. Contoh: 6112090906021104.
-                            </small>
-                            @error('nik')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="no_kk">Nomor Kartu Keluarga</label>
-                            <input type="number" min="1" class="form-control @error('no_kk') is-invalid @enderror"
-                                   id="no_kk" placeholder="Masukan Nomor Kartu Keluarga" name="no_kk"
-                                   value="{{ old('no_kk', $peserta_didik->no_kk) }}">
-                            <small class="form-text text-muted">Nomor Kartu Keluarga yang tercantum
-                                pada Kartu Keluarga. No KK
-                                memiliki format 16 digit angka. Contoh: 3207090906021104</small>
-                            @error('no_kk')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="hp">Nomor HP</label>
-                            <input type="tel" class="form-control @error('hp') is-invalid @enderror"
-                                   id="hp" placeholder="Masukan Nomor HP" name="hp"
-                                   value="{{ old('hp', $peserta_didik->hp) }}">
-                            <small class="form-text text-muted">Diisi nomor telepon selular (ponsel) peserta didik yang
-                                dapat dihubungi (milik pribadi, orang tua, atau wali).</small>
-                            @error('hp')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                   id="email" placeholder="Masukan Email" name="email"
-                                   value="{{ old('email', $peserta_didik->email) }}">
-                            <small class="form-text text-muted">Diisi alamat surat elektronik (surel) peserta didik yang
-                                dapat dihubungi (milik pribadi, orang tua, atau wali).</small>
-                            @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -165,50 +130,52 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="nik">Nomor Induk Kependudukan</label>
+                            <input type="number" min="1" class="form-control @error('nik') is-invalid @enderror"
+                                   id="nik" placeholder="Masukan Nomor Induk Kependudukan" name="nik"
+                                   value="{{ old('nik', $peserta_didik->nik) }}">
+                            <small class="form-text text-muted">Nomor Induk Kependudukan yang tercantum
+                                pada Kartu Keluarga, Kartu Identitas Anak, atau KTP (jika sudah memiliki) bagi WNI. NIK
+                                memiliki format 16 digit angka. Contoh: 6112090906021104.
+                            </small>
+                            @error('nik')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="anak_ke">Anak Keberapa</label>
-                            <input type="number" min="1" class="form-control @error('anak_ke') is-invalid @enderror"
-                                   id="anak_ke" placeholder="Masukan Anak keberapa" name="anak_ke"
-                                   value="{{ old('anak_ke', $peserta_didik->anak_ke) }}">
-                            <small class="form-text text-muted">Isi kan sesuai dengan Kartu Keluarga.</small>
-                            @error('anak_ke')
+                            <label for="no_kk">Nomor Kartu Keluarga</label>
+                            <input type="number" min="1" class="form-control @error('no_kk') is-invalid @enderror"
+                                   id="no_kk" placeholder="Masukan Nomor Kartu Keluarga" name="no_kk"
+                                   value="{{ old('no_kk', $peserta_didik->no_kk) }}">
+                            <small class="form-text text-muted">Nomor Kartu Keluarga yang tercantum
+                                pada Kartu Keluarga. No KK
+                                memiliki format 16 digit angka. Contoh: 3207090906021104</small>
+                            @error('no_kk')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="jumlah_saudara_kandung">Jumlah Saudara Kandung</label>
-                            <input type="number" min="1"
-                                   class="form-control @error('jumlah_saudara_kandung') is-invalid @enderror"
-                                   id="jumlah_saudara_kandung" placeholder="Masukan Jumlah Saudara Kandung"
-                                   name="jumlah_saudara_kandung"
-                                   value="{{ old('jumlah_saudara_kandung', $peserta_didik->jumlah_saudara_kandung) }}">
-                            <small class="form-text text-muted">Jumlah saudara kandung yang dimiliki peserta didik.
-                                Jumlah saudara kandung dihitung tanpa menyertakan peserta didik, dengan
-                                rumus jumlah kakak ditambah jumlah adik. Isikan 0 apabila anak tunggal.
-                            </small>
-                            @error('jumlah_saudara_kandung')
+                            <label for="hp">Nomor HP</label>
+                            <input type="tel" class="form-control @error('hp') is-invalid @enderror"
+                                   id="hp" placeholder="Masukan Nomor HP" name="hp"
+                                   value="{{ old('hp', $peserta_didik->hp) }}">
+                            <small class="form-text text-muted">Diisi nomor telepon selular (ponsel) peserta didik yang
+                                dapat dihubungi (milik pribadi, orang tua, atau wali).</small>
+                            @error('hp')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="moda_transportasi">Moda Transpormasi</label>
-                            <input type="text" name="moda_transportasi" list="moda_transportasi"
-                                   class="form-control @error('moda_transportasi') is-invalid @enderror"
-                                   placeholder="Masukan Moda Transportasi" value="{{ old('moda_transportasi', $peserta_didik->moda_transportasi) }}">
-                            <datalist id="moda_transportasi">
-                                <option value="Jalan Kaki">
-                                <option value="Kendaraan Umum/angkot/Pete-pete">
-                                <option value="Jemputan Sekolah">
-                                <option value="Kereta Api">
-                                <option value="Andong/Bendi/Sadoi">
-                                <option value="Perahu penyebrangan/Rakit/Getek">
-                                <option value="Lainnya">
-                            </datalist>
-                            <small class="form-text text-muted">Jenis transportasi utama atau yang paling sering
-                                digunakan peserta didik untuk berangkat ke sekolah.</small>
-                            @error('moda_transportasi')
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                   id="email" placeholder="Masukan Email" name="email"
+                                   value="{{ old('email', $peserta_didik->email) }}">
+                            <small class="form-text text-muted">Diisi alamat surat elektronik (surel) peserta didik yang
+                                dapat dihubungi (milik pribadi, orang tua, atau wali).</small>
+                            @error('email')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -226,7 +193,8 @@
                             <label for="kecamatan">Kecamatan</label>
                             <input type="text" name="kecamatan" id="kecamatan"
                                    class="form-control @error('kecamatan') is-invalid @enderror"
-                                   placeholder="Masukan Kecamatan" value="{{ old('kecamatan', $peserta_didik->kecamatan) }}">
+                                   placeholder="Masukan Kecamatan"
+                                   value="{{ old('kecamatan', $peserta_didik->kecamatan) }}">
                             <small class="form-text text-muted">Kecamatan tempat tinggal peserta didik saat ini.</small>
                             @error('kecamatan')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -236,7 +204,8 @@
                             <label for="kelurahan">Kelurahan/Desa</label>
                             <input type="text" name="kelurahan" id="kelurahan"
                                    class="form-control @error('kelurahan') is-invalid @enderror"
-                                   placeholder="Masukan Kelurahan/Desa" value="{{ old('kelurahan', $peserta_didik->kelurahan) }}">
+                                   placeholder="Masukan Kelurahan/Desa"
+                                   value="{{ old('kelurahan', $peserta_didik->kelurahan) }}">
                             <small class="form-text text-muted">Kelurahan/Desa tempat tinggal peserta didik saat
                                 ini.</small>
                             @error('kelurahan')
@@ -260,40 +229,6 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="jarak_rumah_ke_sekolah">Jarak Rumah Ke Sekolah</label>
-                            <input type="number" min="1"
-                                   class="form-control @error('jarak_rumah_ke_sekolah') is-invalid @enderror"
-                                   id="jarak_rumah_ke_sekolah" placeholder="Masukan Jarak Rumah Ke Sekolah"
-                                   name="jarak_rumah_ke_sekolah"
-                                   value="{{ old('jarak_rumah_ke_sekolah', $peserta_didik->jarak_rumah_ke_sekolah) }}">
-                            <small class="form-text text-muted">Jarak rumah peserta didik ke sekolah, dalam satuan
-                                meter(m).</small>
-                            @error('jarak_rumah_ke_sekolah')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="tempat_tinggal">Tempat Tinggal</label>
-                            <input list="tempat_tinggal"
-                                   class="form-control @error('tempat_tinggal') is-invalid @enderror"
-                                   placeholder="Masukan Tempat Tinggal" name="tempat_tinggal"
-                                   value="{{ old('tempat_tinggal', $peserta_didik->tempat_tinggal) }}">
-                            <datalist id="tempat_tinggal">
-                                <option value="Bersama Orang Tua">
-                                <option value="Kos">
-                                <option value="Asrama">
-                                <option value="Wali">
-                                <option value="Panti Asuhan">
-                                <option value="Pesantren">
-                                <option value="Lainnya">
-                            </datalist>
-                            <small class="form-text text-muted">Kepemilikan tempat tinggal peserta didik saat ini (yang
-                                telah diisikan pada kolom-kolom sebelumnya di atas).</small>
-                            @error('tempat_tinggal')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
                             <label for="rombel_id">Rombongan Belajar</label>
                             <select name="rombel_id" id="rombel_id"
                                     class="custom-select @error('rombel_id') is-invalid @enderror">
@@ -305,6 +240,17 @@
                             </select>
                             <small class="form-text text-muted">Rombongan kelas peserta didik saat ini.</small>
                             @error('tempat_tinggal')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="tahun_keluar">Tahun Keluar</label>
+                            <input type="number" min="2015" max="2099" step="1" placeholder="Mssukan Tahun Keluar"
+                                   class="form-control @error('tahun_keluar') is-invalid @enderror"
+                                   id="tahun_keluar" name="tahun_keluar"
+                                   value="{{ old('tahun_keluar', $peserta_didik->tahun_keluar) }}">
+                            <small class="form-text text-muted">Tahun peserta didik keluar.</small>
+                            @error('tahun_keluar')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -330,7 +276,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nik_ayah">Nomor Induk Kependudukan Ayah</label>
-                            <input type="number"
+                            <input type="number" min="1"
                                    class="form-control @error('nik_ayah') is-invalid @enderror"
                                    id="nik_ayah" placeholder="Masukan Nomor Induk Kependudukan Ayah" name="nik_ayah"
                                    value="{{ old('nik_ayah', $peserta_didik->nik_ayah) }}">
@@ -357,7 +303,8 @@
                             <label for="jenjang_pendidikan_ayah">Pendidikan</label>
                             <input list="jenjang_pendidikan_ayah" name="jenjang_pendidikan_ayah"
                                    class="form-control @error('jenjang_pendidikan_ayah') is-invalid @enderror"
-                                   placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_ayah', $peserta_didik->jenjang_pendidikan_ayah) }}">
+                                   placeholder="Masukan Pendidikan"
+                                   value="{{ old('jenjang_pendidikan_ayah', $peserta_didik->jenjang_pendidikan_ayah) }}">
                             <datalist id="jenjang_pendidikan_ayah">
                                 <option value="Tidak Sekolah">
                                 <option value="Putus SD">
@@ -380,7 +327,8 @@
                             <label for="pekerjaan_ayah">Pekerjaan</label>
                             <input list="pekerjaan_ayah" name="pekerjaan_ayah"
                                    class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
-                                   placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_ayah', $peserta_didik->pekerjaan_ayah) }}">
+                                   placeholder="Masukan Pekerjaan"
+                                   value="{{ old('pekerjaan_ayah', $peserta_didik->pekerjaan_ayah) }}">
                             <datalist id="pekerjaan_ayah">
                                 <option value="Tidak Bekerja">
                                 <option value="Nelayan">
@@ -408,7 +356,8 @@
                             <label for="penghasilan_ayah">Penghasilan</label>
                             <input list="penghasilan_ayah" name="penghasilan_ayah"
                                    class="form-control @error('penghasilan_ayah') is-invalid @enderror"
-                                   placeholder="Masukan Penghasilan" value="{{ old('penghasilan_ayah', $peserta_didik->penghasilan_ayah) }}">
+                                   placeholder="Masukan Penghasilan"
+                                   value="{{ old('penghasilan_ayah', $peserta_didik->penghasilan_ayah) }}">
                             <datalist id="penghasilan_ayah">
                                 <option value="Kurang dari Rp. 500,000">
                                 <option value="Rp. 500.000 - 999.9999">
@@ -449,7 +398,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nik_ibu">Nomor Induk Kependudukan Ibu</label>
-                            <input type="number"
+                            <input type="number" min="1"
                                    class="form-control @error('nik_ibu') is-invalid @enderror"
                                    id="nik_ibu" placeholder="Masukan Nomor Induk Kependudukan Ibu" name="nik_ibu"
                                    value="{{ old('nik_ibu', $peserta_didik->nik_ibu) }}">
@@ -499,7 +448,8 @@
                             <label for="pekerjaan_ibu">Pekerjaan</label>
                             <input list="pekerjaan_ibu" name="pekerjaan_ibu"
                                    class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
-                                   placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_ibu', $peserta_didik->pekerjaan_ibu) }}">
+                                   placeholder="Masukan Pekerjaan"
+                                   value="{{ old('pekerjaan_ibu', $peserta_didik->pekerjaan_ibu) }}">
                             <datalist id="pekerjaan_ibu">
                                 <option value="Tidak Bekerja">
                                 <option value="Nelayan">
@@ -527,7 +477,8 @@
                             <label for="penghasilan_ibu">Penghasilan</label>
                             <input list="penghasilan_ibu" name="penghasilan_ibu"
                                    class="form-control @error('penghasilan_ibu') is-invalid @enderror"
-                                   placeholder="Masukan Penghasilan" value="{{ old('penghasilan_ibu', $peserta_didik->penghasilan_ibu) }}">
+                                   placeholder="Masukan Penghasilan"
+                                   value="{{ old('penghasilan_ibu', $peserta_didik->penghasilan_ibu) }}">
                             <datalist id="penghasilan_ibu">
                                 <option value="Kurang dari Rp. 500,000">
                                 <option value="Rp. 500.000 - 999.9999">
@@ -567,7 +518,7 @@
                         </div>
                         <div class="form-group">
                             <label for="nik_wali">Nomor Induk Kependudukan Wali</label>
-                            <input type="number"
+                            <input type="number" min="1"
                                    class="form-control @error('nik_wali') is-invalid @enderror"
                                    id="nik_wali" placeholder="Masukan Nomor Induk Kependudukan Wali" name="nik_wali"
                                    value="{{ old('nik_wali', $peserta_didik->nik_wali) }}">
@@ -594,7 +545,8 @@
                             <label for="jenjang_pendidikan_wali">Pendidikan</label>
                             <input list="jenjang_pendidikan_wali" name="jenjang_pendidikan_wali"
                                    class="form-control @error('jenjang_pendidikan_wali') is-invalid @enderror"
-                                   placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_wali', $peserta_didik->jenjang_pendidikan_wali) }}">
+                                   placeholder="Masukan Pendidikan"
+                                   value="{{ old('jenjang_pendidikan_wali', $peserta_didik->jenjang_pendidikan_wali) }}">
                             <datalist id="jenjang_pendidikan_wali">
                                 <option value="Tidak Sekolah">
                                 <option value="Putus SD">
@@ -617,7 +569,8 @@
                             <label for="pekerjaan_wali">Pekerjaan</label>
                             <input list="pekerjaan_wali" name="pekerjaan_wali"
                                    class="form-control @error('pekerjaan_wali') is-invalid @enderror"
-                                   placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_wali', $peserta_didik->pekerjaan_wali) }}">
+                                   placeholder="Masukan Pekerjaan"
+                                   value="{{ old('pekerjaan_wali', $peserta_didik->pekerjaan_wali) }}">
                             <datalist id="pekerjaan_wali">
                                 <option value="Tidak Bekerja">
                                 <option value="Nelayan">
@@ -643,7 +596,8 @@
                             <label for="penghasilan_wali">Penghasilan</label>
                             <input list="penghasilan_wali" name="penghasilan_wali"
                                    class="form-control @error('penghasilan_wali') is-invalid @enderror"
-                                   placeholder="Masukan Penghasilan" value="{{ old('penghasilan_wali', $peserta_didik->penghasilan_wali) }}">
+                                   placeholder="Masukan Penghasilan"
+                                   value="{{ old('penghasilan_wali', $peserta_didik->penghasilan_wali) }}">
                             <datalist id="penghasilan_wali">
                                 <option value="Kurang dari Rp. 500,000">
                                 <option value="Rp. 500.000 - 999.9999">

@@ -9,7 +9,8 @@
         <div class="col-5">
             <div class="card card-lightblue">
                 <div class="card-header">
-                    <h3 class="card-title">Form Rombongan Belajar (Rombel)</h3>
+                    <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i class="fa fa-arrow-left"></i> kembali</a></h3>
+                    <h3 class="card-title d-block float-right">Form Rombongan Belajar (Rombel)</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -20,9 +21,9 @@
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
                             <select name="kelas" id="kelas" class="custom-select">
-                                <option value="X" {{ (old('kelas', $rombel->kelas) == 'X')? 'selected': '' }}>X</option>
-                                <option value="XI" {{ (old('kelas', $rombel->kela) == 'XI')? 'selected': '' }}>XI</option>
-                                <option value="XII" {{ (old('kelas', $rombel->kela) == 'XII')? 'selected': '' }}>XII</option>
+                                <option value="X" {{ (old('kelas', $rombel->kelas) === 'X')? 'selected': '' }}>X</option>
+                                <option value="XI" {{ (old('kelas', $rombel->kelas) === 'XI')? 'selected': '' }}>XI</option>
+                                <option value="XII" {{ (old('kelas', $rombel->kelas) === 'XII')? 'selected': '' }}>XII</option>
                             </select>
                         </div>
                         <div class="form-group">

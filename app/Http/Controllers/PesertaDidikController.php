@@ -51,12 +51,8 @@ class PesertaDidikController extends Controller
             'tempat_lahir' => ['required'],
             'tanggal_lahir' => ['required'],
             'agama' => ['required'],
-            'anak_ke' => ['required'],
-            'jumlah_saudara_kandung' => ['required'],
-            'moda_transportasi' => ['required'],
-            'jarak_rumah_ke_sekolah' => ['required'],
             'alamat' => ['required'],
-            'tempat_tinggal' => ['required']
+            'tahun_masuk' => ['required'],
         ];
 
         $customMessages = [
@@ -115,12 +111,8 @@ class PesertaDidikController extends Controller
             'tempat_lahir' => ['required'],
             'tanggal_lahir' => ['required'],
             'agama' => ['required'],
-            'anak_ke' => ['required'],
-            'jumlah_saudara_kandung' => ['required'],
-            'moda_transportasi' => ['required'],
-            'jarak_rumah_ke_sekolah' => ['required'],
             'alamat' => ['required'],
-            'tempat_tinggal' => ['required']
+            'tahun_masuk' => ['required'],
         ];
 
         $customMessages = [
