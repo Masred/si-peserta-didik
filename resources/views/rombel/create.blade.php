@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('title', 'Tambah Rombel')
+@section('title', 'Tambah Rombongan Belajar')
 @section('master-menu', 'active')
 @section('rombel-menu', 'active')
 
@@ -9,7 +9,9 @@
         <div class="col-5">
             <div class="card card-lightblue">
                 <div class="card-header">
-                    <h3 class="card-title">Form Rombongan Belajar (Rombel)</h3>
+                    <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i
+                                class="fa fa-arrow-left"></i> kembali</a></h3>
+                    <h3 class="card-title d-block float-right">Form Rombongan Belajar</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -19,6 +21,7 @@
                         <div class="form-group">
                             <label for="kelas">Kelas</label>
                             <select name="kelas" id="kelas" class="custom-select">
+                                <option value="">PILIH</option>
                                 <option value="X" {{ (old('kelas') == 'X')? 'selected': '' }}>X</option>
                                 <option value="XI" {{ (old('kelas') == 'XI')? 'selected': '' }}>XI</option>
                                 <option value="XII" {{ (old('kelas') == 'XII')? 'selected': '' }}>XII</option>
@@ -28,8 +31,10 @@
                             <label for="jurusan">Jurusan</label>
                             <select name="kode_jurusan" id="jurusan"
                                     class="custom-select">
+                                <option value="">PILIH</option>
                                 @foreach($jurusans as $jurusan)
-                                    <option value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan') == $jurusan->kode_jurusan)? 'selected': '' }}>
+                                    <option
+                                        value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan') == $jurusan->kode_jurusan)? 'selected': '' }}>
                                         {{ $jurusan->nama_jurusan }}
                                     </option>
                                 @endforeach
