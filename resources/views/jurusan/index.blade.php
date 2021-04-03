@@ -46,10 +46,10 @@
                                     <td>{{ $jurusan->nama_jurusan }}</td>
                                     <td>
                                         <div class="row justify-content-center">
-                                            <div class="col">
+                                            <div class="col d-flex justify-content-end">
                                                 <a href="{{ route('jurusan.edit', $jurusan->kode_jurusan) }}"
-                                                   class="btn btn-success btn-sm d-inline-block float-right"><i
-                                                        class="far fa-edit"></i>Edit</a>
+                                                   class="btn btn-success btn-sm"><i
+                                                        class="far fa-edit"></i></a>
                                             </div>
                                             <div class="col">
                                                 <form
@@ -61,7 +61,7 @@
                                                     <button type="submit"
                                                             title="Delete"
                                                             class="btn btn-danger btn-sm d-inline btn-del">
-                                                        <i class="far fa-trash-alt"></i> Hapus
+                                                        <i class="far fa-trash-alt"></i>
                                                     </button>
                                                 </form>
                                             </div>
