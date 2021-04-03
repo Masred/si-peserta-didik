@@ -84,7 +84,7 @@ class JurusanController extends Controller
     public function update(Request $request, Jurusan $jurusan)
     {
         $rules = [
-            'kode_jurusan' => ['required', 'min:3', Rule::unique('jurusan')->ignore($jurusan->kode_jurusan,'kode_jurusan')],
+            'kode_jurusan' => ['required', 'min:2', Rule::unique('jurusan')->ignore($jurusan->kode_jurusan,'kode_jurusan')],
             'nama_jurusan' => ['required']
         ];
         $customMessages = [
