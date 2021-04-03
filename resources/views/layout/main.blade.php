@@ -93,13 +93,13 @@
                             <li class="nav-item">
                                 <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Rombel</p>
+                                    <p>Rombongan Belajar</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('peserta-didik.index') }}" class="nav-link @yield('peserta-didik-menu')">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Siswa</p>
+                                    <p>Peserta Didik</p>
                                 </a>
                             </li>
                         </ul>

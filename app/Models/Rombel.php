@@ -15,4 +15,8 @@ class Rombel extends Model
     public function jurusan(){
         return $this->belongsTo(Jurusan::class, 'kode_jurusan');
     }
+
+    public function pesertaDidik(){
+        return $this->belongsTo(PesertaDidik::class);
+    }
 }
