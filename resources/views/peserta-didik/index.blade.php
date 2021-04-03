@@ -43,7 +43,7 @@
                                     aria-label="Platform(s): activate to sort column ascending">Status
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Platform(s): activate to sort column ascending">Aksi
+                                    aria-label="Platform(s): activate to sort column ascending" style="width: 50px">Aksi
                                 </th>
                             </tr>
                             </thead>
@@ -57,26 +57,30 @@
                                     <td>{{ $pd->jenis_kelamin }}</td>
                                     <td>{{ $pd->status }}</td>
                                     <td>
-                                        <a href="{{ route('peserta-didik.show', $pd->id) }}"
-                                           class="btn btn-primary btn-sm d-inline-block">
-                                            <i class="far fa-eye"></i>
-                                        </a>
-                                        <a href="{{ route('peserta-didik.edit', $pd->id) }}"
-                                           class="btn btn-success btn-sm align-self-center"><i
-                                                class="far fa-edit"></i>
-                                        </a>
-                                        <form
-                                            class="d-inline"
-                                            action="{{ route('peserta-didik.destroy', $pd->id) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit"
-                                                    title="Delete"
-                                                    class="btn btn-danger btn-sm d-inline btn-del">
-                                                <i class="far fa-trash-alt"></i>
-                                            </button>
-                                        </form>
+                                        <div class="row">
+                                            <div class="col d-flex justify-content-center">
+                                                <a href="{{ route('peserta-didik.show', $pd->id) }}"
+                                                   class="btn btn-primary btn-sm d-inline-block">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                                <a href="{{ route('peserta-didik.edit', $pd->id) }}"
+                                                   class="btn btn-success btn-sm mx-2"><i
+                                                        class="far fa-edit"></i>
+                                                </a>
+                                                <form
+                                                    class="d-inline"
+                                                    action="{{ route('peserta-didik.destroy', $pd->id) }}"
+                                                    method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit"
+                                                            title="Delete"
+                                                            class="btn btn-danger btn-sm d-inline btn-del">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
