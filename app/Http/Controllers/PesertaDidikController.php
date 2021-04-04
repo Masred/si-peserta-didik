@@ -75,7 +75,7 @@ class PesertaDidikController extends Controller
      */
     public function show(PesertaDidik $peserta_didik)
     {
-        //
+        return  view('peserta-didik.show', compact('peserta_didik'));
     }
 
     /**
@@ -99,6 +99,7 @@ class PesertaDidikController extends Controller
      */
     public function update(Request $request, PesertaDidik $peserta_didik)
     {
+//        dd($request->all());
         $rules = [
             'nama' => ['required'],
             'jenis_kelamin' => ['required'],
