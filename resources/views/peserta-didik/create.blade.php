@@ -368,7 +368,6 @@
                                 <option value="Rp. 500.000 - 999.9999">
                                 <option value="Rp. 1 juta - 1.999.999 ">
                                 <option value="Rp. 2 juta - 4.999.999 ">
-                                <option value="PNS/TNI/POLRI">
                                 <option value="Rp. 5 juta - 20 juta">
                                 <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
