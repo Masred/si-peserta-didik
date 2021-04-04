@@ -56,7 +56,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun_masuk">Tahun Masuk</label>
-                            <input type="number" min="2015" max="2099" step="1" placeholder="Mssukan Tahun Masuk"
+                            <input type="number" min="2010" max="2099" step="1" placeholder="Mssukan Tahun Masuk"
                                    class="form-control @error('tahun_masuk') is-invalid @enderror"
                                    id="tahun_masuk" name="tahun_masuk"
                                    value="{{ old('tahun_masuk', $peserta_didik->tahun_masuk) }}">
@@ -88,7 +88,7 @@
                             <label for="tempat_lahir">Tempat Lahir</label>
                             <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror"
                                    id="tempat_lahir" placeholder="Masukan Tempat Lahir" name="tempat_lahir"
-                                   value="{{ old('tempat_lahir', $peserta_didik->email) }}">
+                                   value="{{ old('tempat_lahir', $peserta_didik->tempat_lahir) }}">
                             <small class="form-text text-muted">Tempat lahir peserta didik sesuai dokumen resmi yang
                                 berlaku.</small>
                             @error('tempat_lahir')
@@ -245,7 +245,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun_keluar">Tahun Keluar</label>
-                            <input type="number" min="2015" max="2099" step="1" placeholder="Mssukan Tahun Keluar"
+                            <input type="number" min="2010" max="2099" step="1" placeholder="Mssukan Tahun Keluar"
                                    class="form-control @error('tahun_keluar') is-invalid @enderror"
                                    id="tahun_keluar" name="tahun_keluar"
                                    value="{{ old('tahun_keluar', $peserta_didik->tahun_keluar) }}">
@@ -288,7 +288,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun_lahir_ayah">Tahun Lahir</label>
-                            <input type="number" min="1900" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
+                            <input type="number" min="1950" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
                                    class="form-control @error('tahun_lahir_ayah') is-invalid @enderror"
                                    id="tahun_lahir_ayah" name="tahun_lahir_ayah"
                                    value="{{ old('tahun_lahir_ayah', $peserta_didik->tahun_lahir_ayah) }}">
@@ -365,7 +365,7 @@
                                 <option value="Rp. 2 juta - 4.999.999 ">
                                 <option value="PNS/TNI/POLRI">
                                 <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20">
+                                <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
                             </datalist>
                             <small class="form-text text-muted">Rentang penghasilan ayah kandung peserta didik.
@@ -410,7 +410,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun_lahir_ibu">Tahun Lahir</label>
-                            <input type="number" min="1900" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
+                            <input type="number" min="1950" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
                                    class="form-control @error('tahun_lahir_ibu') is-invalid @enderror"
                                    id="tahun_lahir_ibu" name="tahun_lahir_ibu"
                                    value="{{ old('tahun_lahir_ibu', $peserta_didik->tahun_lahir_ibu) }}">
@@ -485,7 +485,7 @@
                                 <option value="Rp. 1 juta - 1.999.999 ">
                                 <option value="Rp. 2 juta - 4.999.999 ">
                                 <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20">
+                                <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
                             </datalist>
                             <small class="form-text text-muted">Rentang penghasilan ibu kandung peserta didik.
@@ -530,7 +530,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tahun_lahir_wali">Tahun Lahir</label>
-                            <input type="number" min="1900" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
+                            <input type="number" min="1950" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
                                    class="form-control @error('tahun_lahir_wali') is-invalid @enderror"
                                    id="tahun_lahir_wali" name="tahun_lahir_wali"
                                    value="{{ old('tahun_lahir_wali', $peserta_didik->tahun_lahir_wali) }}">
@@ -604,7 +604,7 @@
                                 <option value="Rp. 1 juta - 1.999.999 ">
                                 <option value="Rp. 2 juta - 4.999.999 ">
                                 <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20">
+                                <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
                             </datalist>
                             <small class="form-text text-muted">Rentang penghasilan wali peserta didik.</small>

@@ -370,7 +370,7 @@
                                 <option value="Rp. 2 juta - 4.999.999 ">
                                 <option value="PNS/TNI/POLRI">
                                 <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20">
+                                <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
                             </datalist>
                             <small class="form-text text-muted">Rentang penghasilan ayah kandung peserta didik.
@@ -488,7 +488,7 @@
                                 <option value="Rp. 1 juta - 1.999.999 ">
                                 <option value="Rp. 2 juta - 4.999.999 ">
                                 <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20">
+                                <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
                             </datalist>
                             <small class="form-text text-muted">Rentang penghasilan ibu kandung peserta didik.
@@ -604,7 +604,7 @@
                                 <option value="Rp. 1 juta - 1.999.999 ">
                                 <option value="Rp. 2 juta - 4.999.999 ">
                                 <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20">
+                                <option value="Lebih dari 20 juta">
                                 <option value="Tidak Berpenghasilan">
                             </datalist>
                             <small class="form-text text-muted">Rentang penghasilan wali peserta didik.</small>
