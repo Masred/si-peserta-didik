@@ -27,7 +27,23 @@
                     <p>Status</p>
                 </div>
                 <div class="col">
-                    : {{ $peserta_didik->status }}
+                    : @if($peserta_didik->status == 'aktif')
+                        <span class="badge bg-success">{{ $peserta_didik->status }}</span>
+                    @elseif($peserta_didik->status == 'keluar')
+                        <span class="badge bg-danger">{{ $peserta_didik->status }}</span>
+                    @elseif($peserta_didik->status == 'dikeluarkan')
+                        <span class="badge bg-danger">keluar</span>
+                        <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
+                    @elseif($peserta_didik->status == 'pindah')
+                        <span class="badge bg-danger">keluar</span>
+                        <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
+                    @elseif($peserta_didik->status == 'tamat')
+                        <span class="badge bg-danger">keluar</span>
+                        <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
+                    @elseif($peserta_didik->status == 'pindahan')
+                        <span class="badge bg-success">aktif</span>
+                        <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
+                    @endif
                 </div>
             </div>
             <div class="row">
