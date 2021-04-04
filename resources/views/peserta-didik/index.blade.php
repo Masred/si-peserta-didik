@@ -55,7 +55,25 @@
                                     <td>{{ $pd->nipd }}</td>
                                     <td>{{ $pd->nisn }}</td>
                                     <td>{{ $pd->jenis_kelamin }}</td>
-                                    <td>{{ $pd->status }}</td>
+                                    <td>
+                                        @if($pd->status == 'aktif')
+                                            <span class="badge bg-success">{{ $pd->status }}</span>
+                                        @elseif($pd->status == 'keluar')
+                                            <span class="badge bg-danger">{{ $pd->status }}</span>
+                                        @elseif($pd->status == 'dikeluarkan')
+                                            <span class="badge bg-danger">keluar</span>
+                                            <span class="badge bg-warning">{{ $pd->status }}</span>
+                                        @elseif($pd->status == 'pindah')
+                                            <span class="badge bg-danger">keluar</span>
+                                            <span class="badge bg-warning">{{ $pd->status }}</span>
+                                        @elseif($pd->status == 'tamat')
+                                            <span class="badge bg-danger">keluar</span>
+                                            <span class="badge bg-warning">{{ $pd->status }}</span>
+                                        @elseif($pd->status == 'pindahan')
+                                            <span class="badge bg-success">aktif</span>
+                                            <span class="badge bg-warning">{{ $pd->status }}</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class="col d-flex justify-content-center">
