@@ -19,8 +19,12 @@
                         @csrf
                         <div class="modal-body">
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile" name="fileImport">
+                                <input type="file" class="custom-file-input @error('fileImport') is-invalid @enderror" id="exampleInputFile" name="fileImport">
                                 <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
+                                <small class="form-text text-muted">File yang dipilih harus berformat xlsx atau xls.</small>
+                                @error('fileImport')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -182,6 +186,19 @@
                 "responsive": true,
             });
         });
+        @error('fileImport')
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+        });
+        Toast.fire({
+            icon: 'error',
+            title: '{!! $message !!}'
+        });
+        @enderror
         @if(session('status'))
         const Toast = Swal.mixin({
             toast: true,

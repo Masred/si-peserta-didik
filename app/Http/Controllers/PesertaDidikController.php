@@ -150,6 +150,14 @@ class PesertaDidikController extends Controller
     // Import peserta didik from excel
     public function import(Request $request)
     {
+        $request->validate([
+            'fileImport'=> ['required', 'mimes:xlsx,xls']
+        ],
+        [
+            'required' => 'anda belum memilih file untuk diimport.',
+            'mimes' => 'file yang dipilih harus berformat xlsx atau xls.'
+        ]);
+
         Excel::import(new PesertaDidikImport, $request->file('fileImport'));
 
         return redirect()->route('peserta-didik.index')->with('status', 'Data berhasil diimport');
