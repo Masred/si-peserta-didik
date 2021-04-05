@@ -27,7 +27,7 @@
                                     style="width: 50px">No
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Browser: activate to sort column ascending">Id Rombel
+                                    aria-label="Browser: activate to sort column ascending">Kode Rombel
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Platform(s): activate to sort column ascending">Nama Rombel
@@ -51,7 +51,7 @@
                             @foreach($rombels as $rombel)
                                 <tr role="row" class="odd">
                                     <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
-                                    <td>{{ $rombel->id }}</td>
+                                    <td>{{ $rombel->kode_rombel }}</td>
                                     <td>{{ $rombel->kelas }} {{ $rombel->kode_jurusan }} {{ $rombel->kelompok }}</td>
                                     <td>{{ $rombel->kelas }}</td>
                                     <td>{{ $rombel->jurusan->nama_jurusan }}</td>
@@ -59,14 +59,14 @@
                                     <td>
                                         <div class="row justify-content-center">
                                             <div class="col">
-                                                <a href="{{ route('rombel.edit', $rombel->id) }}"
+                                                <a href="{{ route('rombel.edit', $rombel->kode_rombel) }}"
                                                    class="btn btn-success btn-sm d-inline-block float-right"><i
                                                         class="far fa-edit"></i></a>
                                             </div>
                                             <div class="col">
                                                 <form
                                                     class="d-inline float-left"
-                                                    action="{{ route('rombel.destroy', $rombel->id) }}"
+                                                    action="{{ route('rombel.destroy', $rombel->kode_rombel) }}"
                                                     method="post">
                                                     @method('delete')
                                                     @csrf

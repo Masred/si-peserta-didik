@@ -8,8 +8,41 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Daftar Peserta Didik</h3>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
+                    data-target="#exampleModal">
+                <i class="fas fa-file-import"></i> Import
+            </button>
+            <a href="{{ route('peserta-didik.export') }}" class="btn btn-success btn-sm d-block float-right mx-2"><i
+                    class="fas fa-file-export"></i> Export</a>
             <a href="{{ route('peserta-didik.create') }}" class="btn btn-primary btn-sm d-block float-right"><i
                     class="fas fa-plus"></i> Tambah</a>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Upload File Excel</h5>
+                    </div>
+                    <form action="{{ route('peserta-didik.import') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="fileImport">
+                                <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                    class="fas fa-times"></i> Batal
+                            </button>
+                            <button type="submit" class="btn btn-success"><i class="fas fa-file-import"></i> Import
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -37,7 +70,7 @@
                                     aria-label="Platform(s): activate to sort column ascending">NISN
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Platform(s): activate to sort column ascending">JK
+                                    aria-label="Platform(s): activate to sort column ascending">Rombongan Belajar
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                     aria-label="Platform(s): activate to sort column ascending">Status
@@ -54,7 +87,7 @@
                                     <td>{{ $pd->nama }}</td>
                                     <td>{{ $pd->nipd }}</td>
                                     <td>{{ $pd->nisn }}</td>
-                                    <td>{{ $pd->jenis_kelamin }}</td>
+                                    <td>{{ $pd->rombel->kelas . ' ' . $pd->rombel->kode_jurusan . ' ' . $pd->rombel->kelompok }}</td>
                                     <td>
                                         @if($pd->status == 'aktif')
                                             <span class="badge bg-success">{{ $pd->status }}</span>
@@ -141,6 +174,11 @@
             title: '{!! session('status') !!}'
         });
         @endif
+
+        $(function () {
+            bsCustomFileInput.init();
+        });
+
         $('.btn-del').click(function (e) {
             e.preventDefault();
             Swal.fire({
