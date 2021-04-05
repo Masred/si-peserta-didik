@@ -133,4 +133,12 @@ class RombelController extends Controller
         Rombel::destroy($rombel->kode_rombel);
         return redirect('/rombel')->with('status', 'data berhasil dihapus.');
     }
+
+    // multiple delete data
+    public function multiple_destroy(Request $request){
+        foreach ($request->kode_rombel as $kr){
+            Rombel::destroy($kr);
+        }
+        return redirect('/rombel')->with('status', 'data berhasil dihapus.');
+    }
 }

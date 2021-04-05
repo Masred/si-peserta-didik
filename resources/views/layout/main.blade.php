@@ -36,7 +36,7 @@
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-light-lightblue elevation-4">
+    <aside class="main-sidebar sidebar-dark-lightblue elevation-4">
         <!-- Brand Logo -->
         <p class="brand-link">
             <img src="{{ asset('img/logo/Logo_SMK_Negeri_3_Tasikmalaya.png') }}" alt="AdminLTE Logo"
