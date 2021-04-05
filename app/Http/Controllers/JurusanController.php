@@ -110,4 +110,12 @@ class JurusanController extends Controller
         Jurusan::destroy($jurusan->kode_jurusan);
         return redirect('/jurusan')->with('status', 'data berhasil dihapus.');
     }
+
+    // multiple delete data
+    public function multiple_destroy(Request $request){
+        foreach ($request->kode_jurusan as $kj){
+            Jurusan::destroy($kj);
+        }
+        return redirect('/jurusan')->with('status', 'data berhasil dihapus.');
+    }
 }

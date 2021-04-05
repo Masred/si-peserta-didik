@@ -78,7 +78,7 @@ class PesertaDidikController extends Controller
      */
     public function show(PesertaDidik $peserta_didik)
     {
-        return  view('peserta-didik.show', compact('peserta_didik'));
+        return view('peserta-didik.show', compact('peserta_didik'));
     }
 
     /**
@@ -142,14 +142,25 @@ class PesertaDidikController extends Controller
     }
 
     // Download peserta didik in excel
-    public function export(){
+    public function export()
+    {
         return Excel::download(new PesertaDidikExport, 'peserta-didik.xlsx');
     }
 
     // Import peserta didik from excel
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         Excel::import(new PesertaDidikImport, $request->file('fileImport'));
 
         return redirect()->route('peserta-didik.index')->with('status', 'Data berhasil diimport');
+    }
+
+    // multiple delete data
+    public function multiple_destroy(Request $request)
+    {
+        foreach ($request->id as $i) {
+            PesertaDidik::destroy($i);
+        }
+        return redirect()->back()->with('status', 'data berhasil dihapus.');
     }
 }

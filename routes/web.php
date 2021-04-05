@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('layout.main');
 });
 
+Route::delete('jurusan/multiple-destroy', [JurusanController::class, 'multiple_destroy'])->name('jurusan.multiple-destroy');
+Route::delete('rombel/multiple-destroy', [RombelController::class, 'multiple_destroy'])->name('rombel.multiple-destroy');
+Route::delete('peserta-didik/multiple-destroy', [PesertaDidikController::class, 'multiple_destroy'])->name('peserta-didik.multiple-destroy');
+
 Route::post('peserta-didik/import', [PesertaDidikController::class, 'import'])->name('peserta-didik.import');
 Route::get('peserta-didik/export', [PesertaDidikController::class, 'export'])->name('peserta-didik.export');
 
