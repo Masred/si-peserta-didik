@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\PesertaDidik;
+use App\Models\Rombel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PesertaDidikFactory extends Factory
@@ -38,7 +39,7 @@ class PesertaDidikFactory extends Factory
             'kelurahan' => 'Panyingkiran',
             'kecamatan' => 'Indihiang',
             'kota' => $this->faker->city,
-            'hp' => $this->faker->phoneNumber,
+            'hp' => '08' . $this->faker->numberBetween(5676789472, 9676789472),
             'email' => $this->faker->email,
             'tahun_keluar' => $this->faker->numberBetween(2010, 2021),
             'nama_ayah' => $this->faker->name('male'),
@@ -59,7 +60,7 @@ class PesertaDidikFactory extends Factory
             'pekerjaan_wali' => $this->faker->randomElement(array('Petani', 'Peternak', 'PNS/TNI/POLRI', 'Wirausaha', 'Wiraswasta')),
             'penghasilan_wali' => $this->faker->randomElement(array('Rp. 500.000 - 999.9999', 'Rp. 2 juta - 4.999.999 ', 'Rp. 5 juta - 20 juta')),
             'nik_wali' => $this->faker->numberBetween(3274839283748574, 3299999999999999),
-            'rombel_id' => $this->faker->numberBetween(1, 5)
+            'kode_rombel' => $this->faker->randomElement(array('X-DKV-1', 'X-DKV-2','X-DKV-3', 'X-RPL-1', 'X-RPL-2', 'X-RPL-3', 'XI-DKV-1', 'XI-DKV-2', 'XI-DKV-3', 'XI-RPL-1', 'XI-RPL-2', 'XI-RPL-3', 'XII-DKV-1', 'XII-DKV-2', 'XII-DKV-3', 'XII-RPL-1', 'XII-RPL-2', 'XII-RPL-3'))
         ];
     }
 }

@@ -15,8 +15,8 @@ class CreatePesertaDidikTable extends Migration
     {
         Schema::create('peserta_didik', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['aktif', 'pindah', 'tamat', 'pindahan', 'keluar', 'dikeluarkan']);
             $table->string('nama')->nullable();
+            $table->enum('status', ['aktif', 'pindah', 'tamat', 'pindahan', 'keluar', 'dikeluarkan']);
             $table->enum('jenis_kelamin',['L','P'])->nullable();
             $table->string('nipd')->nullable();
             $table->string('nisn')->nullable();
@@ -51,7 +51,8 @@ class CreatePesertaDidikTable extends Migration
             $table->string('pekerjaan_wali')->nullable();
             $table->string('penghasilan_wali')->nullable();
             $table->bigInteger('nik_wali')->nullable();
-            $table->foreignId('rombel_id')->nullable()->constrained('rombel')->cascadeOnUpdate();
+            $table->string('kode_rombel', 15)->nullable();
+            $table->foreign('kode_rombel')->references('kode_rombel')->on('rombel')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 
