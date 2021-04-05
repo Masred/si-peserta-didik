@@ -74,7 +74,8 @@ class RombelController extends Controller
     public function show(Rombel $rombel)
     {
         $peserta_didik = PesertaDidik::all()->where('kode_rombel', $rombel->kode_rombel);
-        return view('rombel.show', compact('peserta_didik', 'rombel'));
+        $jumlah_peserta_didik = $peserta_didik->count();
+        return view('rombel.show', compact('peserta_didik', 'rombel', 'jumlah_peserta_didik'));
     }
 
     /**
