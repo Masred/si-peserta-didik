@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
+use App\Models\PesertaDidik;
 use App\Models\Rombel;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -72,7 +73,8 @@ class RombelController extends Controller
      */
     public function show(Rombel $rombel)
     {
-        //
+        $peserta_didik = PesertaDidik::all()->where('kode_rombel', $rombel->kode_rombel);
+        return view('rombel.show', compact('peserta_didik', 'rombel'));
     }
 
     /**
