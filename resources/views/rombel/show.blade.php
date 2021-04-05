@@ -27,6 +27,14 @@
                     <p>: {{ $rombel->kelas }} {{ $rombel->kode_jurusan }} {{ $rombel->kelompok }}</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-4">
+                    <p>Jumlah Peserta Didik</p>
+                </div>
+                <div class="col-4">
+                    <p>: {{ $jumlah_peserta_didik }}</p>
+                </div>
+            </div>
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12">
