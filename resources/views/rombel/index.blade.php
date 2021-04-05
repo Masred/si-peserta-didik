@@ -1,7 +1,6 @@
 @extends('layout.main')
 
 @section('title', 'Rombel')
-@section('master-menu', 'active')
 @section('rombel-menu', 'active')
 
 @section('content')
@@ -42,7 +41,7 @@
                                     aria-label="Browser: activate to sort column ascending">Kelompok
                                 </th>
                                 <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                    aria-label="Platform(s): activate to sort column ascending" style="width: 150px">
+                                    aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
                                     Aksi
                                 </th>
                             </tr>
@@ -58,14 +57,14 @@
                                     <td>{{ $rombel->kelompok }}</td>
                                     <td>
                                         <div class="row justify-content-center">
-                                            <div class="col">
+                                            <div class="col d-flex justify-content-center">
+                                                <a href="{{ route('rombel.show', $rombel->kode_rombel) }}"
+                                                   class="btn btn-primary btn-sm"><i
+                                                        class="far fa-eye"></i></a>
                                                 <a href="{{ route('rombel.edit', $rombel->kode_rombel) }}"
-                                                   class="btn btn-success btn-sm d-inline-block float-right"><i
+                                                   class="btn btn-success btn-sm mx-2"><i
                                                         class="far fa-edit"></i></a>
-                                            </div>
-                                            <div class="col">
                                                 <form
-                                                    class="d-inline float-left"
                                                     action="{{ route('rombel.destroy', $rombel->kode_rombel) }}"
                                                     method="post">
                                                     @method('delete')
@@ -120,7 +119,7 @@
             title: '{!! session('status') !!}'
         });
         @endif
-        $('.btn-del').click(function(e){
+        $('.btn-del').click(function (e) {
             e.preventDefault();
             Swal.fire({
                 title: 'Ingin menghapus data?',

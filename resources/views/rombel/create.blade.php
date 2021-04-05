@@ -1,7 +1,6 @@
 @extends('layout.main')
 
 @section('title', 'Tambah Rombongan Belajar')
-@section('master-menu', 'active')
 @section('rombel-menu', 'active')
 
 @section('content')
