@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PesertaDidikExport;
+use App\Imports\PesertaDidikImport;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PesertaDidikController extends Controller
 {
@@ -99,7 +102,6 @@ class PesertaDidikController extends Controller
      */
     public function update(Request $request, PesertaDidik $peserta_didik)
     {
-//        dd($request->all());
         $rules = [
             'nama' => ['required'],
             'jenis_kelamin' => ['required'],
@@ -137,5 +139,17 @@ class PesertaDidikController extends Controller
     {
         PesertaDidik::destroy($peserta_didik->id);
         return redirect()->route('peserta-didik.index')->with('status', 'data berhasil dihapus.');
+    }
+
+    // Download peserta didik in excel
+    public function export(){
+        return Excel::download(new PesertaDidikExport, 'peserta-didik.xlsx');
+    }
+
+    // Import peserta didik from excel
+    public function import(Request $request){
+        Excel::import(new PesertaDidikImport, $request->file('fileImport'));
+
+        return redirect()->route('peserta-didik.index')->with('status', 'Data berhasil diimport');
     }
 }

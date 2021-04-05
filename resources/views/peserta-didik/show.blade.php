@@ -88,10 +88,18 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>Tempat Tanggal Lahir</p>
+                    <p>Tempat Lahir</p>
                 </div>
                 <div class="col">
-                    : {{ $peserta_didik->tempat_lahir }}, {{ date('d-m-Y', strtotime($peserta_didik->tanggal_lahir)) }}
+                    : {{ $peserta_didik->tempat_lahir }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>Tanggal Lahir</p>
+                </div>
+                <div class="col">
+                    : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_lahir)) }}
                 </div>
             </div>
             <div class="row">
@@ -172,7 +180,7 @@
                     <p>Jurusan</p>
                 </div>
                 <div class="col">
-                    : {{ $peserta_didik->rombel->jurusan->nama_jurusan }}
+                    : {{ (!$peserta_didik->kode_rombel)? '': $peserta_didik->rombel->jurusan->nama_jurusan }}
                 </div>
             </div>
             <div class="row">
@@ -180,7 +188,7 @@
                     <p>Rombongan Belajar</p>
                 </div>
                 <div class="col">
-                    : {{ $peserta_didik->rombel->nama_rombel }}
+                    : {{ (!$peserta_didik->kode_rombel)? '' : $peserta_didik->rombel->kelas .''.$peserta_didik->rombel->kode_jurusan.''.$peserta_didik->rombel->kelompok }}
                 </div>
             </div>
             <hr>

@@ -221,17 +221,17 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="rombel_id">Rombongan Belajar</label>
-                            <select name="rombel_id" id="rombel_id"
-                                    class="custom-select @error('rombel_id') is-invalid @enderror">
+                            <label for="kode_rombel">Rombongan Belajar</label>
+                            <select name="kode_rombel" id="kode_rombel"
+                                    class="custom-select @error('kode_rombel') is-invalid @enderror">
                                 <option value="">PILIH</option>
                                 @foreach($rombel as $r)
                                     <option
-                                        value="{{ $r->id }}" {{ (old('rombel_id') == $r->id)? 'selected': '' }}>{{ $r->nama_rombel }}</option>
+                                        value="{{ $r->kode_rombel }}" {{ (old('kode_rombel') == $r->kode_rombel)? 'selected': '' }}>{{ $r->kelas }} {{ $r->kode_jurusan }} {{ $r->kelompok }}</option>
                                 @endforeach
                             </select>
                             <small class="form-text text-muted">Rombongan kelas peserta didik saat ini.</small>
-                            @error('tempat_tinggal')
+                            @error('kode_rombel')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

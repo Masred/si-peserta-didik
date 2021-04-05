@@ -14,7 +14,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('rombel.update', $rombel->id) }}" method="post">
+                <form action="{{ route('rombel.update', $rombel->kode_rombel) }}" method="post">
                     @method('patch')
                     @csrf
                     <div class="card-body">

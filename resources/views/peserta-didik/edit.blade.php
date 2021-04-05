@@ -229,17 +229,17 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="rombel_id">Rombongan Belajar</label>
-                            <select name="rombel_id" id="rombel_id"
-                                    class="custom-select @error('rombel_id') is-invalid @enderror">
+                            <label for="kode_rombel">Rombongan Belajar</label>
+                            <select name="kode_rombel" id="kode_rombel"
+                                    class="custom-select @error('kode_rombel') is-invalid @enderror">
                                 <option value="">PILIH</option>
                                 @foreach($rombel as $r)
                                     <option
-                                        value="{{ $r->id }}" {{ (old('rombel_id', $peserta_didik->rombel_id) == $r->id)? 'selected': '' }}>{{ $r->nama_rombel }}</option>
+                                        value="{{ $r->kode_rombel }}" {{ (old('kode_rombel', $peserta_didik->kode_rombel) == $r->kode_rombel)? 'selected': '' }}>{{ $r->kelas }} {{ $r->kode_jurusan }} {{ $r->kelompok }}</option>
                                 @endforeach
                             </select>
                             <small class="form-text text-muted">Rombongan kelas peserta didik saat ini.</small>
-                            @error('tempat_tinggal')
+                            @error('kode_rombel')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -424,7 +424,7 @@
                             <label for="jenjang_pendidikan_ibu">Pendidikan</label>
                             <input list="jenjang_pendidikan_ibu" name="jenjang_pendidikan_ibu"
                                    class="form-control @error('jenjang_pendidikan_ibu', $peserta_didik->jenjang_pendidikan_ibu) is-invalid @enderror"
-                                   placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_ibu') }}">
+                                   placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_ibu', $peserta_didik->jenjang_pendidikan_ibu) }}">
                             <datalist id="jenjang_pendidikan_ibu">
                                 <option value="Tidak Sekolah">
                                 <option value="Putus SD">

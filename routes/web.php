@@ -19,6 +19,9 @@ Route::get('/', function () {
     return view('layout.main');
 });
 
+Route::post('peserta-didik/import', [PesertaDidikController::class, 'import'])->name('peserta-didik.import');
+Route::get('peserta-didik/export', [PesertaDidikController::class, 'export'])->name('peserta-didik.export');
+
 Route::resource('jurusan', JurusanController::class);
 Route::resource('rombel', RombelController::class);
 Route::resource('peserta-didik', PesertaDidikController::class);

@@ -40,14 +40,14 @@ class RombelController extends Controller
     public function store(Request $request)
     {
         $data = new Request([
-            'nama_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
+            'kode_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
             'kelas' => $request->kelas,
             'kode_jurusan' => $request->kode_jurusan,
             'kelompok' => $request->kelompok
         ]);
 
         $rules = [
-            'nama_rombel' => ['required', 'unique:rombel'],
+            'kode_rombel' => ['required', 'unique:rombel'],
             'kelas' => ['required'],
             'kode_jurusan' => ['required'],
             'kelompok' => ['required']
@@ -97,14 +97,14 @@ class RombelController extends Controller
     public function update(Request $request, Rombel $rombel)
     {
         $data = new Request([
-            'nama_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
+            'kode_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
             'kelas' => $request->kelas,
             'kode_jurusan' => $request->kode_jurusan,
             'kelompok' => $request->kelompok
         ]);
 
         $rules = [
-            'nama_rombel' => ['required', Rule::unique('rombel')->ignore($rombel->id, 'nama_rombel')],
+            'kode_rombel' => ['required', Rule::unique('rombel')->ignore($rombel->kode_rombel, 'kode_rombel')],
             'kelas' => ['required'],
             'kode_jurusan' => ['required'],
             'kelompok' => ['required']
@@ -115,7 +115,7 @@ class RombelController extends Controller
             'unique' => ':attribute telah digunakan'
         ];
         $data->validate($rules, $customMessages);
-        Rombel::find($rombel->id)->update($data->all());
+        Rombel::find($rombel->kode_rombel)->update($data->all());
 
         return redirect('/rombel')->with('status', 'data berhasil diubah');
     }
@@ -128,7 +128,7 @@ class RombelController extends Controller
      */
     public function destroy(Rombel $rombel)
     {
-        Rombel::destroy($rombel->id);
+        Rombel::destroy($rombel->kode_rombel);
         return redirect('/rombel')->with('status', 'data berhasil dihapus.');
     }
 }
