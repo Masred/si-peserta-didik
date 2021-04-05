@@ -73,36 +73,24 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview menu-open">
-                        <a href="#"
-                           class="nav-link  @yield('master-menu')">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>
-                                Master
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                    <li class="nav-item">
+                        <a href="{{route('jurusan.index')}}"
+                           class="nav-link @yield('jurusan-menu')">
+                            <i class="fa fa-university nav-icon"></i>
+                            <p>Jurusan</p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('jurusan.index')}}"
-                                   class="nav-link @yield('jurusan-menu')">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Jurusan</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Rombongan Belajar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('peserta-didik.index') }}" class="nav-link @yield('peserta-didik-menu')">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Peserta Didik</p>
-                                </a>
-                            </li>
-                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
+                            <i class="fa fa-users nav-icon"></i>
+                            <p>Rombongan Belajar</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('peserta-didik.index') }}" class="nav-link @yield('peserta-didik-menu')">
+                            <i class="fa fa-graduation-cap nav-icon"></i>
+                            <p>Peserta Didik</p>
+                        </a>
                     </li>
                 </ul>
             </nav>

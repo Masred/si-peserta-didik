@@ -1,7 +1,6 @@
 @extends('layout.main')
 
 @section('title', 'Tambah Peserta Didik')
-@section('master-menu', 'active')
 @section('peserta-didik-menu', 'active')
 
 @section('content')

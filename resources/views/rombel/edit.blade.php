@@ -1,7 +1,6 @@
 @extends('layout.main')
 
 @section('title', 'Edit Rombel')
-@section('master-menu', 'active')
 @section('rombel-menu', 'active')
 
 @section('content')
