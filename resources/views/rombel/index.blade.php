@@ -7,8 +7,6 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Daftar Rombongan Belajar (Rombel)</h3>
-            <a href="{{ route('rombel.create') }}" class="btn btn-primary btn-sm d-block float-right"><i
-                    class="fas fa-plus"></i> Tambah</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -20,6 +18,8 @@
                             method="post">
                             @csrf
                             @method('delete')
+                            <a href="{{ route('rombel.create') }}" class="btn btn-primary btn-sm d-block float-right ml-2"><i
+                                    class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
                                     title="Delete"
                                     class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right">

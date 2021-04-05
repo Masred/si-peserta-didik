@@ -7,15 +7,6 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Daftar Peserta Didik</h3>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
-                    data-target="#exampleModal">
-                <i class="fas fa-file-import"></i> Import
-            </button>
-            <a href="{{ route('peserta-didik.export') }}" class="btn btn-success btn-sm d-block float-right mx-2"><i
-                    class="fas fa-file-export"></i> Export</a>
-            <a href="{{ route('peserta-didik.create') }}" class="btn btn-primary btn-sm d-block float-right"><i
-                    class="fas fa-plus"></i> Tambah</a>
         </div>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,11 +42,22 @@
                         <form
                             action="{{ route('peserta-didik.multiple-destroy') }}"
                             method="post">
-                            @csrf
-                            @method('delete')
+                        @csrf
+                        @method('delete')
+                        <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                <i class="fas fa-file-import"></i> Import
+                            </button>
+                            <a href="{{ route('peserta-didik.export') }}"
+                               class="btn btn-success btn-sm d-block float-right mx-2"><i
+                                    class="fas fa-file-export"></i> Export</a>
+                            <a href="{{ route('peserta-didik.create') }}"
+                               class="btn btn-primary btn-sm d-block float-right"><i
+                                    class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
                                     title="Delete"
-                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right">
+                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mr-2">
                                 <i class="far fa-trash-alt"></i> Hapus
                             </button>
                             <table id="example1"
@@ -152,6 +154,19 @@
 @endsection
 @section('script')
     <script>
+        $("#pilih_semua").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+        $(document).ready(function () {
+            $('.btn-del').attr('disabled', true);
+            $('input[type="checkbox"]').click(function () {
+                if ($(this).prop('checked') === true) {
+                    $('.btn-del').attr('disabled', false);
+                } else {
+                    $('.btn-del').attr('disabled', true);
+                }
+            });
+        });
         $(function () {
             $("#example1").DataTable({
                 "responsive": true,

@@ -8,8 +8,6 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Daftar Jurusan</h3>
-            <a href="{{ route('jurusan.create') }}" class="btn btn-primary btn-sm d-block float-right"><i
-                    class="fas fa-plus"></i> Tambah</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -21,6 +19,9 @@
                             method="post">
                             @csrf
                             @method('delete')
+                            <a href="{{ route('jurusan.create') }}"
+                               class="btn btn-primary btn-sm d-block float-right ml-2"><i
+                                    class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
                                     title="Delete"
                                     class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right">
@@ -49,7 +50,8 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Nama Jurusan
                                     </th>
-                                    <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
+                                        aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending" style="width: 20px">
                                         Aksi
                                     </th>
@@ -93,8 +95,8 @@
         });
         $(document).ready(function () {
             $('.btn-del').attr('disabled', true);
-            $('input[type="checkbox"]').click(function (){
-                if ($(this).prop('checked') === true){
+            $('input[type="checkbox"]').click(function () {
+                if ($(this).prop('checked') === true) {
                     $('.btn-del').attr('disabled', false);
                 } else {
                     $('.btn-del').attr('disabled', true);
