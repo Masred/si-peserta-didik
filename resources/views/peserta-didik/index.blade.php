@@ -8,36 +8,6 @@
         <div class="card-header">
             <h3 class="card-title">Daftar Peserta Didik</h3>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Upload File Excel</h5>
-                    </div>
-                    <form action="{{ route('peserta-didik.import') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="modal-body">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input @error('fileImport') is-invalid @enderror" id="exampleInputFile" name="fileImport">
-                                <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
-                                <small class="form-text text-muted">File yang dipilih harus berformat xlsx atau xls.</small>
-                                @error('fileImport')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                    class="fas fa-times"></i> Batal
-                            </button>
-                            <button type="submit" class="btn btn-success"><i class="fas fa-file-import"></i> Import
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
         <!-- /.card-header -->
         <div class="card-body">
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -50,12 +20,26 @@
                         @method('delete')
                         <!-- Button trigger modal -->
                             <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
-                                    data-target="#exampleModal">
+                                    data-target="#import-excel">
                                 <i class="fas fa-file-import"></i> Import
                             </button>
-                            <a href="{{ route('peserta-didik.export') }}"
-                               class="btn btn-success btn-sm d-block float-right mx-2"><i
-                                    class="fas fa-file-export"></i> Export</a>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-success btn-sm d-block float-right mr-2"
+                                    data-toggle="modal"
+                                    data-target="#print-pdf">
+                                <i class="fa fa-print"></i> Print
+                            </button>
+                            <div class="dropdown">
+                                <a class="btn btn-success dropdown-toggle btn-sm d-block float-right mx-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-file-export"></i> Export
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a href="{{ route('peserta-didik.export-excel') }}"
+                                       class="dropdown-item"><i class="far fa-file-excel mr-1"></i> Excel</a>
+                                    <a href="{{ route('peserta-didik.export-pdf') }}"
+                                       class="dropdown-item"><i class="far fa-file-pdf mr-1"></i> PDF</a>
+                                </div>
+                            </div>
                             <a href="{{ route('peserta-didik.create') }}"
                                class="btn btn-primary btn-sm d-block float-right"><i
                                     class="fas fa-plus"></i> Tambah</a>
@@ -155,6 +139,69 @@
         </div>
         <!-- /.card-body -->
     </div>
+    <!-- Modal Excel -->
+    <div class="modal fade" id="import-excel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload File Excel</h5>
+                </div>
+                <form action="{{ route('peserta-didik.import') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input @error('fileImport') is-invalid @enderror"
+                                   id="exampleInputFile" name="fileImport">
+                            <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
+                            <small class="form-text text-muted">File yang dipilih harus berformat xlsx atau xls.</small>
+                            @error('fileImport')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Batal
+                        </button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-file-import"></i> Import
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Print -->
+    <div class="modal fade" id="print-pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Print Data Peserta Didik</h5>
+                </div>
+                <form action="{{ route('peserta-didik.print') }}" method="post">
+                    @csrf
+                    <div class="modal-body">
+                        <select name="kelas" class="custom-select @error('kelas') is-invalid @enderror" required>
+                            <option value="">PILIH</option>
+                            <option value="Semua">Semua</option>
+                            <option value="X">Kelas X</option>
+                            <option value="XI">Kelas XI</option>
+                            <option value="XII">Kelas XII</option>
+                        </select>
+                        @error('kelas')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Batal
+                        </button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('script')
     <script>
@@ -174,16 +221,7 @@
         $(function () {
             $("#example1").DataTable({
                 "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+                "autoWidth": true,
             });
         });
         @error('fileImport')
