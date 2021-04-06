@@ -18,7 +18,8 @@
                             method="post">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('rombel.create') }}" class="btn btn-primary btn-sm d-block float-right ml-2"><i
+                            <a href="{{ route('rombel.create') }}"
+                               class="btn btn-primary btn-sm d-block float-right ml-2"><i
                                     class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
                                     title="Delete"
@@ -56,7 +57,8 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Kelompok
                                     </th>
-                                    <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                    <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
+                                        aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
                                         Aksi
                                     </th>
@@ -106,8 +108,8 @@
         });
         $(document).ready(function () {
             $('.btn-del').attr('disabled', true);
-            $('input[type="checkbox"]').click(function (){
-                if ($(this).prop('checked') === true){
+            $('input[type="checkbox"]').click(function () {
+                if ($(this).prop('checked') === true) {
                     $('.btn-del').attr('disabled', false);
                 } else {
                     $('.btn-del').attr('disabled', true);
@@ -118,15 +120,6 @@
             $("#example1").DataTable({
                 "responsive": true,
                 "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
             });
         });
         @if(session('status'))
