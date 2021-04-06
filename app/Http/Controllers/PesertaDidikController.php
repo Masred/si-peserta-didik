@@ -6,7 +6,9 @@ use App\Exports\PesertaDidikExport;
 use App\Imports\PesertaDidikImport;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
+use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -142,14 +144,33 @@ class PesertaDidikController extends Controller
     }
 
     // Download peserta didik in excel
-    public function export()
+    public function excel()
     {
         return Excel::download(new PesertaDidikExport, 'peserta-didik.xlsx');
+    }
+
+    // Download peserta didik in pdf
+    public function pdf()
+    {
+        $peserta_didik = PesertaDidik::all();
+        $kelas = 'Semua';
+
+        $pdf = PDF::loadView('peserta-didik.print', compact('peserta_didik', 'kelas'));
+
+        return $pdf->download('peserta-didik.pdf');
     }
 
     // Import peserta didik from excel
     public function import(Request $request)
     {
+        $request->validate([
+            'fileImport' => ['required', 'mimes:xlsx,xls']
+        ],
+            [
+                'required' => 'anda belum memilih file untuk diimport.',
+                'mimes' => 'file yang dipilih harus berformat xlsx atau xls.'
+            ]);
+
         Excel::import(new PesertaDidikImport, $request->file('fileImport'));
 
         return redirect()->route('peserta-didik.index')->with('status', 'Data berhasil diimport');
@@ -162,5 +183,30 @@ class PesertaDidikController extends Controller
             PesertaDidik::destroy($i);
         }
         return redirect()->back()->with('status', 'data berhasil dihapus.');
+    }
+
+    // print pdf
+    public function print(Request $request)
+    {
+        if ($request->kelas === 'X') {
+            $kelas = 10;
+        } elseif ($request->kelas === 'XI') {
+            $kelas = 11;
+        } elseif ($request->kelas === 'XII') {
+            $kelas = 12;
+        } else {
+            $kelas = $request->kelas;
+        }
+        if ($request->kelas === 'Semua') {
+            $peserta_didik = PesertaDidik::all();
+        } else {
+            $peserta_didik = DB::table('peserta_didik')
+                ->join('rombel', 'peserta_didik.kode_rombel', '=', 'rombel.kode_rombel')
+                ->join('jurusan', 'rombel.kode_jurusan', '=', 'jurusan.kode_jurusan')
+                ->where('rombel.kelas', $request->kelas)
+                ->get();
+        }
+        $pdf = PDF::loadView('peserta-didik.print', compact('peserta_didik', 'kelas'));
+        return $pdf->stream();
     }
 }

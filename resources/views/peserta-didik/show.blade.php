@@ -187,7 +187,7 @@
                     <p>Rombongan Belajar</p>
                 </div>
                 <div class="col">
-                    : {{ (!$peserta_didik->kode_rombel)? '' : $peserta_didik->rombel->kelas .''.$peserta_didik->rombel->kode_jurusan.''.$peserta_didik->rombel->kelompok }}
+                    : {{ (!$peserta_didik->kode_rombel)? '' : $peserta_didik->rombel->kelas .' '.$peserta_didik->rombel->kode_jurusan.' '.$peserta_didik->rombel->kelompok }}
                 </div>
             </div>
             <hr>
