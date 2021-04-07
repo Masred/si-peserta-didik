@@ -44,15 +44,15 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="isAdmin" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
+                            <label for="is_admin" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
 
                             <div class="col-md-6">
-                                <select name="isAdmin" id="isAdmin" class="custom-select @error('isAdmin') is-invalid @enderror" required>
+                                <select name="is_admin" id="is_admin" class="custom-select @error('is_admin') is-invalid @enderror" required>
                                     <option value="">PILIH</option>
-                                    <option value="0" {{ (old('isAdmin') === 0)? 'selected': '' }}>User</option>
-                                    <option value="1" {{ (old('isAdmin') === 1)? 'selected': '' }}>Admin</option>
+                                    <option value="0" {{ (old('is_admin') === 0)? 'selected': '' }}>User</option>
+                                    <option value="1" {{ (old('is_admin') === 1)? 'selected': '' }}>Admin</option>
                                 </select>
-                                @error('isAdmin')
+                                @error('is_admin')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -49,14 +49,14 @@ class UserController extends Controller
                 Rule::unique(User::class),
             ],
             'password' => ['required', 'string', new Password, 'confirmed'],
-            'isAdmin'=> ['required']
+            'is_admin'=> ['required']
         ])->validate();
 
         User::create([
             'nama' => $request->nama,
             'username' => $request->username,
             'password' => Hash::make($request->password),
-            'isAdmin' => $request->isAdmin
+            'is_admin' => $request->is_admin
         ]);
 
         return redirect()->route('user.index')->with('status', 'Data berhasil disimpan.');
