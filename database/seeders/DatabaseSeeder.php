@@ -5,7 +5,9 @@ namespace Database\Seeders;
 use App\Models\Jurusan;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,7 +18,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory()->state([
+            'nama' => 'Admin',
+            'username' => 'admin',
+            'password' => Hash::make('adminganteng'),
+            'isAdmin' => 1,
+        ])->create();
+        User::factory()->count(10)->create();
+
         Jurusan::factory()->create();
         for ($i = 1; $i <= 3; $i++){
             Rombel::factory()->state([
