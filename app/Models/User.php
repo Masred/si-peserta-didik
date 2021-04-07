@@ -22,7 +22,7 @@ class User extends Authenticatable
         'nama',
         'username',
         'password',
-        'isAdmin'
+        'is_admin'
     ];
 
     /**

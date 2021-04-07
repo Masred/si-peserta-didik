@@ -65,7 +65,7 @@
                                         <td>{{ $user->nama }}</td>
                                         <td>{{ $user->username }}</td>
                                         <td>
-                                            @if($user->isAdmin === 1)
+                                            @if($user->is_admin === 1)
                                                 <span class="badge bg-danger">Admin</span>
                                             @else
                                                 <span class="badge bg-secondary">User</span>
