@@ -40,17 +40,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
-            'nama' => ['required', 'string', 'max:255'],
-            'username' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique(User::class),
-            ],
+        $request->validate([
+            'nama' => ['required', 'string'],
+            'username' => ['required', Rule::unique(User::class)],
             'password' => ['required', 'string', new Password, 'confirmed'],
             'is_admin'=> ['required']
-        ])->validate();
+        ],[
+            'required' => ':attribute harus diisi',
+            'unique' => ':attribute tidak tersedia',
+            'confirmed' => 'konfirmasi password tidak cocok'
+        ]);
 
         User::create([
             'nama' => $request->nama,
