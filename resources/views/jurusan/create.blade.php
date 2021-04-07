@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('title', 'Tambah Jurusan')
-@section('master-menu', 'active')
 @section('jurusan-menu', 'active')
 
 @section('content')
