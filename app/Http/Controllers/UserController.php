@@ -11,6 +11,11 @@ use Laravel\Fortify\Rules\Password;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -78,9 +83,10 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit()
     {
-
+        $user = User::all()->find(auth()->user()->id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -90,9 +96,19 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => ['required', 'string'],
+            'username' => ['required', Rule::unique(User::class)->ignore(auth()->user()->username, 'username')],
+        ],[
+            'required' => ':attribute harus diisi',
+            'unique' => ':attribute tidak tersedia',
+        ]);
+
+        User::all()->find(auth()->user()->id)->update($request->all());
+
+        return back()->with('status', 'profile berhasil diubah.');
     }
 
     /**
