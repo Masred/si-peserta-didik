@@ -67,7 +67,7 @@
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">{{ Auth::user()->nama }}</a>
+                    <a href="{{ route('user.edit') }}" class="d-block">{{ Auth::user()->nama }}</a>
                 </div>
             </div>
 
@@ -86,13 +86,16 @@
                             </p>
                         </a>
                     </li>
+                    @if(auth()->user()->is_admin == 1)
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}"
+                               class="nav-link @yield('user-menu')">
+                                <i class="fa fa-user nav-icon"></i>
+                                <p>Pengguna</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
-                        <a href="{{route('user.index')}}"
-                           class="nav-link @yield('user-menu')">
-                            <i class="fa fa-user nav-icon"></i>
-                            <p>Pengguna</p>
-                        </a>
-                    </li><li class="nav-item">
                         <a href="{{route('jurusan.index')}}"
                            class="nav-link @yield('jurusan-menu')">
                             <i class="fa fa-university nav-icon"></i>
