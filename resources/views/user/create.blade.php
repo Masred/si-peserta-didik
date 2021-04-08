@@ -48,9 +48,8 @@
 
                             <div class="col-md-6">
                                 <select name="is_admin" id="is_admin" class="custom-select @error('is_admin') is-invalid @enderror" required>
-                                    <option value="">PILIH</option>
-                                    <option value="0" {{ (old('is_admin') === 0)? 'selected': '' }}>User</option>
-                                    <option value="1" {{ (old('is_admin') === 1)? 'selected': '' }}>Admin</option>
+                                    <option value="0" {{ (old('is_admin') == 0)? 'selected': '' }}>User</option>
+                                    <option value="1" {{ (old('is_admin') == 1)? 'selected': '' }}>Admin</option>
                                 </select>
                                 @error('is_admin')
                                 <span class="invalid-feedback" role="alert">
