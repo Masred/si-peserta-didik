@@ -40,20 +40,22 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
             'nama' => ['required', 'string'],
-            'username' => ['required', Rule::unique(User::class)],
-            'password' => ['required', 'string', new Password, 'confirmed'],
-            'is_admin'=> ['required']
-        ],[
+            'username' => ['required', 'alpha_dash', Rule::unique(User::class)],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'is_admin' => ['required']
+        ], [
             'required' => ':attribute harus diisi',
             'unique' => ':attribute tidak tersedia',
-            'confirmed' => 'konfirmasi password tidak cocok'
+            'confirmed' => 'konfirmasi password tidak cocok',
+            'alpha_dash' => 'harus huruf dan angka tanpa spasi',
+            'min' => ':attribute harus setidaknya :min karakter'
         ]);
 
         User::create([
@@ -69,7 +71,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
@@ -80,7 +82,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function edit()
@@ -92,18 +94,19 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $request->validate([
             'nama' => ['required', 'string'],
-            'username' => ['required', Rule::unique(User::class)->ignore(auth()->user()->username, 'username')],
-        ],[
+            'username' => ['required', 'alpha_dash', Rule::unique(User::class)->ignore(auth()->user()->username, 'username')],
+        ], [
             'required' => ':attribute harus diisi',
             'unique' => ':attribute tidak tersedia',
+            'alpha_dash' => 'harus huruf dan angka tanpa spasi',
         ]);
 
         User::all()->find(auth()->user()->id)->update($request->all());
@@ -114,7 +117,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\User  $user
+     * @param \App\Models\User $user
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user)
@@ -123,8 +126,9 @@ class UserController extends Controller
     }
 
     // multiple delete data
-    public function multiple_destroy(Request $request){
-        foreach ($request->id as $i){
+    public function multiple_destroy(Request $request)
+    {
+        foreach ($request->id as $i) {
             User::destroy($i);
         }
         return redirect('/user')->with('status', 'data berhasil dihapus.');
