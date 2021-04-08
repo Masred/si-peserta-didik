@@ -32,6 +32,19 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                    {{ __('Keluar') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+        </ul>
     </nav>
     <!-- /.navbar -->
 
@@ -48,13 +61,13 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="user-panel pb-3 mb-3 d-flex">
                 <div class="image img-size-64">
                     <img src="{{ asset('img/avatar/administrator.png') }}" class="img-circle elevation-2"
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="{{ route('user.edit') }}" class="d-block">{{ Auth::user()->nama }}</a>
                 </div>
             </div>
 
@@ -73,6 +86,15 @@
                             </p>
                         </a>
                     </li>
+                    @if(auth()->user()->is_admin == 1)
+                        <li class="nav-item">
+                            <a href="{{route('user.index')}}"
+                               class="nav-link @yield('user-menu')">
+                                <i class="fa fa-user nav-icon"></i>
+                                <p>Pengguna</p>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a href="{{route('jurusan.index')}}"
                            class="nav-link @yield('jurusan-menu')">
@@ -128,16 +150,6 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-        <div class="p-3">
-            <h5>Title</h5>
-            <p>Sidebar content</p>
-        </div>
-    </aside>
-    <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
     <footer class="main-footer">

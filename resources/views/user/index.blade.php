@@ -1,12 +1,12 @@
 @extends('layouts.main')
 
-@section('title', 'Jurusan')
-@section('jurusan-menu', 'active')
+@section('title', 'Pengguna')
+@section('user-menu', 'active')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Daftar Jurusan</h3>
+            <h3 class="card-title">Daftar Pengguna</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -14,11 +14,11 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <form
-                            action="{{ route('jurusan.multiple-destroy') }}"
+                            action="{{ route('user.multiple-destroy') }}"
                             method="post">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('jurusan.create') }}"
+                            <a href="{{ route('user.create') }}"
                                class="btn btn-primary btn-sm d-block float-right ml-2"><i
                                     class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
@@ -44,36 +44,32 @@
                                         No
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending">Kode Jurusan
+                                        aria-label="Browser: activate to sort column ascending">Nama
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Nama Jurusan
+                                        aria-label="Platform(s): activate to sort column ascending">Username
                                     </th>
-                                    <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
-                                        aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending" style="width: 20px">
-                                        Aksi
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Level
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($jurusans as $jurusan)
+                                @foreach($users as $user)
                                     <tr role="row" class="odd">
                                         <td>
                                             <input type="checkbox" class="form-check"
-                                                   name="kode_jurusan[]" value="{{ $jurusan->kode_jurusan }}">
+                                                   name="id[]" value="{{ $user->id }}">
                                         </td>
                                         <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
-                                        <td>{{ $jurusan->kode_jurusan }}</td>
-                                        <td>{{ $jurusan->nama_jurusan }}</td>
+                                        <td>{{ $user->nama }}</td>
+                                        <td>{{ $user->username }}</td>
                                         <td>
-                                            <div class="row justify-content-center">
-                                                <div class="col">
-                                                    <a href="{{ route('jurusan.edit', $jurusan->kode_jurusan) }}"
-                                                       class="btn btn-success btn-sm mr-2"><i
-                                                            class="far fa-edit"></i></a>
-                                                </div>
-                                            </div>
+                                            @if($user->is_admin === 1)
+                                                <span class="badge bg-danger">Admin</span>
+                                            @else
+                                                <span class="badge bg-secondary">User</span>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
