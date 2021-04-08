@@ -37,5 +37,7 @@ Route::get('peserta-didik/export-excel', [PesertaDidikController::class, 'excel'
 Route::get('peserta-didik/export-pdf', [PesertaDidikController::class, 'pdf'])->name('peserta-didik.export-pdf')->middleware('auth');
 Route::resource('peserta-didik', PesertaDidikController::class)->except(['destroy'])->middleware('auth');
 
-Route::delete('user/multiple-destroy', [UserController::class, 'multiple_destroy'])->name('user.multiple-destroy')->middleware('auth');
-Route::resource('user', UserController::class)->only(['index', 'create', 'store'])->middleware('auth');
+Route::get('user/profile', [UserController::class, 'edit'])->name('user.edit')->middleware('auth');
+Route::patch('user/profile/update', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+Route::delete('user/multiple-destroy', [UserController::class, 'multiple_destroy'])->name('user.multiple-destroy')->middleware('admin');
+Route::resource('user', UserController::class)->only(['index', 'create', 'store'])->middleware('admin');
