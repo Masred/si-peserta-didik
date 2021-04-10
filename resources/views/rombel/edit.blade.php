@@ -8,7 +8,8 @@
         <div class="col-5">
             <div class="card card-lightblue">
                 <div class="card-header">
-                    <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i class="fa fa-arrow-left"></i> kembali</a></h3>
+                    <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i
+                                class="fa fa-arrow-left"></i> kembali</a></h3>
                     <h3 class="card-title d-block float-right">Form Rombongan Belajar (Rombel)</h3>
                 </div>
                 <!-- /.card-header -->
@@ -17,30 +18,43 @@
                     @method('patch')
                     @csrf
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="kelas">Kelas</label>
-                            <select name="kelas" id="kelas" class="custom-select">
-                                <option value="X" {{ (old('kelas', $rombel->kelas) === 'X')? 'selected': '' }}>X</option>
-                                <option value="XI" {{ (old('kelas', $rombel->kelas) === 'XI')? 'selected': '' }}>XI</option>
-                                <option value="XII" {{ (old('kelas', $rombel->kelas) === 'XII')? 'selected': '' }}>XII</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="jurusan">Jurusan</label>
-                            <select name="kode_jurusan" id="jurusan"
-                                    class="custom-select">
-                                @foreach($jurusans as $jurusan)
-                                    <option value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan', $rombel->kode_jurusan) == $jurusan->kode_jurusan)? 'selected': '' }}>
-                                        {{ $jurusan->nama_jurusan }}
+                        <div class="form-group row">
+                            <label for="kelas" class="col-md-4 col-form-label text-md-right">Kelas</label>
+                            <div class="col-md-6">
+                                <select name="kelas" id="kelas" class="custom-select">
+                                    <option value="X" {{ (old('kelas', $rombel->kelas) === 'X')? 'selected': '' }}>X
                                     </option>
-                                @endforeach
-                            </select>
+                                    <option value="XI" {{ (old('kelas', $rombel->kelas) === 'XI')? 'selected': '' }}>
+                                        XI
+                                    </option>
+                                    <option value="XII" {{ (old('kelas', $rombel->kelas) === 'XII')? 'selected': '' }}>
+                                        XII
+                                    </option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="kelompok">Kelompok</label>
-                            <input type="number" min="1" class="form-control"
-                                   id="kelompok"
-                                   placeholder="Contoh: 1, 2, 3" name="kelompok" value="{{ old('kelompok', $rombel->kelompok) }}" required>
+                        <div class="form-group row">
+                            <label for="jurusan" class="col-md-4 col-form-label text-md-right">Jurusan</label>
+                            <div class="col-md-6">
+                                <select name="kode_jurusan" id="jurusan"
+                                        class="custom-select">
+                                    @foreach($jurusans as $jurusan)
+                                        <option
+                                            value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan', $rombel->kode_jurusan) == $jurusan->kode_jurusan)? 'selected': '' }}>
+                                            {{ $jurusan->nama_jurusan }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="kelompok" class="col-md-4 col-form-label text-md-right">Kelompok</label>
+                            <div class="col-md-6">
+                                <input type="number" min="1" class="form-control"
+                                       id="kelompok"
+                                       placeholder="Contoh: 1, 2, 3" name="kelompok"
+                                       value="{{ old('kelompok', $rombel->kelompok) }}" required>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->

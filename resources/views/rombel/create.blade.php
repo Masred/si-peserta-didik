@@ -17,33 +17,39 @@
                 <form action="{{ route('rombel.store') }}" method="post">
                     @csrf
                     <div class="card-body">
-                        <div class="form-group">
-                            <label for="kelas">Kelas</label>
-                            <select name="kelas" id="kelas" class="custom-select">
-                                <option value="">PILIH</option>
-                                <option value="X" {{ (old('kelas') == 'X')? 'selected': '' }}>X</option>
-                                <option value="XI" {{ (old('kelas') == 'XI')? 'selected': '' }}>XI</option>
-                                <option value="XII" {{ (old('kelas') == 'XII')? 'selected': '' }}>XII</option>
-                            </select>
+                        <div class="form-group row">
+                            <label for="kelas" class="col-md-4 col-form-label text-md-right">Kelas</label>
+                            <div class="col-md-6">
+                                <select name="kelas" id="kelas" class="custom-select">
+                                    <option value="">PILIH</option>
+                                    <option value="X" {{ (old('kelas') == 'X')? 'selected': '' }}>X</option>
+                                    <option value="XI" {{ (old('kelas') == 'XI')? 'selected': '' }}>XI</option>
+                                    <option value="XII" {{ (old('kelas') == 'XII')? 'selected': '' }}>XII</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="jurusan">Jurusan</label>
-                            <select name="kode_jurusan" id="jurusan"
-                                    class="custom-select">
-                                <option value="">PILIH</option>
-                                @foreach($jurusans as $jurusan)
-                                    <option
-                                        value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan') == $jurusan->kode_jurusan)? 'selected': '' }}>
-                                        {{ $jurusan->nama_jurusan }}
-                                    </option>
-                                @endforeach
-                            </select>
+                        <div class="form-group row">
+                            <label for="jurusan" class="col-md-4 col-form-label text-md-right">Jurusan</label>
+                            <div class="col-md-6">
+                                <select name="kode_jurusan" id="jurusan"
+                                        class="custom-select">
+                                    <option value="">PILIH</option>
+                                    @foreach($jurusans as $jurusan)
+                                        <option
+                                            value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan') == $jurusan->kode_jurusan)? 'selected': '' }}>
+                                            {{ $jurusan->nama_jurusan }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="kelompok">Kelompok</label>
-                            <input type="number" min="1" class="form-control"
-                                   id="kelompok"
-                                   placeholder="Contoh: 1, 2, 3" name="kelompok" value="{{ old('kelompok') }}" required>
+                        <div class="form-group row">
+                            <label for="kelompok" class="col-md-4 col-form-label text-md-right">Kelompok</label>
+                            <div class="col-md-6">
+                                <input type="number" min="1" class="form-control"
+                                       id="kelompok"
+                                       placeholder="Contoh: 1, 2, 3" name="kelompok" value="{{ old('kelompok') }}" required>
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
