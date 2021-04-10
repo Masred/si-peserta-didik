@@ -56,6 +56,9 @@ class PesertaDidikController extends Controller
             'tempat_lahir' => ['required'],
             'tanggal_lahir' => ['required'],
             'agama' => ['required'],
+            'kota' => ['required'],
+            'kecamatan' => ['required'],
+            'kelurahan' => ['required'],
             'alamat' => ['required'],
             'tahun_masuk' => ['required'],
         ];
@@ -116,6 +119,9 @@ class PesertaDidikController extends Controller
             'tempat_lahir' => ['required'],
             'tanggal_lahir' => ['required'],
             'agama' => ['required'],
+            'kota' => ['required'],
+            'kecamatan' => ['required'],
+            'kelurahan' => ['required'],
             'alamat' => ['required'],
             'tahun_masuk' => ['required'],
         ];
