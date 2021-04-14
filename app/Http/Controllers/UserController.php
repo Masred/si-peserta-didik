@@ -48,7 +48,7 @@ class UserController extends Controller
         $request->validate([
             'nama' => ['required', 'string'],
             'username' => ['required', 'alpha_dash', Rule::unique(User::class)],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
             'is_admin' => ['required']
         ], [
             'required' => ':attribute harus diisi',
