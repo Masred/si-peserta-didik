@@ -33,7 +33,12 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('user.edit') }}" class="nav-link">
+                    Profil
+                </a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -67,7 +72,7 @@
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="{{ route('user.edit') }}" class="d-block">{{ Auth::user()->nama }}</a>
+                    <h5 class="text-light mb-0">{{ Auth::user()->nama }}</h5>
                 </div>
             </div>
 
