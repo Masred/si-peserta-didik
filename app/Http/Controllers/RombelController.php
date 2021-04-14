@@ -140,6 +140,6 @@ class RombelController extends Controller
         foreach ($request->kode_rombel as $kr){
             Rombel::destroy($kr);
         }
-        return redirect('/rombel')->with('status', 'data berhasil dihapus.');
+        return redirect()->back()->with('status', 'data berhasil dihapus.');
     }
 }
