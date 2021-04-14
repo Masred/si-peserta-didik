@@ -43,9 +43,6 @@
                                         style="width: 50px">No
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Browser: activate to sort column ascending">Kode Rombel
-                                    </th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Nama Rombel
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
@@ -72,8 +69,7 @@
                                                    name="kode_rombel[]" value="{{ $rombel->kode_rombel }}">
                                         </td>
                                         <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
-                                        <td>{{ $rombel->kode_rombel }}</td>
-                                        <td>{{ $rombel->kelas }} {{ $rombel->kode_jurusan }} {{ $rombel->kelompok }}</td>
+                                        <td>{{ str_replace('-', ' ', $rombel->kode_rombel) }}</td>
                                         <td>{{ $rombel->kelas }}</td>
                                         <td>{{ $rombel->jurusan->nama_jurusan }}</td>
                                         <td>{{ $rombel->kelompok }}</td>
