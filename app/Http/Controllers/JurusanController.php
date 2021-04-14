@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Jurusan;
+use App\Models\Rombel;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -58,9 +59,11 @@ class JurusanController extends Controller
      * @param \App\Models\Jurusan $jurusanModel
      * @return \Illuminate\Http\Response
      */
-    public function show(Jurusan $jurusanModel)
+    public function show(Jurusan $jurusan)
     {
-        //
+        $rombel = Rombel::all()->where('kode_jurusan', $jurusan->kode_jurusan);
+        $jumlah_rombel = $rombel->count();
+        return view('jurusan.show', compact('jurusan', 'rombel', 'jumlah_rombel'));
     }
 
     /**
@@ -84,7 +87,7 @@ class JurusanController extends Controller
     public function update(Request $request, Jurusan $jurusan)
     {
         $rules = [
-            'kode_jurusan' => ['required', 'min:2', Rule::unique('jurusan')->ignore($jurusan->kode_jurusan,'kode_jurusan')],
+            'kode_jurusan' => ['required', 'min:2', Rule::unique('jurusan')->ignore($jurusan->kode_jurusan, 'kode_jurusan')],
             'nama_jurusan' => ['required']
         ];
         $customMessages = [
@@ -112,8 +115,9 @@ class JurusanController extends Controller
     }
 
     // multiple delete data
-    public function multiple_destroy(Request $request){
-        foreach ($request->kode_jurusan as $kj){
+    public function multiple_destroy(Request $request)
+    {
+        foreach ($request->kode_jurusan as $kj) {
             Jurusan::destroy($kj);
         }
         return redirect('/jurusan')->with('status', 'data berhasil dihapus.');

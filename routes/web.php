@@ -25,7 +25,7 @@ Route::get('/', function () {
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
 
 Route::delete('jurusan/multiple-destroy', [JurusanController::class, 'multiple_destroy'])->name('jurusan.multiple-destroy')->middleware('auth');
-Route::resource('jurusan', JurusanController::class)->except(['show', 'destroy'])->middleware('auth');
+Route::resource('jurusan', JurusanController::class)->except(['destroy'])->middleware('auth');
 
 Route::delete('rombel/multiple-destroy', [RombelController::class, 'multiple_destroy'])->name('rombel.multiple-destroy')->middleware('auth');
 Route::resource('rombel', RombelController::class)->except(['destroy'])->middleware('auth');

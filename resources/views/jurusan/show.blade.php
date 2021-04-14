@@ -1,32 +1,47 @@
 @extends('layouts.main')
 
-@section('title', 'Jurusan')
+@section('title', 'Daftar Rombongan Belajar')
 @section('jurusan-menu', 'active')
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Daftar Jurusan</h3>
+            <h3 class="card-title d-block float-left"><a href="{{ url()->previous() }}"><i class="fa fa-arrow-left"></i>
+                    kembali</a></h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <p>Jurusan</p>
+                </div>
+                <div class="col-4">
+                    <p>: {{ $jurusan->nama_jurusan }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <p>Jumlah Rombongan Belajar</p>
+                </div>
+                <div class="col-4">
+                    <p>: {{ $jumlah_rombel }}</p>
+                </div>
+            </div>
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12">
                         <form
-                            action="{{ route('jurusan.multiple-destroy') }}"
+                            action="{{ route('rombel.multiple-destroy') }}"
                             method="post">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('jurusan.create') }}"
-                               class="btn btn-primary btn-sm d-block float-right ml-2"><i
-                                    class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
                                     title="Delete"
                                     class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right">
                                 <i class="far fa-trash-alt"></i> Hapus
                             </button>
-                            <table id="example1" class="table table-bordered dataTable dtr-inline table-striped"
+                            <table id="example1"
+                                   class="table table-bordered dataTable dtr-inline table-striped"
                                    role="grid"
                                    aria-describedby="example1_info">
                                 <thead>
@@ -40,37 +55,50 @@
                                         colspan="1"
                                         aria-sort="ascending"
                                         aria-label="Rendering engine: activate to sort column descending"
-                                        style="width: 50px">
-                                        No
+                                    >No
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Nama Jurusan
+                                        aria-label="Platform(s): activate to sort column ascending">Nama Rombel
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Kelas
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Jurusan
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Kelompok
                                     </th>
                                     <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                         aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending" style="width: 20px">
+                                        aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
                                         Aksi
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($jurusans as $jurusan)
-                                    <tr role="row" class="odd">
+                                @foreach($rombel as $rb)
+                                    <tr role="row">
                                         <td>
                                             <input type="checkbox" class="form-check"
-                                                   name="kode_jurusan[]" value="{{ $jurusan->kode_jurusan }}">
+                                                   name="kode_rombel[]" value="{{ $rb->kode_rombel }}">
                                         </td>
                                         <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
+                                        <td>{{ str_replace('-', ' ', $rb->kode_rombel) }}</td>
+                                        <td>{{ $rb->kelas }}</td>
                                         <td>{{ $jurusan->nama_jurusan }}</td>
+                                        <td>{{ $rb->kelompok }}</td>
                                         <td>
-                                            <div class="row justify-content-center">
+                                            <div class="row">
                                                 <div class="col d-flex justify-content-center">
-                                                    <a href="{{ route('jurusan.show', $jurusan->kode_jurusan) }}"
-                                                       class="btn btn-primary btn-sm"><i
-                                                            class="far fa-eye"></i></a>
-                                                    <a href="{{ route('jurusan.edit', $jurusan->kode_jurusan) }}"
-                                                       class="btn btn-success btn-sm ml-2"><i
-                                                            class="far fa-edit"></i></a>
+                                                    <a href="{{ route('rombel.show', $rb->kode_rombel) }}"
+                                                       class="btn btn-primary btn-sm d-inline-block">
+                                                        <i class="far fa-eye"></i>
+                                                    </a>
+                                                    <a href="{{ route('rombel.edit', $rb->kode_rombel) }}"
+                                                       class="btn btn-success btn-sm mx-2"><i
+                                                            class="far fa-edit"></i>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>
@@ -120,6 +148,11 @@
             title: '{!! session('status') !!}'
         });
         @endif
+
+        $(function () {
+            bsCustomFileInput.init();
+        });
+
         $('.btn-del').click(function (e) {
             e.preventDefault();
             Swal.fire({
