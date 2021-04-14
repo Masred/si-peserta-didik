@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->state([
             'nama' => 'Admin',
             'username' => 'admin',
-            'password' => Hash::make('adminganteng'),
+            'password' => Hash::make('admin'),
             'is_admin' => 1,
         ])->create();
         User::factory()->count(10)->create();
