@@ -25,7 +25,7 @@
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <p class="h4"><b>SMK Negeri 3</b>Tasikmalaya</p>
+            <p class="h4 mt-2"><b>SMK Negeri 3</b>Tasikmalaya</p>
         </div>
         <div class="card-body">
 
