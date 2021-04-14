@@ -26,7 +26,7 @@ class UserFactory extends Factory
         return [
             'nama' => $this->faker->name,
             'username' => $this->faker->userName,
-            'password' => Hash::make('adminganteng'),
+            'password' => Hash::make('admin'),
             'is_admin' => 0
         ];
     }
