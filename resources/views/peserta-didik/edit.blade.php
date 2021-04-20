@@ -335,11 +335,11 @@
                 <div class="form-group row">
                     <label for="jenjang_pendidikan_ayah"
                            class="col-md-4 col-form-label text-md-right">Pendidikan</label>
-                    <input list="jenjang_pendidikan_ayah" name="jenjang_pendidikan_ayah"
-                           class="form-control @error('jenjang_pendidikan_ayah') is-invalid @enderror"
-                           placeholder="Masukan Pendidikan"
-                           value="{{ old('jenjang_pendidikan_ayah', $peserta_didik->jenjang_pendidikan_ayah) }}">
                     <div class="col-md-6">
+                        <input list="jenjang_pendidikan_ayah" name="jenjang_pendidikan_ayah"
+                               class="form-control @error('jenjang_pendidikan_ayah') is-invalid @enderror"
+                               placeholder="Masukan Pendidikan"
+                               value="{{ old('jenjang_pendidikan_ayah', $peserta_didik->jenjang_pendidikan_ayah) }}">
                         <datalist id="jenjang_pendidikan_ayah">
                             <option value="Tidak Sekolah">
                             <option value="Putus SD">

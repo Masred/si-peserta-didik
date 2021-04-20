@@ -476,220 +476,217 @@
                         @enderror
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group row">
-                        <label for="jenjang_pendidikan_ibu"
-                               class="col-md-4 col-form-label text-md-right">Pendidikan</label>
-                        <div class="col-md-6">
-                            <input list="jenjang_pendidikan_ibu" name="jenjang_pendidikan_ibu"
-                                   class="form-control @error('jenjang_pendidikan_ibu') is-invalid @enderror"
-                                   placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_ibu') }}">
-                            <datalist id="jenjang_pendidikan_ibu">
-                                <option value="Tidak Sekolah">
-                                <option value="Putus SD">
-                                <option value="SD Sederajat">
-                                <option value="SMP Sederajat">
-                                <option value="SMA Sederajat">
-                                <option value="D1">
-                                <option value="D2">
-                                <option value="D3">
-                                <option value="D4/S1">
-                                <option value="S2">
-                                <option value="S3">
-                            </datalist>
-                            <small class="form-text text-muted">Pendidikan terakhir ibu kandung peserta
-                                didik.</small>
-                            @error('jenjang_pendidikan_ibu')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="pekerjaan_ibu" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
-                        <div class="col-md-6">
-                            <input list="pekerjaan_ibu" name="pekerjaan_ibu"
-                                   class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
-                                   placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_ibu') }}">
-                            <datalist id="pekerjaan_ibu">
-                                <option value="Tidak Bekerja">
-                                <option value="Nelayan">
-                                <option value="Petani">
-                                <option value="Peternak">
-                                <option value="PNS/TNI/POLRI">
-                                <option value="Karyawan Swasta">
-                                <option value="Pedagang Kecil">
-                                <option value="Pedagang Besar">
-                                <option value="Wiraswasta">
-                                <option value="Wirausaha">
-                                <option value="Buruh">
-                                <option value="Pensiunan">
-                                <option value="Meninggal Dunia">
-                                <option value="Lain-lain">
-                            </datalist>
-                            <small class="form-text text-muted">Pekerjaan utama ibu kandung peserta didik. Pilih
-                                Meninggal
-                                Dunia apabila ibu kandung peserta didik telah meninggal dunia.</small>
-                            @error('pekerjaan_ibu')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="penghasilan_ibu"
-                               class="col-md-4 col-form-label text-md-right">Penghasilan</label>
-                        <div class="col-md-6">
-                            <input list="penghasilan_ibu" name="penghasilan_ibu"
-                                   class="form-control @error('penghasilan_ibu') is-invalid @enderror"
-                                   placeholder="Masukan Penghasilan" value="{{ old('penghasilan_ibu') }}">
-                            <datalist id="penghasilan_ibu">
-                                <option value="Kurang dari Rp. 500,000">
-                                <option value="Rp. 500.000 - 999.9999">
-                                <option value="Rp. 1 juta - 1.999.999 ">
-                                <option value="Rp. 2 juta - 4.999.999 ">
-                                <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20 juta">
-                                <option value="Tidak Berpenghasilan">
-                            </datalist>
-                            <small class="form-text text-muted">Rentang penghasilan ibu kandung peserta didik.
-                                Kosongkan
-                                kolom
-                                ini apabila ibu kandung peserta didik telah meninggal dunia atau tidak
-                                bekerja.</small>
-                            @error('penghasilan_ibu')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <hr>
-                    <h3>Wali</h3>
-                    <hr>
-                    <div class="form-group row">
-                        <label for="nama_wali" class="col-md-4 col-form-label text-md-right">Nama Wali</label>
-                        <div class="col-md-6">
-                            <input type="text"
-                                   class="form-control @error('nama_wali') is-invalid @enderror"
-                                   id="nama_wali" placeholder="Masukan Nama Wali" name="nama_wali"
-                                   value="{{ old('nama_wali') }}">
-                            <small class="form-text text-muted">Nama Wali peserta didik sesuai dokumen resmi
-                                yang berlaku. Hindari penggunaan gelar akademik atau sosial (seperti Alm., Dr.,
-                                Drs.,
-                                S.Pd, dan H.).</small>
-                            @error('nama_wali')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="nik_wali" class="col-md-4 col-form-label text-md-right">Nomor Induk Kependudukan
-                            Wali</label>
-                        <div class="col-md-6">
-                            <input type="number" min="1"
-                                   class="form-control @error('nik_wali') is-invalid @enderror"
-                                   id="nik_wali" placeholder="Masukan Nomor Induk Kependudukan Wali" name="nik_wali"
-                                   value="{{ old('nik_wali') }}">
-                            <small class="form-text text-muted">Nomor Induk Kependudukan yang tercantum pada Kartu
-                                Keluarga atau KTP ibu kandung peserta didik.</small>
-                            @error('nik_wali')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="tahun_lahir_wali" class="col-md-4 col-form-label text-md-right">Tahun
-                            Lahir</label>
-                        <div class="col-md-6">
-                            <input type="number" min="1950" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
-                                   class="form-control @error('tahun_lahir_wali') is-invalid @enderror"
-                                   id="tahun_lahir_wali" name="tahun_lahir_wali"
-                                   value="{{ old('tahun_lahir_wali') }}">
-                            <small class="form-text text-muted">Tahun lahir Wali peserta didik.</small>
-                            @error('tahun_lahir_wali')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                <div class="form-group row">
+                    <label for="jenjang_pendidikan_ibu"
+                           class="col-md-4 col-form-label text-md-right">Pendidikan</label>
+                    <div class="col-md-6">
+                        <input list="jenjang_pendidikan_ibu" name="jenjang_pendidikan_ibu"
+                               class="form-control @error('jenjang_pendidikan_ibu') is-invalid @enderror"
+                               placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_ibu') }}">
+                        <datalist id="jenjang_pendidikan_ibu">
+                            <option value="Tidak Sekolah">
+                            <option value="Putus SD">
+                            <option value="SD Sederajat">
+                            <option value="SMP Sederajat">
+                            <option value="SMA Sederajat">
+                            <option value="D1">
+                            <option value="D2">
+                            <option value="D3">
+                            <option value="D4/S1">
+                            <option value="S2">
+                            <option value="S3">
+                        </datalist>
+                        <small class="form-text text-muted">Pendidikan terakhir ibu kandung peserta
+                            didik.</small>
+                        @error('jenjang_pendidikan_ibu')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
-                <div class="col">
-                    <div class="form-group row">
-                        <label for="jenjang_pendidikan_wali"
-                               class="col-md-4 col-form-label text-md-right">Pendidikan</label>
-                        <div class="col-md-6">
-                            <input list="jenjang_pendidikan_wali" name="jenjang_pendidikan_wali"
-                                   class="form-control @error('jenjang_pendidikan_wali') is-invalid @enderror"
-                                   placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_wali') }}">
-                            <datalist id="jenjang_pendidikan_wali">
-                                <option value="Tidak Sekolah">
-                                <option value="Putus SD">
-                                <option value="SD Sederajat">
-                                <option value="SMP Sederajat">
-                                <option value="SMA Sederajat">
-                                <option value="D1">
-                                <option value="D2">
-                                <option value="D3">
-                                <option value="D4/S1">
-                                <option value="S2">
-                                <option value="S3">
-                            </datalist>
-                            <small class="form-text text-muted">Pendidikan terakhir Wali peserta didik.</small>
-                            @error('jenjang_pendidikan_wali')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="pekerjaan_wali" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
-                        <div class="col-md-6">
-                            <input list="pekerjaan_wali" name="pekerjaan_wali"
-                                   class="form-control @error('pekerjaan_wali') is-invalid @enderror"
-                                   placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_wali') }}">
-                            <datalist id="pekerjaan_wali">
-                                <option value="Tidak Bekerja">
-                                <option value="Nelayan">
-                                <option value="Petani">
-                                <option value="Peternak">
-                                <option value="PNS/TNI/POLRI">
-                                <option value="Karyawan Swasta">
-                                <option value="Pedagang Kecil">
-                                <option value="Pedagang Besar">
-                                <option value="Wiraswasta">
-                                <option value="Wirausaha">
-                                <option value="Buruh">
-                                <option value="Pensiunan">
-                                <option value="Meninggal Dunia">
-                                <option value="Lain-lain">
-                            </datalist>
-                            <small class="form-text text-muted">Pekerjaan utama wali peserta didik.</small>
-                            @error('pekerjaan_wali')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="penghasilan_wali"
-                               class="col-md-4 col-form-label text-md-right">Penghasilan</label>
-                        <div class="col-md-6">
-                            <input list="penghasilan_wali" name="penghasilan_wali"
-                                   class="form-control @error('penghasilan_wali') is-invalid @enderror"
-                                   placeholder="Masukan Penghasilan" value="{{ old('penghasilan_wali') }}">
-                            <datalist id="penghasilan_wali">
-                                <option value="Kurang dari Rp. 500,000">
-                                <option value="Rp. 500.000 - 999.9999">
-                                <option value="Rp. 1 juta - 1.999.999 ">
-                                <option value="Rp. 2 juta - 4.999.999 ">
-                                <option value="Rp. 5 juta - 20 juta">
-                                <option value="Lebih dari 20 juta">
-                                <option value="Tidak Berpenghasilan">
-                            </datalist>
-                            <small class="form-text text-muted">Rentang penghasilan wali peserta didik.</small>
-                            @error('penghasilan_wali')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
+                <div class="form-group row">
+                    <label for="pekerjaan_ibu" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
+                    <div class="col-md-6">
+                        <input list="pekerjaan_ibu" name="pekerjaan_ibu"
+                               class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
+                               placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_ibu') }}">
+                        <datalist id="pekerjaan_ibu">
+                            <option value="Tidak Bekerja">
+                            <option value="Nelayan">
+                            <option value="Petani">
+                            <option value="Peternak">
+                            <option value="PNS/TNI/POLRI">
+                            <option value="Karyawan Swasta">
+                            <option value="Pedagang Kecil">
+                            <option value="Pedagang Besar">
+                            <option value="Wiraswasta">
+                            <option value="Wirausaha">
+                            <option value="Buruh">
+                            <option value="Pensiunan">
+                            <option value="Meninggal Dunia">
+                            <option value="Lain-lain">
+                        </datalist>
+                        <small class="form-text text-muted">Pekerjaan utama ibu kandung peserta didik. Pilih
+                            Meninggal
+                            Dunia apabila ibu kandung peserta didik telah meninggal dunia.</small>
+                        @error('pekerjaan_ibu')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                <div class="form-group row">
+                    <label for="penghasilan_ibu"
+                           class="col-md-4 col-form-label text-md-right">Penghasilan</label>
+                    <div class="col-md-6">
+                        <input list="penghasilan_ibu" name="penghasilan_ibu"
+                               class="form-control @error('penghasilan_ibu') is-invalid @enderror"
+                               placeholder="Masukan Penghasilan" value="{{ old('penghasilan_ibu') }}">
+                        <datalist id="penghasilan_ibu">
+                            <option value="Kurang dari Rp. 500,000">
+                            <option value="Rp. 500.000 - 999.9999">
+                            <option value="Rp. 1 juta - 1.999.999 ">
+                            <option value="Rp. 2 juta - 4.999.999 ">
+                            <option value="Rp. 5 juta - 20 juta">
+                            <option value="Lebih dari 20 juta">
+                            <option value="Tidak Berpenghasilan">
+                        </datalist>
+                        <small class="form-text text-muted">Rentang penghasilan ibu kandung peserta didik.
+                            Kosongkan
+                            kolom
+                            ini apabila ibu kandung peserta didik telah meninggal dunia atau tidak
+                            bekerja.</small>
+                        @error('penghasilan_ibu')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
+                <hr>
+                <h3>Wali</h3>
+                <hr>
+                <div class="form-group row">
+                    <label for="nama_wali" class="col-md-4 col-form-label text-md-right">Nama Wali</label>
+                    <div class="col-md-6">
+                        <input type="text"
+                               class="form-control @error('nama_wali') is-invalid @enderror"
+                               id="nama_wali" placeholder="Masukan Nama Wali" name="nama_wali"
+                               value="{{ old('nama_wali') }}">
+                        <small class="form-text text-muted">Nama Wali peserta didik sesuai dokumen resmi
+                            yang berlaku. Hindari penggunaan gelar akademik atau sosial (seperti Alm., Dr.,
+                            Drs.,
+                            S.Pd, dan H.).</small>
+                        @error('nama_wali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="nik_wali" class="col-md-4 col-form-label text-md-right">Nomor Induk Kependudukan
+                        Wali</label>
+                    <div class="col-md-6">
+                        <input type="number" min="1"
+                               class="form-control @error('nik_wali') is-invalid @enderror"
+                               id="nik_wali" placeholder="Masukan Nomor Induk Kependudukan Wali" name="nik_wali"
+                               value="{{ old('nik_wali') }}">
+                        <small class="form-text text-muted">Nomor Induk Kependudukan yang tercantum pada Kartu
+                            Keluarga atau KTP ibu kandung peserta didik.</small>
+                        @error('nik_wali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tahun_lahir_wali" class="col-md-4 col-form-label text-md-right">Tahun
+                        Lahir</label>
+                    <div class="col-md-6">
+                        <input type="number" min="1950" max="2099" step="1" placeholder="Mssukan Tahun Lahir"
+                               class="form-control @error('tahun_lahir_wali') is-invalid @enderror"
+                               id="tahun_lahir_wali" name="tahun_lahir_wali"
+                               value="{{ old('tahun_lahir_wali') }}">
+                        <small class="form-text text-muted">Tahun lahir Wali peserta didik.</small>
+                        @error('tahun_lahir_wali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="jenjang_pendidikan_wali"
+                           class="col-md-4 col-form-label text-md-right">Pendidikan</label>
+                    <div class="col-md-6">
+                        <input list="jenjang_pendidikan_wali" name="jenjang_pendidikan_wali"
+                               class="form-control @error('jenjang_pendidikan_wali') is-invalid @enderror"
+                               placeholder="Masukan Pendidikan" value="{{ old('jenjang_pendidikan_wali') }}">
+                        <datalist id="jenjang_pendidikan_wali">
+                            <option value="Tidak Sekolah">
+                            <option value="Putus SD">
+                            <option value="SD Sederajat">
+                            <option value="SMP Sederajat">
+                            <option value="SMA Sederajat">
+                            <option value="D1">
+                            <option value="D2">
+                            <option value="D3">
+                            <option value="D4/S1">
+                            <option value="S2">
+                            <option value="S3">
+                        </datalist>
+                        <small class="form-text text-muted">Pendidikan terakhir Wali peserta didik.</small>
+                        @error('jenjang_pendidikan_wali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="pekerjaan_wali" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
+                    <div class="col-md-6">
+                        <input list="pekerjaan_wali" name="pekerjaan_wali"
+                               class="form-control @error('pekerjaan_wali') is-invalid @enderror"
+                               placeholder="Masukan Pekerjaan" value="{{ old('pekerjaan_wali') }}">
+                        <datalist id="pekerjaan_wali">
+                            <option value="Tidak Bekerja">
+                            <option value="Nelayan">
+                            <option value="Petani">
+                            <option value="Peternak">
+                            <option value="PNS/TNI/POLRI">
+                            <option value="Karyawan Swasta">
+                            <option value="Pedagang Kecil">
+                            <option value="Pedagang Besar">
+                            <option value="Wiraswasta">
+                            <option value="Wirausaha">
+                            <option value="Buruh">
+                            <option value="Pensiunan">
+                            <option value="Meninggal Dunia">
+                            <option value="Lain-lain">
+                        </datalist>
+                        <small class="form-text text-muted">Pekerjaan utama wali peserta didik.</small>
+                        @error('pekerjaan_wali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="penghasilan_wali"
+                           class="col-md-4 col-form-label text-md-right">Penghasilan</label>
+                    <div class="col-md-6">
+                        <input list="penghasilan_wali" name="penghasilan_wali"
+                               class="form-control @error('penghasilan_wali') is-invalid @enderror"
+                               placeholder="Masukan Penghasilan" value="{{ old('penghasilan_wali') }}">
+                        <datalist id="penghasilan_wali">
+                            <option value="Kurang dari Rp. 500,000">
+                            <option value="Rp. 500.000 - 999.9999">
+                            <option value="Rp. 1 juta - 1.999.999 ">
+                            <option value="Rp. 2 juta - 4.999.999 ">
+                            <option value="Rp. 5 juta - 20 juta">
+                            <option value="Lebih dari 20 juta">
+                            <option value="Tidak Berpenghasilan">
+                        </datalist>
+                        <small class="form-text text-muted">Rentang penghasilan wali peserta didik.</small>
+                        @error('penghasilan_wali')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
         </form>
     </div>
 @endsection

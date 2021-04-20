@@ -18,7 +18,7 @@
                             method="post">
                         @csrf
                         @method('delete')
-                        <!-- Button trigger modal -->
+                            <!-- Button trigger modal -->
                             <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
                                     data-target="#import-excel">
                                 <i class="fas fa-file-import"></i> Import
@@ -221,7 +221,7 @@
         $(function () {
             $("#example1").DataTable({
                 "responsive": true,
-                "autoWidth": true,
+                "autoWidth": false,
             });
         });
         @error('fileImport')
