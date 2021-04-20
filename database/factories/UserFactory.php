@@ -24,23 +24,10 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'nama' => $this->faker->name,
-            'username' => $this->faker->userName,
-            'password' => Hash::make('admin'),
+            'nama' => 'Tata Usaha',
+            'username' => 'tatausaha',
+            'password' => Hash::make('tatausaha'),
             'is_admin' => 0
         ];
-    }
-    /**
-     * Indicate that the model's email address should be unverified.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    public function unverified()
-    {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
     }
 }
