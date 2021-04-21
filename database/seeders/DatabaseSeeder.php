@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin'),
             'is_admin' => 1,
         ])->create();
-        User::factory()->count(10)->create();
+        User::factory()->count(1)->create();
 
         Jurusan::factory()->create();
         for ($i = 1; $i <= 3; $i++){

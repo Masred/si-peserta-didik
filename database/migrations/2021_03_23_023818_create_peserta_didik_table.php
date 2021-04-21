@@ -16,8 +16,8 @@ class CreatePesertaDidikTable extends Migration
         Schema::create('peserta_didik', function (Blueprint $table) {
             $table->id();
             $table->enum('status', ['aktif', 'keluar']);
-            $table->enum('terdaftar_sebagai', ['Siswa baru', 'Pindahan', 'Kembali bersekolah']);
-            $table->string('pindahan_dari')->nullable();
+            $table->enum('jenis_pendaftaran', ['Siswa baru', 'Pindahan', 'Kembali bersekolah']);
+            $table->string('sekolah_asal')->nullable();
             $table->string('nama')->nullable();
             $table->string('nipd')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
@@ -28,6 +28,7 @@ class CreatePesertaDidikTable extends Migration
             $table->string('agama')->nullable();
             $table->date('tanggal_masuk')->nullable();
             $table->enum('keluar_karena', ['Lulus', 'Mutasi', 'Dikeluarkan', 'Mengundurkan diri', 'Putus Sekolah', 'Wafat', 'Hilang'])->default(null)->nullable();
+            $table->string('pindah_ke')->nullable();
             $table->string('alasan_keluar')->nullable();
             $table->date('tanggal_keluar')->nullable();
             $table->text('alamat')->nullable();
@@ -35,7 +36,7 @@ class CreatePesertaDidikTable extends Migration
             $table->tinyInteger('rw')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('kecamatan')->nullable();
-            $table->smallInteger('kode_pos')->nullable();
+            $table->Integer('kode_pos')->nullable();
             $table->string('hp', 20)->nullable();
             $table->string('email', 50)->nullable();
             $table->string('nama_ayah')->nullable();
@@ -56,7 +57,6 @@ class CreatePesertaDidikTable extends Migration
             $table->string('pekerjaan_wali')->nullable();
             $table->string('penghasilan_wali')->nullable();
             $table->bigInteger('nik_wali')->nullable();
-            $table->string('sekolah_asal')->nullable();
             $table->bigInteger('no_kk')->nullable();
             $table->string('kode_rombel', 15)->nullable();
             $table->foreign('kode_rombel')->references('kode_rombel')->on('rombel')->nullOnDelete()->cascadeOnUpdate();

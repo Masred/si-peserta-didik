@@ -15,26 +15,32 @@ class PesertaDidikImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-//        dd($row);
         return new PesertaDidik([
             'nama' => $row['nama'],
+            'jenis_pendaftaran' => $row['jenis_pendaftaran'],
+            'sekolah_asal' => $row['sekolah_asal'],
+            'tanggal_masuk' => $row['tanggal_masuk'],
             'status' => $row['status'],
             'jenis_kelamin' => $row['jenis_kelamin'],
             'nipd' => $row['nipd'],
             'nisn' => $row['nisn'],
-            'tahun_masuk' => $row['tahun_masuk'],
             'tempat_lahir' => $row['tempat_lahir'],
             'tanggal_lahir' => $row['tanggal_lahir'],
             'nik' => $row['nik'],
             'no_kk' => $row['no_kk'],
             'agama' => $row['agama'],
+            'rt' => $row['rt'],
+            'rw' => $row['rw'],
             'alamat' => $row['alamat'],
             'kelurahan' => $row['kelurahan'],
             'kecamatan' => $row['kecamatan'],
-            'kota' => $row['kota'],
+            'kode_pos' => $row['kode_pos'],
             'hp' => $row['hp'],
             'email' => $row['email'],
-            'tahun_keluar' => $row['tahun_keluar'],
+            'keluar_karena' => $row['keluar_karena'],
+            'pindah_ke' => $row['pindah_ke'],
+            'alasan_keluar' => $row['alasan_keluar'],
+            'tanggal_keluar' => $row['tanggal_keluar'],
             'nama_ayah' => $row['nama_ayah'],
             'tahun_lahir_ayah' => $row['tahun_lahir_ayah'],
             'jenjang_pendidikan_ayah' => $row['jenjang_pendidikan_ayah'],
@@ -53,7 +59,7 @@ class PesertaDidikImport implements ToModel, WithHeadingRow
             'pekerjaan_wali' => $row['pekerjaan_wali'],
             'penghasilan_wali' => $row['penghasilan_wali'],
             'nik_wali' => $row['nik_wali'],
-            'kode_rombel' => $row['rombel']
+            'kode_rombel' => str_replace(' ', '-', $row['rombel'])
         ]);
     }
 }

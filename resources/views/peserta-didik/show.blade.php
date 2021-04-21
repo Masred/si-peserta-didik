@@ -12,165 +12,150 @@
         <!-- /.card-header -->
         <div class="card-body">
             <h4>Peserta Didik</h4>
-            <table class="table">
+            <table class="table table-striped">
                 <tr>
-                    <td>Nama</td>
+                    <td width="50%" class="text-right font-weight-bold">Nama</td>
                     <td>: {{ $peserta_didik->nama }}</td>
                 </tr>
                 <tr>
-                    <td>Status</td>
+                    <td class="text-right font-weight-bold">Status</td>
                     <td>
                         : @if($peserta_didik->status == 'aktif')
                             <span class="badge bg-success">{{ $peserta_didik->status }}</span>
                         @elseif($peserta_didik->status == 'keluar')
                             <span class="badge bg-danger">{{ $peserta_didik->status }}</span>
-                        @elseif($peserta_didik->status == 'dikeluarkan')
-                            <span class="badge bg-danger">keluar</span>
-                            <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
-                        @elseif($peserta_didik->status == 'pindah')
-                            <span class="badge bg-danger">keluar</span>
-                            <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
-                        @elseif($peserta_didik->status == 'tamat')
-                            <span class="badge bg-danger">keluar</span>
-                            <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
-                        @elseif($peserta_didik->status == 'pindahan')
-                            <span class="badge bg-success">aktif</span>
-                            <span class="badge bg-warning">{{ $peserta_didik->status }}</span>
                         @endif
                     </td>
                 </tr>
                 <tr>
-                    <td>Jenis Kelamin</td>
+                    <td class="text-right font-weight-bold">Terdaftar Sebagai</td>
+                    <td> : {{ $peserta_didik->jenis_pendaftaran }}</td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">Sekolah Asal</td>
+                    <td> : {{ $peserta_didik->sekolah_asal }}</td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">Tanggal Masuk</td>
+                    <td> : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_masuk)) }}</td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">Jenis Kelamin</td>
                     <td> : {{ ($peserta_didik->jenis_kelamin == 'L')? 'Laki-Laki': 'Perempuan' }}</td>
                 </tr>
                 <tr>
-                    <td>Nomor Induk Peserta Didik (NIPD) / Nomor Induk Siswa (NIS)</td>
+                    <td class="text-right font-weight-bold">Nomor Induk Peserta Didik (NIPD) / Nomor Induk Siswa (NIS)
+                    </td>
                     <td>: {{ $peserta_didik->nipd }}</td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nomor Induk Siswa Nasional (NISN)</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor Induk Siswa Nasional (NISN)
                     </td>
                     <td>
                         : {{ $peserta_didik->nisn }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Tahun Masuk</p>
-                    </td>
-                    <td>
-                        : {{ $peserta_didik->tahun_masuk }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Tahun Keluar</p>
-                    </td>
-                    <td>
-                        : {{ $peserta_didik->tahun_keluar }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>Tempat Lahir</p>
+                    <td class="text-right font-weight-bold">
+                        Tempat Lahir
                     </td>
                     <td>
                         : {{ $peserta_didik->tempat_lahir }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Tanggal Lahir</p>
+                    <td class="text-right font-weight-bold">
+                        Tanggal Lahir
                     </td>
                     <td>
                         : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_lahir)) }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nomor Induk Kependudukan (NIK)</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor Induk Kependudukan (NIK)
                     </td>
                     <td>
                         : {{ $peserta_didik->nik }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nomor Kartu Keluarga (KK)</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor Kartu Keluarga (KK)
                     </td>
                     <td>
                         : {{ $peserta_didik->no_kk }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Agama</p>
+                    <td class="text-right font-weight-bold">
+                        Agama
                     </td>
                     <td>
                         : {{ $peserta_didik->agama }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Alamat</p>
+                    <td class="text-right font-weight-bold">
+                        Alamat
                     </td>
                     <td>
-                        : {{ $peserta_didik->alamat }}
+                        : {{ $peserta_didik->alamat }} RT/RW {{ $peserta_didik->rt . '/' . $peserta_didik->rw }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Kelurahan</p>
+                    <td class="text-right font-weight-bold">
+                        Kelurahan
                     </td>
                     <td>
                         : {{ $peserta_didik->kelurahan }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Kecamatan</p>
+                    <td class="text-right font-weight-bold">
+                        Kecamatan
                     </td>
                     <td>
                         : {{ $peserta_didik->kecamatan }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Kota</p>
+                    <td class="text-right font-weight-bold">
+                        Kode Pos
                     </td>
                     <td>
-                        : {{ $peserta_didik->kota }}
+                        : {{ $peserta_didik->kode_pos }}
                     </td>
                 </tr>
 
                 <tr>
-                    <td>
-                        <p>Nomor HP</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor HP
                     </td>
                     <td>
                         : {{ $peserta_didik->hp }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Email</p>
+                    <td class="text-right font-weight-bold">
+                        Email
                     </td>
                     <td>
                         : {{ $peserta_didik->email }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Jurusan</p>
+                    <td class="text-right font-weight-bold">
+                        Jurusan
                     </td>
                     <td>
                         : {{ (!$peserta_didik->kode_rombel)? '': $peserta_didik->rombel->jurusan->nama_jurusan }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Rombongan Belajar</p>
+                    <td class="text-right font-weight-bold">
+                        Rombongan Belajar
                     </td>
                     <td>
                         : {{ (!$peserta_didik->kode_rombel)? '' : $peserta_didik->rombel->kelas .' '.$peserta_didik->rombel->kode_jurusan.' '.$peserta_didik->rombel->kelompok }}
@@ -180,48 +165,48 @@
                     <td colspan="2"><h4>Ayah Kandung</h4></td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nama</p>
+                    <td class="text-right font-weight-bold">
+                        Nama
                     </td>
                     <td>
                         : {{ $peserta_didik->nama_ayah }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Tahun Lahir</p>
+                    <td class="text-right font-weight-bold">
+                        Tahun Lahir
                     </td>
                     <td>
                         : {{ $peserta_didik->tahun_lahir_ayah }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Jenjang Pendidikan</p>
+                    <td class="text-right font-weight-bold">
+                        Jenjang Pendidikan
                     </td>
                     <td>
                         : {{ $peserta_didik->jenjang_pendidikan_ayah }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Pekerjaan</p>
+                    <td class="text-right font-weight-bold">
+                        Pekerjaan
                     </td>
                     <td>
                         : {{ $peserta_didik->pekerjaan_ayah }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Penghasilan</p>
+                    <td class="text-right font-weight-bold">
+                        Penghasilan
                     </td>
                     <td>
                         : {{ $peserta_didik->penghasilan_ayah }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nomor Induk Kependudukan (NIK)</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor Induk Kependudukan (NIK)
                     </td>
                     <td>
                         : {{ $peserta_didik->nik_ayah }}
@@ -231,48 +216,48 @@
                     <td colspan="2"><h4>Ibu Kandung</h4></td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nama</p>
+                    <td class="text-right font-weight-bold">
+                        Nama
                     </td>
                     <td>
                         : {{ $peserta_didik->nama_ibu }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Tahun Lahir</p>
+                    <td class="text-right font-weight-bold">
+                        Tahun Lahir
                     </td>
                     <td>
                         : {{ $peserta_didik->tahun_lahir_ibu }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Jenjang Pendidikan</p>
+                    <td class="text-right font-weight-bold">
+                        Jenjang Pendidikan
                     </td>
                     <td>
                         : {{ $peserta_didik->jenjang_pendidikan_ibu }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Pekerjaan</p>
+                    <td class="text-right font-weight-bold">
+                        Pekerjaan
                     </td>
                     <td>
                         : {{ $peserta_didik->pekerjaan_ibu }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Penghasilan</p>
+                    <td class="text-right font-weight-bold">
+                        Penghasilan
                     </td>
                     <td>
                         : {{ $peserta_didik->penghasilan_ibu }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nomor Induk Kependudukan (NIK)</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor Induk Kependudukan (NIK)
                     </td>
                     <td>
                         : {{ $peserta_didik->nik_ibu }}
@@ -282,52 +267,83 @@
                     <td colspan="2"><h4>Wali</h4></td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nama</p>
+                    <td class="text-right font-weight-bold">
+                        Nama
                     </td>
                     <td>
                         : {{ $peserta_didik->nama_wali }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Tahun Lahir</p>
+                    <td class="text-right font-weight-bold">
+                        Tahun Lahir
                     </td>
                     <td>
                         : {{ $peserta_didik->tahun_lahir_wali }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Jenjang Pendidikan</p>
+                    <td class="text-right font-weight-bold">
+                        Jenjang Pendidikan
                     </td>
                     <td>
                         : {{ $peserta_didik->jenjang_pendidikan_wali }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Pekerjaan</p>
+                    <td class="text-right font-weight-bold">
+                        Pekerjaan
                     </td>
                     <td>
                         : {{ $peserta_didik->pekerjaan_wali }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Penghasilan</p>
+                    <td class="text-right font-weight-bold">
+                        Penghasilan
                     </td>
                     <td>
                         : {{ $peserta_didik->penghasilan_wali }}
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <p>Nomor Induk Kependudukan (NIK)</p>
+                    <td class="text-right font-weight-bold">
+                        Nomor Induk Kependudukan (NIK)
                     </td>
                     <td>
                         : {{ $peserta_didik->nik_wali }}
                     </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h4>Lainnya</h4></td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">
+                        Keluar karena
+                    </td>
+                    <td>
+                        : {{ $peserta_didik->keluar_karena }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">
+                        Pindah ke
+                    </td>
+                    <td>
+                        : {{ $peserta_didik->pindah_ke }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">
+                        Alasan
+                    </td>
+                    <td>
+                        : {{ $peserta_didik->alasan_keluar }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-right font-weight-bold">Tanggal Keluar</td>
+                    <td> : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_keluar)) }}</td>
                 </tr>
             </table>
         </div>

@@ -31,6 +31,67 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="jenis_pendaftaran" class="col-md-4 col-form-label text-md-right">Jenis
+                        Pendaftaran</label>
+                    <div class="col-md-6">
+                        <select name="jenis_pendaftaran" id="jenis_pendaftaran"
+                                class="custom-select @error('jenis_pendaftaran') is-invalid @enderror">
+                            <option value="">PILIH</option>
+                            <option
+                                value="Siswa baru" {{ (old('jenis_pendaftaran', $peserta_didik->jenis_pendaftaran) == 'Siswa baru')? 'selected': '' }}>
+                                Siswa
+                                baru
+                            </option>
+                            <option
+                                value="Pindahan" {{ (old('jenis_pendaftaran', $peserta_didik->jenis_pendaftaran) == 'Pindahan')? 'selected': '' }}>
+                                Pindahan
+                            </option>
+                            <option
+                                value="Kembali bersekolah" {{ (old('jenis_pendaftaran', $peserta_didik->jenis_pendaftaran) == 'Kembali bersekolah')? 'selected': '' }}>
+                                Kembali bersekolah
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">Status peserta didik saat pertama kali diterima di sekolah
+                            ini.</small>
+                        @error('jenis_pendaftaran')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="sekolah_asal" class="col-md-4 col-form-label text-md-right">Sekolah Asal</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control @error('sekolah_asal') is-invalid @enderror"
+                               id="sekolah_asal" placeholder="Masukan pindahan dari sekolah mana" name="sekolah_asal"
+                               value="{{ old('sekolah_asal', $peserta_didik->sekolah_asal) }}">
+                        <small class="form-text text-muted">
+                            Nama sekolah peserta didik sebelumnya. Untuk peserta didik baru, isikan nama sekolah pada
+                            jenjang sebelumnya. Sedangkan bagi
+                            peserta didik mutasi/pindahan, diisi dengan nama sekolah sebelum pindah ke sekolah saat
+                            ini.</small>
+                        @error('sekolah_asal')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tanggal_masuk" class="col-md-4 col-form-label text-md-right">Tanggal Masuk</label>
+                    <div class="col-md-6">
+                        <input type="date" class="form-control @error('tanggal_masuk') is-invalid @enderror"
+                               id="tanggal_masuk" name="tanggal_masuk"
+                               value="{{ old('tanggal_masuk', $peserta_didik->tanggal_masuk) }}">
+                        <small class="form-text text-muted">
+                            Tanggal pertama kali peserta didik diterima di sekolah ini. Jika siswa baru, maka isikan
+                            tanggal awal tahun pelajaran saat peserta didik
+                            masuk. Jika siswa mutasi/pindahan, maka isikan tanggal sesuai tanggal diterimanya peserta
+                            didik di sekolah ini atau tanggal yang
+                            tercantum pada lembar mutasi masuk yang umumnya terdapat di bagian akhir buku rapor.</small>
+                        @error('tanggal_masuk')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="nipd" class="col-md-4 col-form-label text-md-right">NIPD/NIS</label>
                     <div class="col-md-6">
                         <input type="number" min="1" class="form-control @error('nipd') is-invalid @enderror"
@@ -54,19 +115,6 @@
                             digit
                             angka. Contoh: 0009321234.</small>
                         @error('nisn')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="tahun_masuk" class="col-md-4 col-form-label text-md-right">Tahun Masuk</label>
-                    <div class="col-md-6">
-                        <input type="number" min="2010" max="2099" step="1" placeholder="Mssukan Tahun Masuk"
-                               class="form-control @error('tahun_masuk') is-invalid @enderror"
-                               id="tahun_masuk" name="tahun_masuk"
-                               value="{{ old('tahun_masuk', $peserta_didik->tahun_masuk) }}">
-                        <small class="form-text text-muted">Tahun masuk peserta didik.</small>
-                        @error('tahun_masuk')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -200,18 +248,6 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="kota" class="col-md-4 col-form-label text-md-right">Kota/Kabupaten</label>
-                    <div class="col-md-6">
-                        <input type="text" name="kota" id="kota"
-                               class="form-control @error('kota') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten" value="{{ old('kota', $peserta_didik->kota) }}">
-                        <small class="form-text text-muted">Kota tempat tinggal peserta didik saat ini.</small>
-                        @error('kota')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="kecamatan" class="col-md-4 col-form-label text-md-right">Kecamatan</label>
                     <div class="col-md-6">
                         <input type="text" name="kecamatan" id="kecamatan"
@@ -239,6 +275,32 @@
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="rt" class="col-md-4 col-form-label text-md-right">RT</label>
+                    <div class="col-md-6">
+                        <input type="number" min="1" name="rt" id="rt"
+                               class="form-control @error('rt') is-invalid @enderror"
+                               placeholder="Masukan Kota/Kabupaten" value="{{ old('rt', $peserta_didik->rt) }}">
+                        <small class="form-text text-muted">Nomor RT tempat tinggal peserta didik saat ini. Dari contoh
+                            di atas, misalnya dapat diisi dengan angka 5.</small>
+                        @error('rt')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="rw" class="col-md-4 col-form-label text-md-right">RW</label>
+                    <div class="col-md-6">
+                        <input type="number" min="1" name="rw" id="rw"
+                               class="form-control @error('rw') is-invalid @enderror"
+                               placeholder="Masukan Kota/Kabupaten" value="{{ old('rw', $peserta_didik->rw) }}">
+                        <small class="form-text text-muted">Nomor RW tempat tinggal peserta didik saat ini. Dari contoh
+                            di atas, misalnya dapat diisi dengan angka 11.</small>
+                        @error('rw')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
                     <label for="alamat" class="col-md-4 col-form-label text-md-right">Alamat Jalan</label>
                     <div class="col-md-6">
                         <input type="text" class="form-control @error('alamat') is-invalid @enderror"
@@ -252,6 +314,19 @@
                             Cempaka, Desa Salatiga. Maka dapat
                             diisi dengan Jl. Kemanggisan, Komp. Griya Adam, No. 4-C</small>
                         @error('alamat')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="kode_pos" class="col-md-4 col-form-label text-md-right">Kode Pos</label>
+                    <div class="col-md-6">
+                        <input type="number" min="1" name="kode_pos" id="kode_pos"
+                               class="form-control @error('kode_pos') is-invalid @enderror"
+                               placeholder="Masukan Kota/Kabupaten"
+                               value="{{ old('kode_pos', $peserta_didik->kode_pos) }}">
+                        <small class="form-text text-muted">Kode pos tempat tinggal peserta didik saat ini.</small>
+                        @error('kode_pos')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -274,14 +349,103 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="tahun_keluar" class="col-md-4 col-form-label text-md-right">Tahun Keluar</label>
+                    <label for="status" class="col-md-4 col-form-label text-md-right">Status</label>
                     <div class="col-md-6">
-                        <input type="number" min="2010" max="2099" step="1" placeholder="Mssukan Tahun Keluar"
-                               class="form-control @error('tahun_keluar') is-invalid @enderror"
-                               id="tahun_keluar" name="tahun_keluar"
-                               value="{{ old('tahun_keluar', $peserta_didik->tahun_keluar) }}">
-                        <small class="form-text text-muted">Tahun peserta didik keluar.</small>
-                        @error('tahun_keluar')
+                        <select name="status" id="status"
+                                class="custom-select @error('status') is-invalid @enderror">
+                            <option value="">PILIH</option>
+                            <option
+                                value="aktif" {{ (old('status', $peserta_didik->status) == 'aktif')? 'selected': '' }}>
+                                Aktif
+                            </option>
+                            <option
+                                value="keluar" {{ (old('status', $peserta_didik->status) == 'keluar')? 'selected': '' }}>
+                                Keluar
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">Status peserta didik saat ini.</small>
+                        @error('status')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <hr>
+                <h3>Di Isi Saat Sudah Keluar</h3>
+                <small class="form-text text-muted">hanya dapat diakses oleh peserta didik yang berstatus <b>"Keluar"</b></small>
+                <hr>
+                <div class="form-group row">
+                    <label for="keluar_karena" class="col-md-4 col-form-label text-md-right">Keluar Karena</label>
+                    <div class="col-md-6">
+                        <select name="keluar_karena" id="keluar_karena"
+                                class="custom-select @error('keluar_karena') is-invalid @enderror">
+                            <option value="">PILIH</option>
+                            <option value="Lulus" {{ (old('keluar_karena') == 'Lulus')? 'selected': '' }}>Lulus</option>
+                            <option value="Mutasi" {{ (old('keluar_karena') == 'Mutasi')? 'selected': '' }}>Mutasi
+                            </option>
+                            <option value="Dikeluarkan" {{ (old('keluar_karena') == 'Dikeluarkan')? 'selected': '' }}>
+                                Dikeluarkan
+                            </option>
+                            <option
+                                value="Mengundurkan diri" {{ (old('keluar_karena') == 'Mengundurkan diri')? 'selected': '' }}>
+                                Mengundurkan diri
+                            </option>
+                            <option
+                                value="Putus Sekolah" {{ (old('keluar_karena') == 'Putus Sekolah')? 'selected': '' }}>
+                                Putus
+                                Sekolah
+                            </option>
+                            <option value="Wafat" {{ (old('keluar_karena') == 'Wafat')? 'selected': '' }}>Wafat</option>
+                            <option value="Hilang" {{ (old('keluar_karena') == 'Hilang')? 'selected': '' }}>Hilang
+                            </option>
+                        </select>
+                        <small class="form-text text-muted">Alasan utama peserta didik keluar dari sekolah. Pilih Lulus
+                            apabila peserta didik telah lulus dari seklolah, pilih Mengundurkan diri apabila peserta
+                            didik
+                            keluar sekolah karena mengundurkan diri dengan catatan (dibuktikan adanya surat pengunduran
+                            diri), pilih Putus sekolah apabila peserta didik
+                            meninggalkan sekolah tanpa keterangan yang jelas.</small>
+                        @error('keluar_karena')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="pindah_ke" class="col-md-4 col-form-label text-md-right">Pindah Ke</label>
+                    <div class="col-md-6">
+                        <input type="text"
+                               class="form-control @error('pindah_ke') is-invalid @enderror"
+                               id="pindah_ke" placeholder="Masukan Nama sekolah tujuan" name="pindah_ke"
+                               value="{{ old('pindah_ke') }}">
+                        <small class="form-text text-muted">Diisi dengan nama sekolah yang peserta didik tuju untuk
+                            pindah.</small>
+                        @error('pindah_ke')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="alasan_keluar" class="col-md-4 col-form-label text-md-right">Alasan</label>
+                    <div class="col-md-6">
+                        <input type="text"
+                               class="form-control @error('alasan_keluar') is-invalid @enderror"
+                               id="alasan_keluar" placeholder="Masukan Alasan keluar" name="alasan_keluar"
+                               value="{{ old('alasan_keluar') }}">
+                        <small class="form-text text-muted">Alasan khusus yang melatarbelakangi peserta didik keluar
+                            dari sekolah.</small>
+                        @error('alasan_keluar')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tanggal_keluar" class="col-md-4 col-form-label text-md-right">Tanggal Keluar</label>
+                    <div class="col-md-6">
+                        <input type="date" class="form-control @error('tanggal_keluar') is-invalid @enderror"
+                               id="tanggal_keluar" name="tanggal_keluar"
+                               value="{{ old('tanggal_keluar') }}">
+                        <small class="form-text text-muted">
+                            Tanggal saat peserta didik diketahui/tercatat keluar dari sekolah.</small>
+                        @error('tanggal_keluar')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
@@ -673,4 +837,32 @@
             </div>
         </form>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('#pindah_ke').attr('disabled', true);
+            $('#keluar_karena').attr('DISABLED', true);
+            $('#alasan_keluar').attr('disabled', true);
+            $('#tanggal_keluar').attr('disabled', true);
+            $('#status').change(function () {
+                if ($('#status option:selected').val() === 'keluar') {
+                    $('#keluar_karena').attr('disabled', false);
+                    $('#alasan_keluar').attr('disabled', false);
+                    $('#tanggal_keluar').attr('disabled', false);
+                } else {
+                    $('#keluar_karena').attr('disabled', true);
+                    $('#alasan_keluar').attr('disabled', true);
+                    $('#tanggal_keluar').attr('disabled', true);
+                }
+            })
+            $('#keluar_karena').change(function () {
+                if ($('#keluar_karena option:selected').val() === 'Mutasi') {
+                    $('#pindah_ke').attr('disabled', false);
+                } else {
+                    $('#pindah_ke').attr('disabled', true);
+                }
+            })
+        });
+    </script>
 @endsection

@@ -46,6 +46,8 @@ class PesertaDidikController extends Controller
     {
         $rules = [
             'nama' => ['required'],
+            'jenis_pendaftaran' => ['required'],
+            'sekolah_asal' => ['required'],
             'jenis_kelamin' => ['required'],
             'nipd' => ['required', 'numeric', 'unique:peserta_didik'],
             'nisn' => ['required', 'numeric', 'unique:peserta_didik'],
@@ -56,11 +58,11 @@ class PesertaDidikController extends Controller
             'tempat_lahir' => ['required'],
             'tanggal_lahir' => ['required'],
             'agama' => ['required'],
-            'kota' => ['required'],
             'kecamatan' => ['required'],
             'kelurahan' => ['required'],
+            'rt' => ['required'],
+            'rw' => ['required'],
             'alamat' => ['required'],
-            'tahun_masuk' => ['required'],
         ];
 
         $customMessages = [
@@ -109,6 +111,8 @@ class PesertaDidikController extends Controller
     {
         $rules = [
             'nama' => ['required'],
+            'jenis_pendaftaran' => ['required'],
+            'sekolah_asal' => ['required'],
             'jenis_kelamin' => ['required'],
             'nipd' => ['required', 'numeric', Rule::unique('peserta_didik')->ignore($peserta_didik->nipd, 'nipd')],
             'nisn' => ['required', 'numeric', Rule::unique('peserta_didik')->ignore($peserta_didik->nisn, 'nisn')],
@@ -119,11 +123,11 @@ class PesertaDidikController extends Controller
             'tempat_lahir' => ['required'],
             'tanggal_lahir' => ['required'],
             'agama' => ['required'],
-            'kota' => ['required'],
             'kecamatan' => ['required'],
             'kelurahan' => ['required'],
+            'rt' => ['required'],
+            'rw' => ['required'],
             'alamat' => ['required'],
-            'tahun_masuk' => ['required'],
         ];
 
         $customMessages = [
@@ -176,7 +180,6 @@ class PesertaDidikController extends Controller
                 'required' => 'anda belum memilih file untuk diimport.',
                 'mimes' => 'file yang dipilih harus berformat xlsx atau xls.'
             ]);
-
         Excel::import(new PesertaDidikImport, $request->file('fileImport'));
 
         return redirect()->route('peserta-didik.index')->with('status', 'Data berhasil diimport');
