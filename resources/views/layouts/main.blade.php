@@ -119,6 +119,12 @@
                             <p>Peserta Didik</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('surat.index') }}" class="nav-link @yield('surat-menu')">
+                            <i class="fa fa-envelope nav-icon"></i>
+                            <p>Surat</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
