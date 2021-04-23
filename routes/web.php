@@ -6,6 +6,7 @@ use App\Http\Controllers\RombelController;
 use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SuratController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,5 @@ Route::get('user/profile', [UserController::class, 'edit'])->name('user.edit')->
 Route::patch('user/profile/update', [UserController::class, 'update'])->name('user.update')->middleware('auth');
 Route::delete('user/multiple-destroy', [UserController::class, 'multiple_destroy'])->name('user.multiple-destroy')->middleware('admin');
 Route::resource('user', UserController::class)->only(['index', 'create', 'store'])->middleware('admin');
+
+Route::resource('surat', SuratController::class)->only('index', 'create', 'store')->middleware('auth');
