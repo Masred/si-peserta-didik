@@ -17,4 +17,9 @@ class PesertaDidik extends Model
     {
         return $this->belongsTo(Rombel::class, 'kode_rombel');
     }
+
+    public function surat()
+    {
+        return $this->hasMany(Surat::class);
+    }
 }
