@@ -17,7 +17,7 @@ class RombelController extends Controller
      */
     public function index()
     {
-        $rombels = Rombel::all();
+        $rombels = Rombel::withCount('pesertaDidik')->get();
         return view('rombel.index', compact('rombels'));
     }
 
