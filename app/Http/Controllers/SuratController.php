@@ -41,7 +41,7 @@ class SuratController extends Controller
         $pd = $request->all();
         $pd['peserta_didik_id'] = $peserta_didik_id[0];
         Surat::create($pd);
-        $surat = Surat::all()->sortByDesc('tanggal')->first();
+        $surat = Surat::all()->sortByDesc('id')->first();
 
         if ($request->jenis_surat == 'keterangan') {
             $pdf = PDF::loadView('surat.keterangan', compact('surat', 'kepala_sekolah', 'nip_kepala_sekolah', 'tata_usaha', 'nip_tata_usaha'));
