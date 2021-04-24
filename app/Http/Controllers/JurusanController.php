@@ -16,7 +16,7 @@ class JurusanController extends Controller
      */
     public function index()
     {
-        $jurusans = Jurusan::all();
+        $jurusans = Jurusan::withCount('rombel')->get();
         return view('jurusan.index', compact('jurusans'));
     }
 
