@@ -19,6 +19,6 @@ class Rombel extends Model
     }
 
     public function pesertaDidik(){
-        return $this->hasMany(PesertaDidik::class);
+        return $this->hasMany(PesertaDidik::class, 'kode_rombel');
     }
 }
