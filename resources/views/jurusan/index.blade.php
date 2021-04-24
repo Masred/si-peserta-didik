@@ -46,6 +46,8 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Nama Jurusan
                                     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Jumlah Rombel</th>
                                     <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                         aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending" style="width: 20px">
@@ -62,6 +64,7 @@
                                         </td>
                                         <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
                                         <td>{{ $jurusan->nama_jurusan }}</td>
+                                        <td>{{ $jurusan->rombel_count }}</td>
                                         <td>
                                             <div class="row justify-content-center">
                                                 <div class="col d-flex justify-content-center">
