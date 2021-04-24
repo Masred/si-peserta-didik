@@ -13,7 +13,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('surat.store') }}" method="post">
+                <form action="{{ route('surat.store') }}" method="post" target="_blank">
                     @csrf
                     <div class="card-body">
                         <div class="form-group row">
@@ -203,6 +203,9 @@
                 $('#petugas_piket').attr('disabled', false).css('display', 'block');
                 $('#jam_ke').attr('disabled', false).css('display', 'block');
                 $('#sampai_jam_ke').attr('disabled', false).css('display', 'block');
+                $('#tanda_tangan').val('');
+                $('#tata_usaha').val('').attr('disabled', true);
+                $('#kepala_sekolah').val('').attr('disabled', true);
             }
         })
         $('#kepala_sekolah').attr('disabled', true);
@@ -213,7 +216,7 @@
                 $('#tata_usaha').val('').attr('disabled', true);
             } else if ($('#tanda_tangan option:selected').val() === 'tata usaha') {
                 $('#tata_usaha').val('Dra. Hj. HADIANA - 196609081986032006').attr('disabled', false);
-                $('input[name="kepala_sekolah"]').val('').attr('disabled', true);
+                $('#kepala_sekolah').val('').attr('disabled', true);
             }
         })
     </script>
