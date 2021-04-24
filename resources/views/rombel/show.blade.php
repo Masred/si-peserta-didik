@@ -41,11 +41,11 @@
                         <form
                             action="{{ route('peserta-didik.multiple-destroy') }}"
                             method="post">
-                            @csrf
-                            @method('delete')
+                        @csrf
+                        @method('delete')
                             <button type="submit"
                                     title="Delete"
-                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right">
+                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mr-2">
                                 <i class="far fa-trash-alt"></i> Hapus
                             </button>
                             <table id="example1"
@@ -69,10 +69,19 @@
                                         aria-label="Browser: activate to sort column ascending">Nama
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">JK
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">NIPD/NIS
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">NISN
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Rombel
+                                    </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">Terdaftar Sebagai
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Status
@@ -93,8 +102,11 @@
                                         </td>
                                         <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
                                         <td>{{ $pd->nama }}</td>
+                                        <td>{{ $pd->jenis_kelamin }}</td>
                                         <td>{{ $pd->nipd }}</td>
                                         <td>{{ $pd->nisn }}</td>
+                                        <td>{{ str_replace('-', ' ', $pd->rombel->kode_rombel) }}</td>
+                                        <td>{{ $pd->jenis_pendaftaran }}</td>
                                         <td>
                                             @if($pd->status == 'aktif')
                                                 <span class="badge bg-success">{{ $pd->status }}</span>
