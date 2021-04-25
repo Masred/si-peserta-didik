@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Jurusan;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
@@ -29,7 +30,8 @@ class RombelController extends Controller
     public function create()
     {
         $jurusans = Jurusan::all();
-        return view('rombel.create', compact('jurusans'));
+        $guru = Guru::all();
+        return view('rombel.create', compact('jurusans', 'guru'));
     }
 
     /**
@@ -136,8 +138,9 @@ class RombelController extends Controller
     }
 
     // multiple delete data
-    public function multiple_destroy(Request $request){
-        foreach ($request->kode_rombel as $kr){
+    public function multiple_destroy(Request $request)
+    {
+        foreach ($request->kode_rombel as $kr) {
             Rombel::destroy($kr);
         }
         return redirect()->back()->with('status', 'data berhasil dihapus.');
