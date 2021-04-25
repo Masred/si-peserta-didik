@@ -7,6 +7,8 @@ use App\Http\Controllers\PesertaDidikController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuratController;
+use App\Http\Controllers\GuruController;
+use App\Http\Controllers\TenagaKependidikanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +46,9 @@ Route::delete('user/multiple-destroy', [UserController::class, 'multiple_destroy
 Route::resource('user', UserController::class)->only(['index', 'create', 'store'])->middleware('admin');
 
 Route::resource('surat', SuratController::class)->only('index', 'create', 'store')->middleware('auth');
+
+Route::delete('guru/multiple-destroy', [GuruController::class, 'multiple_destroy'])->name('guru.multiple-destroy')->middleware('auth');
+Route::resource('guru', GuruController::class)->except('destroy')->middleware('auth');
+
+Route::delete('tenaga-penendidikan/multiple-destroy', [TenagaKependidikanController::class, 'multiple_destroy'])->name('tenaga-kependidikan.multiple-destroy')->middleware('auth');
+Route::resource('tenaga-kependidikan', TenagaKependidikanController::class)->except('destroy')->middleware('auth');
