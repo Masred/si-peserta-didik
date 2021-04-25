@@ -108,15 +108,28 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
-                            <i class="fa fa-users nav-icon"></i>
-                            <p>Rombongan Belajar</p>
+                        <a href="{{ route('guru.index') }}" class="nav-link @yield('guru-menu')">
+                            <i class="fa fa-chalkboard-teacher nav-icon"></i>
+                            <p>Guru</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('tenaga-kependidikan.index') }}"
+                           class="nav-link @yield('tenaga-kependidikan-menu')">
+                            <i class="fa fa-user-tie nav-icon"></i>
+                            <p>Tenaga Kependidikan</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('peserta-didik.index') }}" class="nav-link @yield('peserta-didik-menu')">
                             <i class="fa fa-graduation-cap nav-icon"></i>
                             <p>Peserta Didik</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
+                            <i class="fa fa-users nav-icon"></i>
+                            <p>Rombongan Belajar</p>
                         </a>
                     </li>
                     <li class="nav-item">
