@@ -146,7 +146,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('peserta-didik.aktif') }}"
-                                   class="nav-link @yield('aktif-menu')">
+                                   class="nav-link {{ (request()->routeIs('peserta-didik.aktif') or request()->routeIs('peserta-didik.create') or request()->routeIs('peserta-didik.edit') or request()->routeIs('peserta-didik.show'))? 'active': '' }}">
                                     <i class="nav-icon"> </i>
                                     <i class="far fa-check-circle nav-icon"></i>
                                     <p>PD Aktif</p>
@@ -154,7 +154,7 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('peserta-didik.keluar') }}"
-                                   class="nav-link {{ (url()->current() == route('peserta-didik.keluar'))? 'active': '' }}">
+                                   class="nav-link {{ (request()->routeIs('peserta-didik.keluar'))? 'active': '' }}">
                                     <i class="nav-icon"> </i>
                                     <i class="far fa-times-circle nav-icon"></i>
                                     <p>PD Keluar</p>

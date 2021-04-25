@@ -3,7 +3,6 @@
 @section('title', 'Peserta Didik')
 @section('pd-open-menu', 'menu-open')
 @section('peserta-didik-menu', 'active')
-@section('aktif-menu', 'active')
 
 @section('content')
     <div class="card">
@@ -20,9 +19,11 @@
                             method="post">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('peserta-didik.create') }}"
-                               class="btn btn-primary btn-sm d-block float-right"><i
-                                    class="fas fa-plus"></i> Tambah</a>
+                            @if(request()->routeIs('peserta-didik.aktif'))
+                                <a href="{{ route('peserta-didik.create') }}"
+                                   class="btn btn-primary btn-sm d-block float-right"><i
+                                        class="fas fa-plus"></i> Tambah</a>
+                            @endif
                             <button type="submit"
                                     title="Delete"
                                     class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mr-2">
