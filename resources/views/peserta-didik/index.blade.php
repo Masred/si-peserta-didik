@@ -107,7 +107,7 @@
                                         <td>{{ $pd->jenis_kelamin }}</td>
                                         <td>{{ $pd->nipd }}</td>
                                         <td>{{ $pd->nisn }}</td>
-                                        <td>{{ (!empty($pd->kode_rombel))? '' :str_replace('-', ' ', $pd->kode_rombel) }}</td>
+                                        <td>{{ (empty($pd->kode_rombel))? '' :str_replace('-', ' ', $pd->kode_rombel) }}</td>
                                         <td>{{ $pd->jenis_pendaftaran }}</td>
                                         <td>
                                             @if($pd->status == 'aktif')
