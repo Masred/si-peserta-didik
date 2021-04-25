@@ -111,7 +111,7 @@
                     </li>
                     <li class="nav-item has-treeview @yield('gtk-open-menu')">
                         <a href="#" class="nav-link @yield('gtk-menu')">
-                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <i class="nav-icon fas fa-user-graduate"></i>
                             <p>
                                 GTK
                                 <i class="right fas fa-angle-left"></i>
