@@ -1,6 +1,8 @@
 @extends('layouts.main')
 
 @section('title', 'Tambah Guru')
+@section('gtk-open-menu', 'menu-open')
+@section('gtk-menu', 'active')
 @section('guru-menu', 'active')
 
 @section('content')

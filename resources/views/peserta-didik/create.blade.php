@@ -1,7 +1,9 @@
 @extends('layouts.main')
 
 @section('title', 'Tambah Peserta Didik')
+@section('pd-open-menu', 'menu-open')
 @section('peserta-didik-menu', 'active')
+@section('aktif-menu', 'active')
 
 @section('content')
     <div class="card card-lightblue">

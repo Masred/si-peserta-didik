@@ -35,6 +35,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('user.edit') }}" class="nav-link">
+                    <i class="fa fa-user"></i>
                     Profil
                 </a>
             </li>
@@ -42,6 +43,7 @@
                 <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
+                    <i class="fa fa-door-open"></i>
                     {{ __('Keluar') }}
                 </a>
 
@@ -107,24 +109,76 @@
                             <p>Jurusan</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('guru.index') }}" class="nav-link @yield('guru-menu')">
-                            <i class="fa fa-chalkboard-teacher nav-icon"></i>
-                            <p>Guru</p>
+                    <li class="nav-item has-treeview @yield('gtk-open-menu')">
+                        <a href="#" class="nav-link @yield('gtk-menu')">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                GTK
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('guru.index') }}" class="nav-link @yield('guru-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-chalkboard-teacher nav-icon"></i>
+                                    <p>Guru</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tenaga-kependidikan.index') }}"
+                                   class="nav-link @yield('tenaga-kependidikan-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-user-tie nav-icon"></i>
+                                    <p>Tenaga Kependidikan</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('tenaga-kependidikan.index') }}"
-                           class="nav-link @yield('tenaga-kependidikan-menu')">
-                            <i class="fa fa-user-tie nav-icon"></i>
-                            <p>Tenaga Kependidikan</p>
+                    <li class="nav-item has-treeview @yield('pd-open-menu')">
+                        <a href="#" class="nav-link @yield('peserta-didik-menu')">
+                            <i class="nav-icon fas fa-graduation-cap"></i>
+                            <p>
+                                Peserta Didik
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('peserta-didik.index') }}" class="nav-link @yield('peserta-didik-menu')">
-                            <i class="fa fa-graduation-cap nav-icon"></i>
-                            <p>Peserta Didik</p>
-                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('peserta-didik.aktif') }}"
+                                   class="nav-link @yield('aktif-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="far fa-check-circle nav-icon"></i>
+                                    <p>PD Aktif</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('peserta-didik.keluar') }}"
+                                   class="nav-link {{ (url()->current() == route('peserta-didik.keluar'))? 'active': '' }}">
+                                    <i class="nav-icon"> </i>
+                                    <i class="far fa-times-circle nav-icon"></i>
+                                    <p>PD Keluar</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('peserta-didik.export-excel') }}"
+                                   class="nav-link"
+                                   onclick="return confirm('Yakin ingin meng-export data peserta didik?')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-file-export nav-icon"></i>
+                                    <p>Export ke Excel</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('peserta-didik.export-excel') }}"
+                                   class="nav-link" data-toggle="modal"
+                                   data-target="#import-excel">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-file-import nav-icon"></i>
+                                    <p>Import dari Excel</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('rombel.index') }}" class="nav-link @yield('rombel-menu')">
@@ -155,6 +209,37 @@
         </div>
         <!-- /.content -->
     </div>
+    <!-- Modal Excel -->
+    <div class="modal fade" id="import-excel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload File Excel</h5>
+                </div>
+                <form action="{{ route('peserta-didik.import') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input @error('fileImport') is-invalid @enderror"
+                                   id="exampleInputFile" name="fileImport">
+                            <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
+                            <small class="form-text text-muted">File yang dipilih harus berformat xlsx atau xls.</small>
+                            @error('fileImport')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
+                                class="fas fa-times"></i> Batal
+                        </button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-file-import"></i> Import
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
@@ -183,6 +268,38 @@
 <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
 <!-- additional script -->
+<script>
+    @error('fileImport')
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+    });
+    Toast.fire({
+        icon: 'error',
+        title: '{!! $message !!}'
+    });
+    @enderror
+    @if(session('status'))
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+    });
+    Toast.fire({
+        icon: 'success',
+        title: '{!! session('status') !!}'
+    });
+    @endif
+
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>
 @yield('script')
 </body>
 </html>

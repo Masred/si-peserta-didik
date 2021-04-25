@@ -1,7 +1,9 @@
 @extends('layouts.main')
 
 @section('title', 'Peserta Didik')
+@section('pd-open-menu', 'menu-open')
 @section('peserta-didik-menu', 'active')
+@section('aktif-menu', 'active')
 
 @section('content')
     <div class="card">
@@ -16,32 +18,8 @@
                         <form
                             action="{{ route('peserta-didik.multiple-destroy') }}"
                             method="post">
-                        @csrf
-                        @method('delete')
-                        <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
-                                    data-target="#import-excel">
-                                <i class="fas fa-file-import"></i> Import
-                            </button>
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-success btn-sm d-block float-right mr-2"
-                                    data-toggle="modal"
-                                    data-target="#print-pdf">
-                                <i class="fa fa-print"></i> Print
-                            </button>
-                            <div class="dropdown">
-                                <a class="btn btn-success dropdown-toggle btn-sm d-block float-right mx-2" href="#"
-                                   role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    <i class="fas fa-file-export"></i> Export
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                    <a href="{{ route('peserta-didik.export-excel') }}"
-                                       class="dropdown-item"><i class="far fa-file-excel mr-1"></i> Excel</a>
-                                    <a href="{{ route('peserta-didik.export-pdf') }}"
-                                       class="dropdown-item"><i class="far fa-file-pdf mr-1"></i> PDF</a>
-                                </div>
-                            </div>
+                            @csrf
+                            @method('delete')
                             <a href="{{ route('peserta-didik.create') }}"
                                class="btn btn-primary btn-sm d-block float-right"><i
                                     class="fas fa-plus"></i> Tambah</a>
@@ -91,7 +69,7 @@
                                     <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                         aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
-                                        Aksi
+                                        {{ ($peserta_didik[0]->status == 'aktif')? 'Aksi': 'Keluar Karena' }}
                                     </th>
                                 </tr>
                                 </thead>
@@ -114,33 +92,25 @@
                                                 <span class="badge bg-success">{{ $pd->status }}</span>
                                             @elseif($pd->status == 'keluar')
                                                 <span class="badge bg-danger">{{ $pd->status }}</span>
-                                            @elseif($pd->status == 'dikeluarkan')
-                                                <span class="badge bg-danger">keluar</span>
-                                                <span class="badge bg-warning">{{ $pd->status }}</span>
-                                            @elseif($pd->status == 'pindah')
-                                                <span class="badge bg-danger">keluar</span>
-                                                <span class="badge bg-warning">{{ $pd->status }}</span>
-                                            @elseif($pd->status == 'tamat')
-                                                <span class="badge bg-danger">keluar</span>
-                                                <span class="badge bg-warning">{{ $pd->status }}</span>
-                                            @elseif($pd->status == 'pindahan')
-                                                <span class="badge bg-success">aktif</span>
-                                                <span class="badge bg-warning">{{ $pd->status }}</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col d-flex justify-content-center">
-                                                    <a href="{{ route('peserta-didik.show', $pd->id) }}"
-                                                       class="btn btn-primary btn-sm d-inline-block">
-                                                        <i class="far fa-eye"></i>
-                                                    </a>
-                                                    <a href="{{ route('peserta-didik.edit', $pd->id) }}"
-                                                       class="btn btn-success btn-sm mx-2"><i
-                                                            class="far fa-edit"></i>
-                                                    </a>
+                                            @if($pd->status == 'aktif')
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-center">
+                                                        <a href="{{ route('peserta-didik.show', $pd->id) }}"
+                                                           class="btn btn-primary btn-sm d-inline-block">
+                                                            <i class="far fa-eye"></i>
+                                                        </a>
+                                                        <a href="{{ route('peserta-didik.edit', $pd->id) }}"
+                                                           class="btn btn-success btn-sm mx-2"><i
+                                                                class="far fa-edit"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @else
+                                                {{ $pd->keluar_karena }}
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -152,69 +122,6 @@
             </div>
         </div>
         <!-- /.card-body -->
-    </div>
-    <!-- Modal Excel -->
-    <div class="modal fade" id="import-excel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Upload File Excel</h5>
-                </div>
-                <form action="{{ route('peserta-didik.import') }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input @error('fileImport') is-invalid @enderror"
-                                   id="exampleInputFile" name="fileImport">
-                            <label class="custom-file-label" for="exampleInputFile">Pilih file</label>
-                            <small class="form-text text-muted">File yang dipilih harus berformat xlsx atau xls.</small>
-                            @error('fileImport')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                class="fas fa-times"></i> Batal
-                        </button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-file-import"></i> Import
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Print -->
-    <div class="modal fade" id="print-pdf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Print Data Peserta Didik</h5>
-                </div>
-                <form action="{{ route('peserta-didik.print') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <select name="kelas" class="custom-select @error('kelas') is-invalid @enderror" required>
-                            <option value="">PILIH</option>
-                            <option value="Semua">Semua</option>
-                            <option value="X">Kelas X</option>
-                            <option value="XI">Kelas XI</option>
-                            <option value="XII">Kelas XII</option>
-                        </select>
-                        @error('kelas')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><i
-                                class="fas fa-times"></i> Batal
-                        </button>
-                        <button type="submit" class="btn btn-success"><i class="fas fa-print"></i> Print
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 @endsection
 @section('script')
@@ -238,37 +145,6 @@
                 "autoWidth": false,
             });
         });
-        @error('fileImport')
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-        });
-        Toast.fire({
-            icon: 'error',
-            title: '{!! $message !!}'
-        });
-        @enderror
-        @if(session('status'))
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-        });
-        Toast.fire({
-            icon: 'success',
-            title: '{!! session('status') !!}'
-        });
-        @endif
-
-        $(function () {
-            bsCustomFileInput.init();
-        });
-
         $('.btn-del').click(function (e) {
             e.preventDefault();
             Swal.fire({

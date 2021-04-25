@@ -103,13 +103,16 @@ class UserController extends Controller
         $request->validate([
             'nama' => ['required', 'string'],
             'username' => ['required', 'alpha_dash', Rule::unique(User::class)->ignore(auth()->user()->username, 'username')],
+            'password' => ['required', 'string', 'min:5']
         ], [
             'required' => ':attribute harus diisi',
             'unique' => ':attribute tidak tersedia',
             'alpha_dash' => 'harus huruf dan angka tanpa spasi',
+            'min' => ':attribute harus setidaknya :min karakter'
         ]);
-
-        User::all()->find(auth()->user()->id)->update($request->all());
+        $data = $request->all();
+        $data['password'] = Hash::make($request->password);
+        User::all()->find(auth()->user()->id)->update($data);
 
         return back()->with('status', 'profile berhasil diubah.');
     }

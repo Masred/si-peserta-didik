@@ -14,14 +14,19 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PesertaDidikController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function index(){
+        return redirect()->back();
+    }
+
+    public function aktif()
     {
-        $peserta_didik = PesertaDidik::all();
+        $peserta_didik = PesertaDidik::where('status', '=', 'aktif')->get();
+        return view('peserta-didik.index', compact('peserta_didik'));
+    }
+
+    public function keluar()
+    {
+        $peserta_didik = PesertaDidik::where('status', '=', 'keluar')->get();
         return view('peserta-didik.index', compact('peserta_didik'));
     }
 
