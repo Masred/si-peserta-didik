@@ -18,7 +18,7 @@
                             method="post">
                         @csrf
                         @method('delete')
-                            <!-- Button trigger modal -->
+                        <!-- Button trigger modal -->
                             <button type="button" class="btn btn-success btn-sm d-block float-right" data-toggle="modal"
                                     data-target="#import-excel">
                                 <i class="fas fa-file-import"></i> Import
@@ -30,7 +30,9 @@
                                 <i class="fa fa-print"></i> Print
                             </button>
                             <div class="dropdown">
-                                <a class="btn btn-success dropdown-toggle btn-sm d-block float-right mx-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="btn btn-success dropdown-toggle btn-sm d-block float-right mx-2" href="#"
+                                   role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
                                     <i class="fas fa-file-export"></i> Export
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -105,7 +107,7 @@
                                         <td>{{ $pd->jenis_kelamin }}</td>
                                         <td>{{ $pd->nipd }}</td>
                                         <td>{{ $pd->nisn }}</td>
-                                        <td>{{ str_replace('-', ' ', $pd->rombel->kode_rombel) }}</td>
+                                        <td>{{ (!empty($pd->kode_rombel))? '' :str_replace('-', ' ', $pd->kode_rombel) }}</td>
                                         <td>{{ $pd->jenis_pendaftaran }}</td>
                                         <td>
                                             @if($pd->status == 'aktif')
