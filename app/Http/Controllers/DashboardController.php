@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Guru;
 use App\Models\Jurusan;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
 use App\Models\Surat;
+use App\Models\TenagaKependidikan;
 
 class DashboardController extends Controller
 {
@@ -15,6 +17,8 @@ class DashboardController extends Controller
         $total_rombel = Rombel::all()->count();
         $total_peserta_didik = PesertaDidik::all()->count();
         $total_surat = Surat::all()->count();
+        $total_guru = Guru::all()->count();
+        $total_tenaga_kependidikan = TenagaKependidikan::all()->count();
 
         $rombels = Rombel::withCount([
             'pesertaDidik',
@@ -32,6 +36,6 @@ class DashboardController extends Controller
             }
         ])->get();
 
-        return view('dashboard.index', compact('total_jurusan', 'total_peserta_didik', 'total_rombel', 'total_surat', 'rombels'));
+        return view('dashboard.index', compact('total_jurusan', 'total_peserta_didik', 'total_rombel', 'total_surat', 'total_guru', 'total_tenaga_kependidikan', 'rombels'));
     }
 }
