@@ -58,18 +58,10 @@
                 </tr>
                 <tr>
                     <td class="text-right font-weight-bold">
-                        Tempat Lahir
+                        Tempat dan Tanggal Lahir
                     </td>
                     <td>
-                        : {{ $peserta_didik->tempat_lahir }}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-right font-weight-bold">
-                        Tanggal Lahir
-                    </td>
-                    <td>
-                        : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_lahir)) }}
+                        : {{ $peserta_didik->tempat_lahir . ', ' . date('d-m-Y', strtotime($peserta_didik->tanggal_lahir)) }}
                     </td>
                 </tr>
                 <tr>
@@ -150,7 +142,7 @@
                         Jurusan
                     </td>
                     <td>
-                        : {{ (!$peserta_didik->kode_rombel)? '': $peserta_didik->rombel->jurusan->nama_jurusan }}
+                        : {{ (!empty($peserta_didik->rombel->jurusan->nama_jurusan))? $peserta_didik->rombel->jurusan->nama_jurusan : '' }}
                     </td>
                 </tr>
                 <tr>

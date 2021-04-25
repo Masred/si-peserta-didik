@@ -12,7 +12,7 @@
         <!-- /.card-header -->
         <div class="card-body">
             <div class="row">
-                <div class="col-4">
+                <div class="col-2">
                     <p>Jurusan</p>
                 </div>
                 <div class="col-4">
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-2">
                     <p>Rombongan Belajar</p>
                 </div>
                 <div class="col-4">
@@ -28,11 +28,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-2">
                     <p>Jumlah Peserta Didik</p>
                 </div>
                 <div class="col-4">
                     <p>: {{ $jumlah_peserta_didik }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>Wali Kelas</p>
+                </div>
+                <div class="col-4">
+                    <p>: {{ (!empty($rombel->guru->nama))? $rombel->guru->nama:'' }}</p>
                 </div>
             </div>
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -41,8 +49,8 @@
                         <form
                             action="{{ route('peserta-didik.multiple-destroy') }}"
                             method="post">
-                        @csrf
-                        @method('delete')
+                            @csrf
+                            @method('delete')
                             <button type="submit"
                                     title="Delete"
                                     class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mr-2">
