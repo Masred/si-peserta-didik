@@ -103,6 +103,24 @@
                 <!-- /.info-box-content -->
             </div>
             <div class="info-box">
+                <span class="info-box-icon bg-pink"><i class="fas fa-chalkboard-teacher"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Guru</span>
+                    <span class="info-box-number">{{ $total_guru }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <div class="info-box">
+                <span class="info-box-icon bg-fuchsia"><i class="fas fa-user-tie"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Tenaga Kependidikan</span>
+                    <span class="info-box-number">{{ $total_tenaga_kependidikan }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <div class="info-box">
                 <span class="info-box-icon bg-primary"><i class="fa fa-graduation-cap"></i></span>
 
                 <div class="info-box-content">
