@@ -270,7 +270,7 @@
                     <div class="col-md-6">
                         <input type="number" min="1" name="rt" id="rt"
                                class="form-control @error('rt') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten" value="{{ old('rt') }}">
+                               placeholder="Masukan RT" value="{{ old('rt') }}">
                         <small class="form-text text-muted">Nomor RT tempat tinggal peserta didik saat ini. Dari contoh
                             di atas, misalnya dapat diisi dengan angka 5.</small>
                         @error('rt')
@@ -283,7 +283,7 @@
                     <div class="col-md-6">
                         <input type="number" min="1" name="rw" id="rw"
                                class="form-control @error('rw') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten" value="{{ old('rw') }}">
+                               placeholder="Masukan RW" value="{{ old('rw') }}">
                         <small class="form-text text-muted">Nomor RW tempat tinggal peserta didik saat ini. Dari contoh
                             di atas, misalnya dapat diisi dengan angka 11.</small>
                         @error('rw')
@@ -314,7 +314,7 @@
                     <div class="col-md-6">
                         <input type="number" min="1" name="kode_pos" id="kode_pos"
                                class="form-control @error('kode_pos') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten" value="{{ old('kode_pos') }}">
+                               placeholder="Masukan Kode Pos" value="{{ old('kode_pos') }}">
                         <small class="form-text text-muted">Kode pos tempat tinggal peserta didik saat ini.</small>
                         @error('kode_pos')
                         <div class="invalid-feedback">{{ $message }}</div>
