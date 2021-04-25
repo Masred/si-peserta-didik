@@ -57,6 +57,9 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Browser: activate to sort column ascending">Jumlah Peserta Didik
                                     </th>
+                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">Wali Kelas
+                                    </th>
                                     <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                         aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
@@ -77,6 +80,7 @@
                                         <td>{{ $rombel->jurusan->nama_jurusan }}</td>
                                         <td>{{ $rombel->kelompok }}</td>
                                         <td>{{ $rombel->peserta_didik_count }}</td>
+                                        <td>{{ (!empty($rombel->guru->nama))? $rombel->guru->nama : '' }}</td>
                                         <td>
                                             <div class="row justify-content-center">
                                                 <div class="col d-flex justify-content-center">
