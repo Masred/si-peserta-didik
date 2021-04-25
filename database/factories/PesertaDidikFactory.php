@@ -26,7 +26,7 @@ class PesertaDidikFactory extends Factory
         return [
             'status' => $this->faker->randomElement(array('aktif', 'keluar')),
             'jenis_pendaftaran' => $this->faker->randomElement(array('Siswa baru', 'Pindahan', 'Kembali bersekolah')),
-            'nama' => $this->faker->name,
+            'nama' => $this->faker->firstName,
             'jenis_kelamin' => $this->faker->randomElement(array('L', 'P')),
             'nipd' => $this->faker->numberBetween(26773, 934512),
             'nisn' => $this->faker->numberBetween(6773, 97732),
