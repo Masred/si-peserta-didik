@@ -279,7 +279,7 @@
                     <div class="col-md-6">
                         <input type="number" min="1" name="rt" id="rt"
                                class="form-control @error('rt') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten" value="{{ old('rt', $peserta_didik->rt) }}">
+                               placeholder="Masukan RT" value="{{ old('rt', $peserta_didik->rt) }}">
                         <small class="form-text text-muted">Nomor RT tempat tinggal peserta didik saat ini. Dari contoh
                             di atas, misalnya dapat diisi dengan angka 5.</small>
                         @error('rt')
@@ -292,7 +292,7 @@
                     <div class="col-md-6">
                         <input type="number" min="1" name="rw" id="rw"
                                class="form-control @error('rw') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten" value="{{ old('rw', $peserta_didik->rw) }}">
+                               placeholder="Masukan RW" value="{{ old('rw', $peserta_didik->rw) }}">
                         <small class="form-text text-muted">Nomor RW tempat tinggal peserta didik saat ini. Dari contoh
                             di atas, misalnya dapat diisi dengan angka 11.</small>
                         @error('rw')
@@ -323,7 +323,7 @@
                     <div class="col-md-6">
                         <input type="number" min="1" name="kode_pos" id="kode_pos"
                                class="form-control @error('kode_pos') is-invalid @enderror"
-                               placeholder="Masukan Kota/Kabupaten"
+                               placeholder="Masukan Kode Pos"
                                value="{{ old('kode_pos', $peserta_didik->kode_pos) }}">
                         <small class="form-text text-muted">Kode pos tempat tinggal peserta didik saat ini.</small>
                         @error('kode_pos')
@@ -371,7 +371,8 @@
                 </div>
                 <hr>
                 <h3>Di Isi Saat Sudah Keluar</h3>
-                <small class="form-text text-muted">hanya dapat diakses oleh peserta didik yang berstatus <b>"Keluar"</b></small>
+                <small class="form-text text-muted">hanya dapat diakses oleh peserta didik yang berstatus
+                    <b>"Keluar"</b></small>
                 <hr>
                 <div class="form-group row">
                     <label for="keluar_karena" class="col-md-4 col-form-label text-md-right">Keluar Karena</label>
