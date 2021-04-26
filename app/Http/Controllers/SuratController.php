@@ -61,4 +61,18 @@ class SuratController extends Controller
         }
         return $pdf->stream();
     }
+
+    public function laporan()
+    {
+        return view('surat.laporan');
+    }
+
+    public function print(Request $request)
+    {
+        $dari = $request->dari;
+        $sampai = $request->sampai;
+        $surat = Surat::whereBetween('tanggal', [$dari, $sampai])->get();
+        $pdf = PDF::loadView('surat.print', compact('surat', 'dari', 'sampai'));
+        return $pdf->stream();
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exports\PesertaDidikExport;
 use App\Imports\PesertaDidikImport;
+use App\Models\Jurusan;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
 use PDF;
@@ -14,7 +15,8 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PesertaDidikController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return redirect()->back();
     }
 
@@ -146,16 +148,11 @@ class PesertaDidikController extends Controller
         return redirect('/peserta-didik')->with('status', 'data berhasil diubah');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\PesertaDidik $peserta_didik
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PesertaDidik $peserta_didik)
+    public function laporan()
     {
-        PesertaDidik::destroy($peserta_didik->id);
-        return redirect()->route('peserta-didik.index')->with('status', 'data berhasil dihapus.');
+        $rombel = Rombel::all();
+        $jurusan = Jurusan::all();
+        return view('peserta-didik.laporan', compact('rombel', 'jurusan'));
     }
 
     // Download peserta didik in excel
@@ -199,28 +196,51 @@ class PesertaDidikController extends Controller
         return redirect()->back()->with('status', 'data berhasil dihapus.');
     }
 
-    // print pdf
     public function print(Request $request)
     {
-        if ($request->kelas === 'X') {
-            $kelas = 10;
-        } elseif ($request->kelas === 'XI') {
-            $kelas = 11;
-        } elseif ($request->kelas === 'XII') {
-            $kelas = 12;
-        } else {
-            $kelas = $request->kelas;
+        if ($request->status == 'aktif') {
+            if ($request->kode_rombel == 'semua') {
+                if ($request->kode_jurusan == 'semua') {
+                    if ($request->kelas == 'semua') {
+                        $peserta_didik = PesertaDidik::where('status', '=', 'aktif')->get();
+                        $keterangan = 'AKTIF';
+                    } else {
+                        $peserta_didik = DB::table('peserta_didik')
+                            ->join('rombel', 'peserta_didik.kode_rombel', '=', 'rombel.kode_rombel')
+                            ->join('jurusan', 'rombel.kode_jurusan', '=', 'jurusan.kode_jurusan')
+                            ->where('rombel.kelas', $request->kelas)
+                            ->where('status', '=', 'aktif')
+                            ->get();
+                        $keterangan = 'KELAS';
+                    }
+                } else {
+                    $peserta_didik = DB::table('peserta_didik')
+                        ->join('rombel', 'peserta_didik.kode_rombel', '=', 'rombel.kode_rombel')
+                        ->join('jurusan', 'rombel.kode_jurusan', '=', 'jurusan.kode_jurusan')
+                        ->where('rombel.kode_jurusan', $request->kode_jurusan)
+                        ->where('status', '=', 'aktif')
+                        ->get();
+                    $keterangan = 'JURUSAN';
+                }
+            } else {
+                $peserta_didik = PesertaDidik::where('kode_rombel', '=', $request->kode_rombel)->get();
+                $keterangan = 'KELAS';
+            }
+        } elseif ($request->status == 'Lulus') {
+            if ($request->kode_jurusan == 'semua') {
+                $peserta_didik = PesertaDidik::where('keluar_karena', '=', 'Lulus')->get();
+                $keterangan = 'ALUMNI';
+            } else {
+                $peserta_didik = DB::table('peserta_didik')
+                    ->join('rombel', 'peserta_didik.kode_rombel', '=', 'rombel.kode_rombel')
+                    ->join('jurusan', 'rombel.kode_jurusan', '=', 'jurusan.kode_jurusan')
+                    ->where('rombel.kode_jurusan', '=', $request->kode_jurusan)
+                    ->where('keluar_karena', '=', 'Lulus')
+                    ->get();
+                $keterangan = 'ALUMNI-JURUSAN';
+            }
         }
-        if ($request->kelas === 'Semua') {
-            $peserta_didik = PesertaDidik::all();
-        } else {
-            $peserta_didik = DB::table('peserta_didik')
-                ->join('rombel', 'peserta_didik.kode_rombel', '=', 'rombel.kode_rombel')
-                ->join('jurusan', 'rombel.kode_jurusan', '=', 'jurusan.kode_jurusan')
-                ->where('rombel.kelas', $request->kelas)
-                ->get();
-        }
-        $pdf = PDF::loadView('peserta-didik.print', compact('peserta_didik', 'kelas'));
+        $pdf = PDF::loadView('peserta-didik.print', compact('peserta_didik', 'keterangan'));
         return $pdf->stream();
     }
 }

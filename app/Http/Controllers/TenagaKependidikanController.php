@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TenagaKependidikan;
 use Illuminate\Http\Request;
+use PDF;
 
 class tenagaKependidikanController extends Controller
 {
@@ -124,5 +125,17 @@ class tenagaKependidikanController extends Controller
             TenagaKependidikan::destroy($i);
         }
         return redirect()->back()->with('status', 'data berhasil dihapus.');
+    }
+
+    public function laporan()
+    {
+        return view('tenaga-kependidikan.laporan');
+    }
+
+    public function print(Request  $request)
+    {
+        $tenaga_kependidikan = TenagaKependidikan::all();
+        $pdf = PDF::loadView('tenaga-kependidikan.print', compact('tenaga_kependidikan'));
+        return $pdf->stream();
     }
 }

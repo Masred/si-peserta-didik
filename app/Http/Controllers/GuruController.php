@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Guru;
 use Illuminate\Http\Request;
+use PDF;
 
 class GuruController extends Controller
 {
@@ -124,5 +125,17 @@ class GuruController extends Controller
             Guru::destroy($i);
         }
         return redirect()->back()->with('status', 'data berhasil dihapus.');
+    }
+
+    public function laporan()
+    {
+        return view('guru.laporan');
+    }
+
+    public function print(Request  $request)
+    {
+        $guru = Guru::all();
+        $pdf = PDF::loadView('guru.print', compact('guru'));
+        return $pdf->stream();
     }
 }
