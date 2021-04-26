@@ -23,8 +23,8 @@ class CreateGuruTable extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->string('agama')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('rt')->nullable();
-            $table->string('rw')->nullable();
+            $table->tinyInteger('rt')->nullable();
+            $table->tinyInteger('rw')->nullable();
             $table->string('kelurahan')->nullable();
             $table->string('kecamatan')->nullable();
             $table->integer('kode_pos')->nullable();
