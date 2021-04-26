@@ -161,7 +161,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('peserta-didik.export-excel') }}"
+                                <a href="{{ route('peserta-didik.export') }}"
                                    class="nav-link"
                                    onclick="return confirm('Yakin ingin meng-export data peserta didik?')">
                                     <i class="nav-icon"> </i>
@@ -170,7 +170,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('peserta-didik.export-excel') }}"
+                                <a href=""
                                    class="nav-link" data-toggle="modal"
                                    data-target="#import-excel">
                                     <i class="nav-icon"> </i>
@@ -191,6 +191,47 @@
                             <i class="fa fa-envelope nav-icon"></i>
                             <p>Surat</p>
                         </a>
+                    </li>
+                    <li class="nav-item has-treeview @yield('laporan-open-menu')">
+                        <a href="#" class="nav-link @yield('laporan-menu')">
+                            <i class="nav-icon fas fa-file-alt"></i>
+                            <p>
+                                Laporan
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('peserta-didik.laporan') }}" class="nav-link @yield('laporan-pd-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-chalkboard-teacher nav-icon"></i>
+                                    <p>Peserta Didik</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('guru.laporan') }}" class="nav-link @yield('laporan-guru-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-chalkboard-teacher nav-icon"></i>
+                                    <p>Guru</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tenaga-kependidikan.laporan') }}"
+                                   class="nav-link @yield('laporan-tenaga-kependidikan-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-user-tie nav-icon"></i>
+                                    <p>Tenaga Kependidikan</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('surat.laporan') }}"
+                                   class="nav-link @yield('laporan-surat-menu')">
+                                    <i class="nav-icon"> </i>
+                                    <i class="fa fa-envelope nav-icon"></i>
+                                    <p>Surat</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
