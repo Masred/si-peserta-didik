@@ -15,24 +15,26 @@ class DashboardController extends Controller
     {
         $total_jurusan = Jurusan::all()->count();
         $total_rombel = Rombel::all()->count();
-        $total_peserta_didik = PesertaDidik::all()->count();
+        $total_peserta_didik = PesertaDidik::where('status', '=', 'aktif')->get()->count();
         $total_surat = Surat::all()->count();
         $total_guru = Guru::all()->count();
         $total_tenaga_kependidikan = TenagaKependidikan::all()->count();
 
         $rombels = Rombel::withCount([
-            'pesertaDidik',
+            'pesertaDidik' => function ($query) {
+                $query->where('status', '=', 'aktif');
+            },
             'pesertaDidik as lakilaki' => function ($query) {
-                $query->where('jenis_kelamin', '=', 'L');
+                $query->where('jenis_kelamin', '=', 'L')->where('status', '=', 'aktif');
             },
             'pesertaDidik as perempuan' => function ($query) {
-                $query->where('jenis_kelamin', '=', 'P');
+                $query->where('jenis_kelamin', '=', 'P')->where('status', '=', 'aktif');
             },
             'pesertaDidik as lulus' => function ($query) {
-                $query->where('keluar_karena', '=', 'Lulus');
+                $query->where('keluar_karena', '=', 'Lulus')->where('status', '=', 'aktif');
             },
             'pesertaDidik as mutasi' => function ($query) {
-                $query->where('keluar_karena', '=', 'Mutasi');
+                $query->where('keluar_karena', '=', 'Mutasi')->where('status', '=', 'aktif');
             }
         ])->get();
 
