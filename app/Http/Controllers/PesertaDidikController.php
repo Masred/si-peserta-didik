@@ -159,7 +159,7 @@ class PesertaDidikController extends Controller
     }
 
     // Download peserta didik in excel
-    public function excel()
+    public function export()
     {
         return Excel::download(new PesertaDidikExport, 'peserta-didik.xlsx');
     }

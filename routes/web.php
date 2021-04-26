@@ -33,12 +33,13 @@ Route::resource('jurusan', JurusanController::class)->except(['destroy'])->middl
 Route::delete('rombel/multiple-destroy', [RombelController::class, 'multiple_destroy'])->name('rombel.multiple-destroy')->middleware('auth');
 Route::resource('rombel', RombelController::class)->except(['destroy'])->middleware('auth');
 
+Route::get('peserta-didik/laporan', [PesertaDidikController::class, 'laporan'])->name('peserta-didik.laporan')->middleware('auth');
 Route::get('peserta-didik/keluar', [PesertaDidikController::class, 'keluar'])->name('peserta-didik.keluar')->middleware('auth');
 Route::get('peserta-didik/aktif', [PesertaDidikController::class, 'aktif'])->name('peserta-didik.aktif')->middleware('auth');
 Route::post('peserta-didik/print', [PesertaDidikController::class, 'print'])->name('peserta-didik.print')->middleware('auth');
 Route::delete('peserta-didik/multiple-destroy', [PesertaDidikController::class, 'multiple_destroy'])->name('peserta-didik.multiple-destroy')->middleware('auth');
 Route::post('peserta-didik/import', [PesertaDidikController::class, 'import'])->name('peserta-didik.import')->middleware('auth');
-Route::get('peserta-didik/export-excel', [PesertaDidikController::class, 'excel'])->name('peserta-didik.export-excel')->middleware('auth');
+Route::get('peserta-didik/export', [PesertaDidikController::class, 'export'])->name('peserta-didik.export')->middleware('auth');
 Route::get('peserta-didik/export-pdf', [PesertaDidikController::class, 'pdf'])->name('peserta-didik.export-pdf')->middleware('auth');
 Route::resource('peserta-didik', PesertaDidikController::class)->except(['destroy'])->middleware('auth');
 
