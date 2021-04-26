@@ -48,10 +48,16 @@ Route::patch('user/profile/update', [UserController::class, 'update'])->name('us
 Route::delete('user/multiple-destroy', [UserController::class, 'multiple_destroy'])->name('user.multiple-destroy')->middleware('admin');
 Route::resource('user', UserController::class)->only(['index', 'create', 'store'])->middleware('admin');
 
+Route::post('surat/print', [SuratController::class, 'print'])->name('surat.print')->middleware('auth');
+Route::get('surat/laporan', [SuratController::class, 'laporan'])->name('surat.laporan')->middleware('auth');
 Route::resource('surat', SuratController::class)->only('index', 'create', 'store')->middleware('auth');
 
+Route::post('guru/print', [GuruController::class, 'print'])->name('guru.print')->middleware('auth');
+Route::get('guru/laporan', [GuruController::class, 'laporan'])->name('guru.laporan')->middleware('auth');
 Route::delete('guru/multiple-destroy', [GuruController::class, 'multiple_destroy'])->name('guru.multiple-destroy')->middleware('auth');
 Route::resource('guru', GuruController::class)->except('destroy')->middleware('auth');
 
+Route::post('tenaga-kependidikan/print', [TenagaKependidikanController::class, 'print'])->name('tenaga-kependidikan.print')->middleware('auth');
+Route::get('tenaga-kependidikan/laporan', [TenagaKependidikanController::class, 'laporan'])->name('tenaga-kependidikan.laporan')->middleware('auth');
 Route::delete('tenaga-penendidikan/multiple-destroy', [TenagaKependidikanController::class, 'multiple_destroy'])->name('tenaga-kependidikan.multiple-destroy')->middleware('auth');
 Route::resource('tenaga-kependidikan', TenagaKependidikanController::class)->except('destroy')->middleware('auth');
