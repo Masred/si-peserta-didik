@@ -58,7 +58,7 @@ class CreatePesertaDidikTable extends Migration
             $table->string('penghasilan_wali')->nullable();
             $table->bigInteger('nik_wali')->nullable();
             $table->bigInteger('no_kk')->nullable();
-            $table->string('kode_rombel', 15)->nullable();
+            $table->string('kode_rombel')->nullable();
             $table->foreign('kode_rombel')->references('kode_rombel')->on('rombel')->nullOnDelete()->cascadeOnUpdate();
         });
     }
