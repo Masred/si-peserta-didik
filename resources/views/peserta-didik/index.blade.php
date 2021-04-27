@@ -23,23 +23,25 @@
                                 <a href="{{ route('peserta-didik.create') }}"
                                    class="btn btn-primary btn-sm d-block float-right"><i
                                         class="fas fa-plus"></i> Tambah</a>
+                                <button type="submit"
+                                        title="Delete"
+                                        class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mr-2">
+                                    <i class="far fa-trash-alt"></i> Hapus
+                                </button>
                             @endif
-                            <button type="submit"
-                                    title="Delete"
-                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mr-2">
-                                <i class="far fa-trash-alt"></i> Hapus
-                            </button>
                             <table id="example1"
                                    class="table table-bordered dataTable dtr-inline table-striped"
                                    role="grid"
                                    aria-describedby="example1_info">
                                 <thead>
                                 <tr role="row">
-                                    <th class="sorting_asc_disabled sorting_desc_disabled" class="sorting"
-                                        tabindex="0" aria-controls="example1" rowspan="1" colspan="1" width="10px">
-                                        <input type="checkbox" class="custom-checkbox" id="pilih_semua"
-                                               name="pilih_semua">
-                                    </th>
+                                    @if($peserta_didik[0]->status == 'aktif')
+                                        <th class="sorting_asc_disabled sorting_desc_disabled" class="sorting"
+                                            tabindex="0" aria-controls="example1" rowspan="1" colspan="1" width="10px">
+                                            <input type="checkbox" class="custom-checkbox" id="pilih_semua"
+                                                   name="pilih_semua">
+                                        </th>
+                                    @endif
                                     <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1"
                                         colspan="1"
                                         aria-sort="ascending"
@@ -77,12 +79,14 @@
                                     @else
                                         <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                             aria-controls="example1" rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 50px">
                                             Keluar Karena
                                         </th>
                                         <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                             aria-controls="example1" rowspan="1" colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 50px">
                                             Aksi
                                         </th>
                                     @endif
@@ -91,10 +95,12 @@
                                 <tbody>
                                 @foreach($peserta_didik as $pd)
                                     <tr role="row">
-                                        <td>
-                                            <input type="checkbox" class="form-check"
-                                                   name="id[]" value="{{ $pd->id }}">
-                                        </td>
+                                        @if($pd->status == 'aktif')
+                                            <td>
+                                                <input type="checkbox" class="form-check"
+                                                       name="id[]" value="{{ $pd->id }}">
+                                            </td>
+                                        @endif
                                         <td tabindex="0" class="sorting_1">{{ $loop->iteration }}</td>
                                         <td>{{ $pd->nama }}</td>
                                         <td>{{ $pd->jenis_kelamin }}</td>
