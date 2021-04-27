@@ -6,15 +6,17 @@
         <h3 style="margin-bottom: 20px">MENINGGALKAN PELAJARAN</h3>
     </div>
     <p>Yang bertanda tangan dibawah ini Kepala SMK Negeri 3 Tasikmalaya, dengan  ini mengizinkan :</p>
-    <table style="margin-left: 50px; margin-top: 20px; margin-bottom: 20px">
+    <table style="margin: 20px" cellpadding="10px" cellspacing="0" border="1px" align="center" width="100%">
         <tr>
-            <td style="padding-right: 20px">Nama Siswa</td>
-            <td>: {{ $surat->pesertaDidik->nama }}</td>
+            <th><p>Nama</p></th>
+            <th><p>Kelas</p></th>
         </tr>
-        <tr>
-            <td>Kelas</td>
-            <td>: {{ strtoupper(str_replace('-', ' ', $surat->pesertaDidik->kode_rombel)) }}</td>
-        </tr>
+        @foreach($pd_dispen as $p)
+            <tr>
+                <td align="center"><p>{{ strtoupper($p['nama']) }}</p></td>
+                <td align="center"><p>{{ $p['kelas'] }}</p></td>
+            </tr>
+        @endforeach
     </table>
     <p style="margin-bottom: 10px">Untuk meninggalkan pelajaran mulai jam ke {{ $jam_ke }} sampai dengan jam ke {{ $sampai_jam_ke }} dengan alasan {{ $surat->alasan_dibuat }}.</p>
     <p style="margin-bottom: 10px">Demikian surat keterangan ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
