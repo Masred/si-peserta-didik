@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td>Alasan Keluar</td>
-            <td>: {{ $surat->pesertaDidik->alasan_keluar }}</td>
+            <td>: {{ $surat->alasan_dibuat }}</td>
         </tr>
     </table>
     <p style="margin-bottom: 10px">Siswa yang sudah keluar/pindah tidak boleh masuk kembali ke sekolah ini.</p>
