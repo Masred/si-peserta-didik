@@ -28,6 +28,10 @@
                     <td> : {{ $tenaga_kependidikan->nip }}</td>
                 </tr>
                 <tr>
+                    <td class="text-right font-weight-bold">Keterangan</td>
+                    <td> : {{ $tenaga_kependidikan->keterangan }}</td>
+                </tr>
+                <tr>
                     <td class="text-right font-weight-bold">Jenis Kelamin</td>
                     <td> : {{ ($tenaga_kependidikan->jenis_kelamin == 'L')? 'Laki-Laki':'Perempuan' }}</td>
                 </tr>

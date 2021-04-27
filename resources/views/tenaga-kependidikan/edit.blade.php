@@ -56,6 +56,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="keterangan" class="col-md-4 col-form-label text-md-right">Keterangan</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control @error('keterangan') is-invalid @enderror"
+                                       id="keterangan" placeholder="Masukan Keterangan" name="keterangan"
+                                       value="{{ old('keterangan', $tenaga_kependidikan->keterangan) }}">
+                                @error('keterangan')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="jenis_kelamin" class="col-md-4 col-form-label text-md-right">Jenis
                                 Kelamin</label>
                             <div class="col-md-6">

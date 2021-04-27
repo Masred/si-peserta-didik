@@ -53,11 +53,9 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">JK</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Tempat Lahir</th>
+                                        aria-label="Platform(s): activate to sort column ascending">Tempat Tanggal Lahir</th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Tanggal Lahir</th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Agama</th>
+                                        aria-label="Platform(s): activate to sort column ascending">Keterangan</th>
                                     <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                         aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending" style="width: 20px">
@@ -76,9 +74,8 @@
                                         <td>{{ $tk->nama }}</td>
                                         <td>{{ $tk->nip }}</td>
                                         <td>{{ $tk->jenis_kelamin }}</td>
-                                        <td>{{ $tk->tempat_lahir }}</td>
-                                        <td>{{ date('d-m-Y', strtotime($tk->tanggal_lahir)) }}</td>
-                                        <td>{{ $tk->agama }}</td>
+                                        <td>{{ $tk->tempat_lahir . ', ' . date('d-m-Y', strtotime($tk->tanggal_lahir)) }}</td>
+                                        <td>{{ $tk->keterangan }}</td>
                                         <td>
                                             <div class="row justify-content-center">
                                                 <div class="col d-flex justify-content-center">

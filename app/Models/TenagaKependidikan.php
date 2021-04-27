@@ -11,5 +11,5 @@ class TenagaKependidikan extends Model
 
     public $timestamps = false;
     protected $table = 'tenaga_kependidikan';
-    protected $fillable = ['nama', 'nik', 'nip', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama', 'alamat', 'rt', 'rw', 'dusun', 'kelurahan', 'kecamatan', 'kode_pos'];
+    protected $fillable = ['nama', 'nik', 'nip', 'keterangan', 'jenis_kelamin', 'tempat_lahir', 'tanggal_lahir', 'agama', 'alamat', 'rt', 'rw', 'dusun', 'kelurahan', 'kecamatan', 'kode_pos'];
 }

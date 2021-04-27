@@ -28,6 +28,10 @@
                     <td> : {{ $guru->nip }}</td>
                 </tr>
                 <tr>
+                    <td class="text-right font-weight-bold">Keterangan</td>
+                    <td> : {{ $guru->keterangan }}</td>
+                </tr>
+                <tr>
                     <td class="text-right font-weight-bold">Jenis Kelamin</td>
                     <td> : {{ ($guru->jenis_kelamin == 'L')? 'Laki-Laki':'Perempuan' }}</td>
                 </tr>

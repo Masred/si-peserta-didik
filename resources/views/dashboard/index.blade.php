@@ -47,10 +47,6 @@
                                             colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending">Jumlah
                                         </th>
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1"
-                                            aria-label="Platform(s): activate to sort column ascending">Lulus
-                                        </th>
                                         <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                             aria-controls="example1" rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
@@ -67,7 +63,6 @@
                                             <td>{{ $rombel->lakilaki }}</td>
                                             <td>{{ $rombel->perempuan }}</td>
                                             <td>{{ $rombel->peserta_didik_count }}</td>
-                                            <td>{{ $rombel->lulus }}</td>
                                             <td>{{ $rombel->mutasi }}</td>
                                         </tr>
                                     @endforeach

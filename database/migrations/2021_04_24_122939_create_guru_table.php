@@ -18,6 +18,7 @@ class CreateGuruTable extends Migration
             $table->string('nama')->nullable();
             $table->bigInteger('nik')->nullable();
             $table->bigInteger('nip')->nullable();
+            $table->string('keterangan')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
