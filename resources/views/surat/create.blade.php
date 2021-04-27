@@ -20,7 +20,7 @@
                             <label for="jenis_surat" class="col-md-4 col-form-label text-md-right">Jenis Surat</label>
                             <div class="col-md-6">
                                 <select name="jenis_surat" id="jenis_surat"
-                                        class="custom-select  @error('jenis_surat') is-invalid @enderror">
+                                        class="custom-select  @error('jenis_surat') is-invalid @enderror" required>
                                     <option value="" selected disabled>PILIH</option>
                                     <option value="keterangan">Keterangan</option>
                                     <option value="mutasi">Mutasi</option>
@@ -35,17 +35,14 @@
                             <label for="peserta_didik_id" class="col-md-4 col-form-label text-md-right">Nama Peserta
                                 Didik</label>
                             <div class="col-md-6">
-                                <input type="text" name="peserta_didik_id" id="peserta_didik_id" list="list_pd"
-                                       class="form-control @error('peserta_didik_id') is-invalid @enderror""
-                                placeholder="Cari nama peserta didik">
-                                <datalist id="list_pd">
+                                <select class="select2 peserta-didik custom-select" multiple="multiple" name="peserta_didik_id[]"
+                                        id="peserta_didik_id"
+                                        data-placeholder="  Cari Peserta DIdik" required>
                                     @foreach($peserta_didik as $p)
-                                        <option value="{{ $p->id . ' - ' . $p->nama . ' - ' . $p->nipd }}"></option>
+                                        <option
+                                            value="{{ $p->id . ' - ' . $p->nama . ' - ' . $p->nipd . ' - ' . $p->kode_rombel }}">{{ $p->nama }}</option>
                                     @endforeach
-                                </datalist>
-                                @error('peserta_didik_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -85,7 +82,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="tanda_tangan" class="col-md-4 col-form-label text-md-right">Ditanda tangani oleh</label>
+                            <label for="tanda_tangan" class="col-md-4 col-form-label text-md-right">Ditanda tangani
+                                oleh</label>
                             <div class="col-md-6">
                                 <select name="tanda_tangan" id="tanda_tangan" class="custom-select">
                                     <option value="" selected disabled>PILIH</option>
@@ -96,23 +94,34 @@
                         </div>
                         <div class="form-group row">
                             <label for="kepala_sekolah" class="col-md-4 col-form-label text-md-right">Kepala
-                                Sekolah - NIP</label>
+                                Sekolah</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control"
-                                       id="kepala_sekolah" placeholder="cth: Drs. H. OOM SUPARMAS, M.Pd. - 196209101986031011"
-                                       name="kepala_sekolah">
+                                <select class="kepala-sekolah custom-select" name="kepala_sekolah" id="kepala_sekolah"
+                                        required>
+                                    <option value="" selected disabled>Cari Kepala Sekolah</option>
+                                    @foreach($guru as $g)
+                                        <option
+                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="tata_usaha" class="col-md-4 col-form-label text-md-right">Kasubbag. Tata Usaha - NIP</label>
+                            <label for="tata_usaha" class="col-md-4 col-form-label text-md-right">Kasubbag. Tata
+                                Usaha</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control"
-                                       id="tata_usaha" placeholder="cth: Dra. Hj. HADIANA - 196609081986032006"
-                                       name="tata_usaha">
+                                <select class="tata-usaha custom-select" name="tata_usaha" id="tata_usaha" required>
+                                    <option value="" selected disabled>Cari Kasubbag. Tata Usaha</option>
+                                    @foreach($tendik as $t)
+                                        <option
+                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="orang_tua" class="col-md-4 col-form-label text-md-right dispensasi">Orang Tua / Wali Siswa</label>
+                            <label for="orang_tua" class="col-md-4 col-form-label text-md-right dispensasi">Orang Tua /
+                                Wali Siswa</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control"
                                        id="orang_tua" placeholder="cth: Ujang Supardi"
@@ -120,19 +129,34 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="guru_mapel" class="col-md-4 col-form-label text-md-right dispensasi">Guru Mapel / BK / Wali Kelas - NIP</label>
+                            <label for="guru_mapel" class="col-md-4 col-form-label text-md-right">Guru Mapel / BK / Wali
+                                Kelas</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control"
-                                       id="guru_mapel" placeholder="cth: Rahman Hidayat S.Pd. - 431101986031011"
-                                       name="guru_mapel">
+                                <select class="kepala-sekolah custom-select" name="guru_mapel" id="guru_mapel" required>
+                                    <option value="" selected disabled>Cari Guru Mapel / BK / Wali Kelas</option>
+                                    @foreach($guru as $g)
+                                        <option
+                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="petugas_piket" class="col-md-4 col-form-label text-md-right dispensasi">Guru / Petugas Piket - NIP</label>
+                            <label for="petugas_piket" class="col-md-4 col-form-label text-md-right">Guru / Petugas
+                                Piket</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control"
-                                       id="petugas_piket" placeholder="cth: Sandi Dahyat, S.Pd. - 196209101986031011"
-                                       name="petugas_piket">
+                                <select class="kepala-sekolah custom-select" name="petugas_piket" id="petugas_piket"
+                                        required>
+                                    <option value="" selected disabled>Cari Guru / Petugas Piket</option>
+                                    @foreach($guru as $g)
+                                        <option
+                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama }}</option>
+                                    @endforeach
+                                    @foreach($tendik as $t)
+                                        <option
+                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -144,7 +168,8 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="sampai_jam_ke" class="col-md-4 col-form-label text-md-right dispensasi">Sampai Jam Ke</label>
+                            <label for="sampai_jam_ke" class="col-md-4 col-form-label text-md-right dispensasi">Sampai
+                                Jam Ke</label>
                             <div class="col-md-6">
                                 <input type="number" min="1" class="form-control"
                                        id="sampai_jam_ke" placeholder="Masukan Sampai jam ke berapa"
@@ -164,8 +189,21 @@
 @endsection
 @section('script')
     <script>
-        $('input[name="nomor_surat"]').attr('disabled', true);
-        $('input[name="alasan_dibuat"]').attr('disabled', true);
+        $('.peserta-didik').select2({
+            theme: 'bootstrap4',
+            maximumSelectionLength: 1
+        })
+
+        $('.kepala-sekolah').select2({
+            theme: 'bootstrap4'
+        })
+
+        $('.tata-usaha').select2({
+            theme: 'bootstrap4'
+        })
+
+        $('#nomor_surat').attr('disabled', true);
+        $('#alasan_dibuat').attr('disabled', true);
         $('.dispensasi').css('display', 'none');
         $('#orang_tua').attr('disabled', true).css('display', 'none');
         $('#guru_mapel').attr('disabled', true).css('display', 'none');
@@ -174,8 +212,12 @@
         $('#sampai_jam_ke').attr('disabled', true).css('display', 'none');
         $('#jenis_surat').change(function () {
             if ($('#jenis_surat option:selected').val() === 'keterangan') {
-                $('input[name="nomor_surat"]').val('421.5/XXX/SMKN3.CADSIDIKWIL XII').attr('disabled', false);
-                $('input[name="alasan_dibuat"]').attr('disabled', false);
+                $('.peserta-didik').select2({
+                    maximumSelectionLength: 1,
+                    theme: 'bootstrap4'
+                })
+                $('#nomor_surat').val('421.5/XXX/SMKN3.CADSIDIKWIL XII').attr('disabled', false);
+                $('#alasan_dibuat').attr('disabled', false);
                 $('#tanda_tangan').attr('disabled', false);
                 $('.dispensasi').css('display', 'none');
                 $('#orang_tua').attr('disabled', true).css('display', 'none');
@@ -184,8 +226,12 @@
                 $('#jam_ke').attr('disabled', true).css('display', 'none');
                 $('#sampai_jam_ke').attr('disabled', true).css('display', 'none');
             } else if ($('#jenis_surat option:selected').val() === 'mutasi') {
-                $('input[name="nomor_surat"]').val('421.5/XXX/SMKN3-CADISDIKWIL.XII').attr('disabled', false);
-                $('input[name="alasan_dibuat"]').attr('disabled', true);
+                $('.peserta-didik').select2({
+                    maximumSelectionLength: 1,
+                    theme: 'bootstrap4'
+                })
+                $('#nomor_surat').val('421.5/XXX/SMKN3-CADISDIKWIL.XII').attr('disabled', false);
+                $('#alasan_dibuat').attr('disabled', false);
                 $('#tanda_tangan').attr('disabled', false);
                 $('.dispensasi').css('display', 'none');
                 $('#orang_tua').attr('disabled', true).css('display', 'none');
@@ -194,8 +240,12 @@
                 $('#jam_ke').attr('disabled', true).css('display', 'none');
                 $('#sampai_jam_ke').attr('disabled', true).css('display', 'none');
             } else if ($('#jenis_surat option:selected').val() === 'dispensasi') {
-                $('input[name="nomor_surat"]').val('').attr('disabled', true);
-                $('input[name="alasan_dibuat"]').attr('disabled', false);
+                $('.peserta-didik').select2({
+                    maximumSelectionLength: 1000,
+                    theme: 'bootstrap4'
+                })
+                $('#nomor_surat').val('').attr('disabled', true);
+                $('#alasan_dibuat').attr('disabled', false);
                 $('#tanda_tangan').attr('disabled', true);
                 $('.dispensasi').css('display', 'block');
                 $('#orang_tua').attr('disabled', false).css('display', 'block');
@@ -208,16 +258,30 @@
                 $('#kepala_sekolah').val('').attr('disabled', true);
             }
         })
-        $('#kepala_sekolah').attr('disabled', true);
-        $('#tata_usaha').attr('disabled', true);
+
+        $('#kepala_sekolah').attr('disabled', true)
+        $('#tata_usaha').attr('disabled', true)
         $('#tanda_tangan').change(function () {
             if ($('#tanda_tangan option:selected').val() === 'kepala sekolah') {
-                $('input[name="kepala_sekolah"]').val('Drs. H. OOM SUPARMAS, M.Pd. - 196209101986031011').attr('disabled', false);
-                $('#tata_usaha').val('').attr('disabled', true);
+                $('#kepala_sekolah').val('').attr('disabled', false);
+                $('#tata_usaha').val(null).attr('disabled', true).trigger('change');
             } else if ($('#tanda_tangan option:selected').val() === 'tata usaha') {
-                $('#tata_usaha').val('Dra. Hj. HADIANA - 196609081986032006').attr('disabled', false);
-                $('#kepala_sekolah').val('').attr('disabled', true);
+                $('#tata_usaha').val('').attr('disabled', false);
+                $('#kepala_sekolah').val(null).attr('disabled', true).trigger('change');
             }
         })
+        @if(session('pesan'))
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 5000,
+            timerProgressBar: true,
+        });
+        Toast.fire({
+            icon: 'error',
+            title: '{!! session('pesan') !!}'
+        });
+        @endif
     </script>
 @endsection
