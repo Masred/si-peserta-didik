@@ -67,11 +67,25 @@
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
                                         aria-label="Platform(s): activate to sort column ascending">Status
                                     </th>
-                                    <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
-                                        aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
-                                        {{ ($peserta_didik[0]->status == 'aktif')? 'Aksi': 'Keluar Karena' }}
-                                    </th>
+                                    @if($peserta_didik[0]->status == 'aktif')
+                                        <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
+                                            aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending"
+                                            style="width: 50px">
+                                            Aksi
+                                        </th>
+                                    @else
+                                        <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
+                                            aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
+                                            Keluar Karena
+                                        </th>
+                                        <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
+                                            aria-controls="example1" rowspan="1" colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
+                                            Aksi
+                                        </th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -95,8 +109,8 @@
                                                 <span class="badge bg-danger">{{ $pd->status }}</span>
                                             @endif
                                         </td>
-                                        <td>
-                                            @if($pd->status == 'aktif')
+                                        @if($pd->status == 'aktif')
+                                            <td>
                                                 <div class="row">
                                                     <div class="col d-flex justify-content-center">
                                                         <a href="{{ route('peserta-didik.show', $pd->id) }}"
@@ -109,10 +123,22 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                            @else
+                                            </td>
+                                        @else
+                                            <td>
                                                 {{ $pd->keluar_karena }}
-                                            @endif
-                                        </td>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col d-flex justify-content-center">
+                                                        <a href="{{ route('peserta-didik.show', $pd->id) }}"
+                                                           class="btn btn-primary btn-sm d-inline-block">
+                                                            <i class="far fa-eye"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>

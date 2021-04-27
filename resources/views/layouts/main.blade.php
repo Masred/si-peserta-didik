@@ -149,7 +149,7 @@
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="{{ route('peserta-didik.aktif') }}"
-                                   class="nav-link {{ (request()->routeIs('peserta-didik.aktif') or request()->routeIs('peserta-didik.create') or request()->routeIs('peserta-didik.edit') or request()->routeIs('peserta-didik.show'))? 'active': '' }}">
+                                   class="nav-link {{ (request()->routeIs('peserta-didik.aktif') or request()->routeIs('peserta-didik.create') or request()->routeIs('peserta-didik.edit'))? 'active': '' }}">
                                     <i class="nav-icon"> </i>
                                     <i class="far fa-check-circle nav-icon"></i>
                                     <p>PD Aktif</p>
