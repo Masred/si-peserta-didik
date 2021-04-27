@@ -151,7 +151,7 @@
                                 <a href="{{ route('peserta-didik.aktif') }}"
                                    class="nav-link {{ (request()->routeIs('peserta-didik.aktif') or request()->routeIs('peserta-didik.create') or request()->routeIs('peserta-didik.edit'))? 'active': '' }}">
                                     <i class="nav-icon"> </i>
-                                    <i class="far fa-check-circle nav-icon"></i>git
+                                    <i class="far fa-check-circle nav-icon"></i>
                                     <p>PD Aktif</p>
                                 </a>
                             </li>
