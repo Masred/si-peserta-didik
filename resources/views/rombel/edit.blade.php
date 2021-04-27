@@ -56,6 +56,21 @@
                                        value="{{ old('kelompok', $rombel->kelompok) }}" required>
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="guru_id" class="col-md-4 col-form-label text-md-right">Wali Kelas</label>
+                            <div class="col-md-6">
+                                <select name="guru_id" id="guru_id"
+                                        class="custom-select">
+                                    <option value="">PILIH</option>
+                                    @foreach($guru as $gr)
+                                        <option
+                                            value="{{ $gr->id }}" {{ (old('guru_id', $rombel->guru_id) == $gr->id)? 'selected': '' }}>
+                                            {{ $gr->nama }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
