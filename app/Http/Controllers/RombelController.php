@@ -48,7 +48,8 @@ class RombelController extends Controller
             'kode_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
             'kelas' => $request->kelas,
             'kode_jurusan' => $request->kode_jurusan,
-            'kelompok' => $request->kelompok
+            'kelompok' => $request->kelompok,
+            'guru_id' => $request->guru_id
         ]);
 
         $rules = [
@@ -92,7 +93,8 @@ class RombelController extends Controller
     public function edit(Rombel $rombel)
     {
         $jurusans = Jurusan::all();
-        return view('rombel.edit', compact('rombel', 'jurusans'));
+        $guru = Guru::all();
+        return view('rombel.edit', compact('rombel', 'jurusans', 'guru'));
     }
 
     /**
@@ -108,7 +110,8 @@ class RombelController extends Controller
             'kode_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
             'kelas' => $request->kelas,
             'kode_jurusan' => $request->kode_jurusan,
-            'kelompok' => $request->kelompok
+            'kelompok' => $request->kelompok,
+            'guru_id' => $request->guru_id
         ]);
 
         $rules = [
