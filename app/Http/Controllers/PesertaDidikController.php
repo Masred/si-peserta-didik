@@ -81,7 +81,7 @@ class PesertaDidikController extends Controller
         $request->validate($rules, $customMessages);
         PesertaDidik::create($request->all());
 
-        return redirect('/peserta-didik')->with('status', 'data berhasil disimpan');
+        return redirect('/peserta-didik/aktif')->with('status', 'data berhasil disimpan');
     }
 
     /**
@@ -145,7 +145,7 @@ class PesertaDidikController extends Controller
 
         $request->validate($rules, $customMessages);
         PesertaDidik::find($peserta_didik->id)->update($request->all());
-        return redirect('/peserta-didik')->with('status', 'data berhasil diubah');
+        return redirect('/peserta-didik/aktif')->with('status', 'data berhasil diubah');
     }
 
     public function laporan()
