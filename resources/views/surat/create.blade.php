@@ -40,13 +40,13 @@
                                         data-placeholder="  Cari Peserta DIdik" required>
                                     @foreach($peserta_didik as $p)
                                         <option
-                                            value="{{ $p->id . ' - ' . $p->nama . ' - ' . $p->nipd . ' - ' . $p->kode_rombel }}">{{ $p->nama }}</option>
+                                            value="{{ $p->id . ' - ' . $p->nama . ' - ' . $p->nipd . ' - ' . $p->kode_rombel }}">{{ $p->nama . ' - ' . $p->nipd}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="nomor_surat" class="col-md-4 col-form-label text-md-right">Nomor Surat</label>
+                            <label for="nomor_surat" class="col-md-4 col-form-label text-md-right dispen-hide">Nomor Surat</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control @error('nomor_surat') is-invalid @enderror"
                                        id="nomor_surat" placeholder="Masukan Nomor surat" name="nomor_surat"
@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="tanda_tangan" class="col-md-4 col-form-label text-md-right">Ditanda tangani
+                            <label for="tanda_tangan" class="col-md-4 col-form-label text-md-right dispen-hide">Ditanda tangani
                                 oleh</label>
                             <div class="col-md-6">
                                 <select name="tanda_tangan" id="tanda_tangan" class="custom-select">
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="kepala_sekolah" class="col-md-4 col-form-label text-md-right">Kepala
+                            <label for="kepala_sekolah" class="col-md-4 col-form-label text-md-right dispen-hide">Kepala
                                 Sekolah</label>
                             <div class="col-md-6">
                                 <select class="kepala-sekolah custom-select" name="kepala_sekolah" id="kepala_sekolah"
@@ -101,60 +101,51 @@
                                     <option value="" selected disabled>Cari Kepala Sekolah</option>
                                     @foreach($guru as $g)
                                         <option
-                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama }}</option>
+                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama . ' - ' . $g->nip }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="tata_usaha" class="col-md-4 col-form-label text-md-right">Kasubbag. Tata
+                            <label for="tata_usaha" class="col-md-4 col-form-label text-md-right dispen-hide">Kasubbag. Tata
                                 Usaha</label>
                             <div class="col-md-6">
                                 <select class="tata-usaha custom-select" name="tata_usaha" id="tata_usaha" required>
                                     <option value="" selected disabled>Cari Kasubbag. Tata Usaha</option>
                                     @foreach($tendik as $t)
                                         <option
-                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama }}</option>
+                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama . ' - ' . $t->nip }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="orang_tua" class="col-md-4 col-form-label text-md-right dispensasi">Orang Tua /
-                                Wali Siswa</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control"
-                                       id="orang_tua" placeholder="cth: Ujang Supardi"
-                                       name="orang_tua">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="guru_mapel" class="col-md-4 col-form-label text-md-right">Guru Mapel / BK / Wali
+                            <label for="guru_mapel" class="col-md-4 col-form-label text-md-right dispensasi">Guru Mapel / BK / Wali
                                 Kelas</label>
                             <div class="col-md-6">
-                                <select class="kepala-sekolah custom-select" name="guru_mapel" id="guru_mapel" required>
+                                <select class="guru-mapel custom-select" name="guru_mapel" id="guru_mapel" required>
                                     <option value="" selected disabled>Cari Guru Mapel / BK / Wali Kelas</option>
                                     @foreach($guru as $g)
                                         <option
-                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama }}</option>
+                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama . ' - ' . $g->nip }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="petugas_piket" class="col-md-4 col-form-label text-md-right">Guru / Petugas
+                            <label for="petugas_piket" class="col-md-4 col-form-label text-md-right dispensasi">Guru / Petugas
                                 Piket</label>
                             <div class="col-md-6">
-                                <select class="kepala-sekolah custom-select" name="petugas_piket" id="petugas_piket"
+                                <select class="petugas-piket custom-select" name="petugas_piket" id="petugas_piket"
                                         required>
                                     <option value="" selected disabled>Cari Guru / Petugas Piket</option>
                                     @foreach($guru as $g)
                                         <option
-                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama }}</option>
+                                            value="{{ $g->nama . ' - ' . $g->nip }}">{{ $g->nama . ' - ' . $g->nip }}</option>
                                     @endforeach
                                     @foreach($tendik as $t)
                                         <option
-                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama }}</option>
+                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama . ' - ' . $t->nip }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -202,12 +193,20 @@
             theme: 'bootstrap4'
         })
 
+        $('.guru-mapel').select2({
+            theme: 'bootstrap4'
+        })
+
+        $('.petugas-piket').select2({
+            theme: 'bootstrap4'
+        })
+
         $('#nomor_surat').attr('disabled', true);
         $('#alasan_dibuat').attr('disabled', true);
         $('.dispensasi').css('display', 'none');
-        $('#orang_tua').attr('disabled', true).css('display', 'none');
-        $('#guru_mapel').attr('disabled', true).css('display', 'none');
-        $('#petugas_piket').attr('disabled', true).css('display', 'none');
+        $('.dispen-hide').show();
+        $('.guru-mapel').next('.select2-container').hide();
+        $('.petugas-piket').next('.select2-container').hide();
         $('#jam_ke').attr('disabled', true).css('display', 'none');
         $('#sampai_jam_ke').attr('disabled', true).css('display', 'none');
         $('#jenis_surat').change(function () {
@@ -216,13 +215,15 @@
                     maximumSelectionLength: 1,
                     theme: 'bootstrap4'
                 })
-                $('#nomor_surat').val('421.5/XXX/SMKN3.CADSIDIKWIL XII').attr('disabled', false);
+                $('#nomor_surat').val('421.5/XXX/SMKN3.CADSIDIKWIL XII').attr('disabled', false).show();
                 $('#alasan_dibuat').attr('disabled', false);
-                $('#tanda_tangan').attr('disabled', false);
+                $('#tanda_tangan').attr('disabled', false).show();
                 $('.dispensasi').css('display', 'none');
-                $('#orang_tua').attr('disabled', true).css('display', 'none');
-                $('#guru_mapel').attr('disabled', true).css('display', 'none');
-                $('#petugas_piket').attr('disabled', true).css('display', 'none');
+                $('.dispen-hide').show();
+                $('.kepala-sekolah').next('.select2-container').show();
+                $('.tata-usaha').next('.select2-container').show();
+                $('.guru-mapel').next('.select2-container').hide();
+                $('.petugas-piket').next('.select2-container').hide();
                 $('#jam_ke').attr('disabled', true).css('display', 'none');
                 $('#sampai_jam_ke').attr('disabled', true).css('display', 'none');
             } else if ($('#jenis_surat option:selected').val() === 'mutasi') {
@@ -230,13 +231,15 @@
                     maximumSelectionLength: 1,
                     theme: 'bootstrap4'
                 })
-                $('#nomor_surat').val('421.5/XXX/SMKN3-CADISDIKWIL.XII').attr('disabled', false);
+                $('#nomor_surat').val('421.5/XXX/SMKN3-CADISDIKWIL.XII').attr('disabled', false).show();
                 $('#alasan_dibuat').attr('disabled', false);
-                $('#tanda_tangan').attr('disabled', false);
+                $('#tanda_tangan').attr('disabled', false).show();
                 $('.dispensasi').css('display', 'none');
-                $('#orang_tua').attr('disabled', true).css('display', 'none');
-                $('#guru_mapel').attr('disabled', true).css('display', 'none');
-                $('#petugas_piket').attr('disabled', true).css('display', 'none');
+                $('.dispen-hide').show();
+                $('.kepala-sekolah').next('.select2-container').show();
+                $('.tata-usaha').next('.select2-container').show();
+                $('.guru-mapel').next('.select2-container').hide();
+                $('.petugas-piket').next('.select2-container').hide();
                 $('#jam_ke').attr('disabled', true).css('display', 'none');
                 $('#sampai_jam_ke').attr('disabled', true).css('display', 'none');
             } else if ($('#jenis_surat option:selected').val() === 'dispensasi') {
@@ -244,16 +247,17 @@
                     maximumSelectionLength: 1000,
                     theme: 'bootstrap4'
                 })
-                $('#nomor_surat').val('').attr('disabled', true);
+                $('.kepala-sekolah').next('.select2-container').hide();
+                $('.tata-usaha').next('.select2-container').hide();
+                $('.guru-mapel').next('.select2-container').show();
+                $('.petugas-piket').next('.select2-container').show();
+                $('#nomor_surat').val('').attr('disabled', true).hide();
                 $('#alasan_dibuat').attr('disabled', false);
-                $('#tanda_tangan').attr('disabled', true);
+                $('#tanda_tangan').val('').attr('disabled', true).hide();
                 $('.dispensasi').css('display', 'block');
-                $('#orang_tua').attr('disabled', false).css('display', 'block');
-                $('#guru_mapel').attr('disabled', false).css('display', 'block');
-                $('#petugas_piket').attr('disabled', false).css('display', 'block');
+                $('.dispen-hide').hide();
                 $('#jam_ke').attr('disabled', false).css('display', 'block');
                 $('#sampai_jam_ke').attr('disabled', false).css('display', 'block');
-                $('#tanda_tangan').val('');
                 $('#tata_usaha').val('').attr('disabled', true);
                 $('#kepala_sekolah').val('').attr('disabled', true);
             }

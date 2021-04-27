@@ -25,13 +25,8 @@
         <p>Tasikmalaya, {{ \Carbon\Carbon::parse($surat->tanggal)->isoFormat('D MMMM Y') }}</p>
         <br>
     </div>
-    <table width="90%" style="margin-top: 40px" align="center">
+    <table width="100%" style="margin-top: 40px" align="center">
         <tr>
-            <td align="center">
-                <p>Diketahui</p>
-                <p>Orang Tua/Wali Siswa</p>
-                <p style="margin-top: 60px">{{ $orang_tua }}</p>
-            </td>
             <td align="center">
                 <p>Mengizinkan</p>
                 <p>Guru Mapel/BK/Wali Kelas</p>
