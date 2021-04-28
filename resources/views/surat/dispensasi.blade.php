@@ -6,7 +6,7 @@
         <h3 style="margin-bottom: 20px">MENINGGALKAN PELAJARAN</h3>
     </div>
     <p>Yang bertanda tangan dibawah ini Kepala SMK Negeri 3 Tasikmalaya, dengan  ini mengizinkan :</p>
-    <table style="margin: 20px" cellpadding="10px" cellspacing="0" border="1px" align="center" width="100%">
+    <table style="margin: 20px;font-size: 12px" cellpadding="5px" cellspacing="0" border="1px" align="center" width="100%">
         <tr>
             <th><p>Nama</p></th>
             <th><p>Kelas</p></th>

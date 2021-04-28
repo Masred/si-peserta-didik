@@ -38,7 +38,8 @@
                 </tr>
                 <tr>
                     <td class="text-right font-weight-bold">Tanggal Masuk</td>
-                    <td> : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_masuk)) }}</td>
+                    <td>
+                        : {{ ($peserta_didik->tanggal_masuk)?date('d-m-Y', strtotime($peserta_didik->tanggal_masuk)):'' }}</td>
                 </tr>
                 <tr>
                     <td class="text-right font-weight-bold">Jenis Kelamin</td>
@@ -336,7 +337,7 @@
                 </tr>
                 <tr>
                     <td class="text-right font-weight-bold">Tanggal Keluar</td>
-                    <td> : {{ date('d-m-Y', strtotime($peserta_didik->tanggal_keluar)) }}</td>
+                    <td> : {{ ($peserta_didik->tanggal_keluar)?date('d-m-Y', strtotime($peserta_didik->tanggal_keluar)):'' }}</td>
                 </tr>
             </table>
         </div>

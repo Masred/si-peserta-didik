@@ -27,23 +27,19 @@ class JurusanFactory extends Factory
                 'nama_jurusan' => 'Desain Komunikasi Visual'
             ],
             [
-                'kode_jurusan' => 'RPL',
-                'nama_jurusan' => 'Rekayasa Perangkat Lunak'
-            ],
-            [
-                'kode_jurusan' => 'TKL',
+                'kode_jurusan' => 'TEKSTIL',
                 'nama_jurusan' => 'Tekstil'
             ],
             [
-                'kode_jurusan' => 'KYU',
+                'kode_jurusan' => 'KAYU',
                 'nama_jurusan' => 'Kayu'
             ],
             [
-                'kode_jurusan' => 'KLT',
+                'kode_jurusan' => 'KULIT',
                 'nama_jurusan' => 'Kulit'
             ],
             [
-                'kode_jurusan' => 'LGM',
+                'kode_jurusan' => 'LOGAM',
                 'nama_jurusan' => 'Logam'
             ],
             [

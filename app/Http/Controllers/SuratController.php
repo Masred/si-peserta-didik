@@ -19,7 +19,7 @@ class SuratController extends Controller
 
     public function create()
     {
-        $peserta_didik = PesertaDidik::select('id', 'nama', 'nipd', 'kode_rombel')->get();
+        $peserta_didik = PesertaDidik::select('id', 'nama', 'nipd', 'kode_rombel')->where('status', '=', 'aktif')->get();
         $guru = Guru::all();
         $tendik = TenagaKependidikan::all();
         return view('surat.create', compact('peserta_didik', 'guru', 'tendik'));

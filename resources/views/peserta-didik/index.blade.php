@@ -35,7 +35,7 @@
                                    aria-describedby="example1_info">
                                 <thead>
                                 <tr role="row">
-                                    @if($peserta_didik[0]->status == 'aktif')
+                                    @if(request()->routeIs('peserta-didik.aktif'))
                                         <th class="sorting_asc_disabled sorting_desc_disabled" class="sorting"
                                             tabindex="0" aria-controls="example1" rowspan="1" colspan="1" width="10px">
                                             <input type="checkbox" class="custom-checkbox" id="pilih_semua"
@@ -64,12 +64,15 @@
                                         aria-label="Platform(s): activate to sort column ascending">Rombel
                                     </th>
                                     <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Terdaftar Sebagai
+                                        aria-label="Platform(s): activate to sort column ascending">{{ (request()->routeIs('peserta-didik.aktif'))?'Terdaftar Sebagai': 'Tanggal Keluar' }}
                                     </th>
-                                    <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1"
-                                        aria-label="Platform(s): activate to sort column ascending">Status
-                                    </th>
-                                    @if($peserta_didik[0]->status == 'aktif')
+                                    @if(request()->routeIs('peserta-didik.aktif'))
+                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
+                                            colspan="1"
+                                            aria-label="Platform(s): activate to sort column ascending">Status
+                                        </th>
+                                    @endif
+                                    @if(request()->routeIs('peserta-didik.aktif'))
                                         <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                             aria-controls="example1" rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending"
@@ -107,14 +110,12 @@
                                         <td>{{ $pd->nipd }}</td>
                                         <td>{{ $pd->nisn }}</td>
                                         <td>{{ (empty($pd->kode_rombel))? '' :str_replace('-', ' ', $pd->kode_rombel) }}</td>
-                                        <td>{{ $pd->jenis_pendaftaran }}</td>
-                                        <td>
-                                            @if($pd->status == 'aktif')
+                                        <td>{{ (request()->routeIs('peserta-didik.aktif'))? $pd->jenis_pendaftaran: date('d-m-Y', strtotime($pd->tanggal_keluar)) }}</td>
+                                        @if($pd->status == 'aktif')
+                                            <td>
                                                 <span class="badge bg-success">{{ $pd->status }}</span>
-                                            @elseif($pd->status == 'keluar')
-                                                <span class="badge bg-danger">{{ $pd->status }}</span>
-                                            @endif
-                                        </td>
+                                            </td>
+                                        @endif
                                         @if($pd->status == 'aktif')
                                             <td>
                                                 <div class="row">

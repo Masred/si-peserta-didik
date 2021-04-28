@@ -57,8 +57,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="alasan_dibuat" class="col-md-4 col-form-label text-md-right">Alasan
-                                dibuat (optional)</label>
+                            <label for="alasan_dibuat" class="col-md-4 col-form-label text-md-right">Alasan</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control @error('alasan_dibuat') is-invalid @enderror"
                                        id="alasan_dibuat"

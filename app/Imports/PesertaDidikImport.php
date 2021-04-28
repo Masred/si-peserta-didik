@@ -3,6 +3,8 @@
 namespace App\Imports;
 
 use App\Models\PesertaDidik;
+use App\Models\Rombel;
+use \Validator;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -15,12 +17,36 @@ class PesertaDidikImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
+        if (!isset($row['nama'])) {
+            return null;
+        }
+        $a = str_replace(' ', '-', $row['rombel']);
+        $b = explode('-', $a);
+        $validatator = Validator::make([
+            'kode_rombel' => $a
+        ], [
+            'kode_rombel' => 'unique:rombel'
+        ]);
+
+
+        if (!$validatator->fails()) {
+            if ($a != '') {
+                Rombel::create([
+                    'kode_rombel' => $a,
+                    'kelas' => $b[0],
+                    'kode_jurusan' => $b[1],
+                    'kelompok' => $b[2]
+                ]);
+            }
+        }
+
+
         return new PesertaDidik([
             'nama' => $row['nama'],
             'jenis_pendaftaran' => $row['jenis_pendaftaran'],
             'sekolah_asal' => $row['sekolah_asal'],
             'tanggal_masuk' => $row['tanggal_masuk'],
-            'status' => $row['status'],
+            'status' => ($row['status']) ?: 'aktif',
             'jenis_kelamin' => $row['jenis_kelamin'],
             'nipd' => $row['nipd'],
             'nisn' => $row['nisn'],

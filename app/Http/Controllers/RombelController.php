@@ -21,6 +21,8 @@ class RombelController extends Controller
         $rombels = Rombel::withCount(['pesertaDidik' => function ($query) {
             $query->where('status', '=', 'aktif');
         }])->get();
+
+
         return view('rombel.index', compact('rombels'));
     }
 
