@@ -16,6 +16,38 @@
                         <a href="{{ route('surat.create') }}"
                            class="btn btn-primary btn-sm d-block float-right ml-2"><i
                                 class="fas fa-plus"></i> Buat Surat</a>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-sm btn-success d-block float-right" data-toggle="modal"
+                                data-target="#staticBackdrop">
+                            <i class="fa fa-question"></i>
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Bantuan</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4>Cara Mencetak Surat</h4>
+                                        <ol>
+                                            <li>
+                                                <p>Klik tombol Buat Surat</p>
+                                                <img src="{{ asset('img/bantuan/tambah/tambah-surat.png') }}"
+                                                     class="img-fluid">
+                                            </li>
+                                            <li><p>Isi kolom lalu klik tombol Cetak</p></li>
+                                        </ol>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <table id="example1" class="table table-bordered dataTable dtr-inline table-striped"
                                role="grid"
                                aria-describedby="example1_info">

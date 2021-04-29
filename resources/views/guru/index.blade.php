@@ -21,13 +21,83 @@
                             @csrf
                             @method('delete')
                             <a href="{{ route('guru.create') }}"
-                               class="btn btn-primary btn-sm d-block float-right ml-2"><i
+                               class="btn btn-primary btn-sm d-block float-right"><i
                                     class="fas fa-plus"></i> Tambah</a>
                             <button type="submit"
                                     title="Delete"
-                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right">
+                                    class="btn btn-danger btn-sm d-inline btn-del d-inline-block float-right mx-2">
                                 <i class="far fa-trash-alt"></i> Hapus
                             </button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-sm btn-success d-block float-right" data-toggle="modal"
+                                    data-target="#staticBackdrop">
+                                <i class="fa fa-question"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false"
+                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel">Bantuan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Cara Menambah Data</h4>
+                                            <ol>
+                                                <li>
+                                                    <p>Klik tombol Tambah</p>
+                                                    <img src="{{ asset('img/bantuan/tambah/tambah1.png') }}"
+                                                         class="img-fluid">
+                                                </li>
+                                                <li><p>Isi kolom lalu klik tombol Simpan.</p></li>
+                                            </ol>
+                                            <hr>
+                                            <h4>Cara Mengubah Data</h4>
+                                            <ol>
+                                                <li>
+                                                    <p>Klik tombol yang dilingkari pada gambar di bawah ini.</p>
+                                                    <img src="{{ asset('img/bantuan/edit/edit1.png') }}"
+                                                         class="img-fluid">
+                                                </li>
+                                                <li><p>Udah isian kolom lalu klik tombol Simpan.</p></li>
+                                            </ol>
+                                            <hr>
+                                            <h4>Cara Melihat Detail Data</h4>
+                                            <ol>
+                                                <li>
+                                                    <p>Klik tombol yang dilingkari pada gambar di bawah ini.</p>
+                                                    <img src="{{ asset('img/bantuan/detail/detail1.png') }}"
+                                                         class="img-fluid">
+                                                </li>
+                                            </ol>
+                                            <hr>
+                                            <h4>Cara Menghapus Data</h4>
+                                            <ol>
+                                                <li>
+                                                    <p>Pilih data yang ingin dihapus dengan men-centang checkbox yang
+                                                        ada di kiri (bisa pilih lebih dari satu)</p>
+                                                    <img src="{{ asset('img/bantuan/hapus/delete1.png') }}"
+                                                         class="img-fluid">
+                                                </li>
+                                                <li>
+                                                    <p>Jika sudah dicentang maka klik tombol Hapus</p>
+                                                    <img src="{{ asset('img/bantuan/hapus/delete2.png') }}"
+                                                         class="img-fluid">
+                                                </li>
+                                                <li>
+                                                    <p>Klik Hapus</p>
+                                                    <img src="{{ asset('img/bantuan/hapus/delete3.png') }}"
+                                                         class="img-fluid">
+                                                </li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <table id="example1" class="table table-bordered dataTable dtr-inline table-striped"
                                    role="grid"
                                    aria-describedby="example1_info">
