@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Guru;
 use App\Models\Jurusan;
 use App\Models\PesertaDidik;
 use App\Models\Rombel;
+use App\Models\TenagaKependidikan;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -28,55 +30,57 @@ class DatabaseSeeder extends Seeder
 
         Jurusan::factory()->create();
 
-//        for ($i = 1; $i <= 3; $i++){
-//            Rombel::factory()->state([
-//                'kode_rombel' => 'X-DKV-' . $i,
-//                'kelas' => 'X',
-//                'kode_jurusan' => 'DKV',
-//                'kelompok' => $i
-//            ])->create();
-//        }
-//        for ($i = 1; $i <= 3; $i++){
-//            Rombel::factory()->state([
-//                'kode_rombel' => 'XI-DKV-' . $i,
-//                'kelas' => 'XI',
-//                'kode_jurusan' => 'DKV',
-//                'kelompok' => $i
-//            ])->create();
-//        }
-//        for ($i = 1; $i <= 3; $i++){
-//            Rombel::factory()->state([
-//                'kode_rombel' => 'XII-DKV-' . $i,
-//                'kelas' => 'XII',
-//                'kode_jurusan' => 'DKV',
-//                'kelompok' => $i
-//            ])->create();
-//        }
-//        for ($i = 1; $i <= 3; $i++){
-//            Rombel::factory()->state([
-//                'kode_rombel' => 'X-RPL-' . $i,
-//                'kelas' => 'X',
-//                'kode_jurusan' => 'RPL',
-//                'kelompok' => $i
-//            ])->create();
-//        }
-//        for ($i = 1; $i <= 3; $i++){
-//            Rombel::factory()->state([
-//                'kode_rombel' => 'XI-RPL-' . $i,
-//                'kelas' => 'XI',
-//                'kode_jurusan' => 'RPL',
-//                'kelompok' => $i
-//            ])->create();
-//        }
-//        for ($i = 1; $i <= 3; $i++){
-//            Rombel::factory()->state([
-//                'kode_rombel' => 'XII-RPL-' . $i,
-//                'kelas' => 'XII',
-//                'kode_jurusan' => 'RPL',
-//                'kelompok' => $i
-//            ])->create();
-//        }
+        for ($i = 1; $i <= 3; $i++) {
+            Rombel::factory()->state([
+                'kode_rombel' => 'X-DKV-' . $i,
+                'kelas' => 'X',
+                'kode_jurusan' => 'DKV',
+                'kelompok' => $i
+            ])->create();
+        }
+        for ($i = 1; $i <= 3; $i++) {
+            Rombel::factory()->state([
+                'kode_rombel' => 'XI-DKV-' . $i,
+                'kelas' => 'XI',
+                'kode_jurusan' => 'DKV',
+                'kelompok' => $i
+            ])->create();
+        }
+        for ($i = 1; $i <= 3; $i++) {
+            Rombel::factory()->state([
+                'kode_rombel' => 'XII-DKV-' . $i,
+                'kelas' => 'XII',
+                'kode_jurusan' => 'DKV',
+                'kelompok' => $i
+            ])->create();
+        }
+        for ($i = 1; $i <= 3; $i++) {
+            Rombel::factory()->state([
+                'kode_rombel' => 'X-KULIT-' . $i,
+                'kelas' => 'X',
+                'kode_jurusan' => 'KULIT',
+                'kelompok' => $i
+            ])->create();
+        }
+        for ($i = 1; $i <= 3; $i++) {
+            Rombel::factory()->state([
+                'kode_rombel' => 'XI-KULIT-' . $i,
+                'kelas' => 'XI',
+                'kode_jurusan' => 'KULIT',
+                'kelompok' => $i
+            ])->create();
+        }
+        for ($i = 1; $i <= 3; $i++) {
+            Rombel::factory()->state([
+                'kode_rombel' => 'XII-KULIT-' . $i,
+                'kelas' => 'XII',
+                'kode_jurusan' => 'KULIT',
+                'kelompok' => $i
+            ])->create();
+        }
 
-//        PesertaDidik::factory()->count(100)->create();
+        PesertaDidik::factory()->count(100)->create();
+        Guru::factory()->count(50)->create();
+        TenagaKependidikan::factory()->count(50)->create();
     }
 }
