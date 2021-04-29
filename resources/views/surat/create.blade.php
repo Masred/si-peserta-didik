@@ -95,8 +95,7 @@
                             <label for="kepala_sekolah" class="col-md-4 col-form-label text-md-right dispen-hide">Kepala
                                 Sekolah</label>
                             <div class="col-md-6">
-                                <select class="kepala-sekolah custom-select" name="kepala_sekolah" id="kepala_sekolah"
-                                        required>
+                                <select class="kepala-sekolah custom-select" name="kepala_sekolah" id="kepala_sekolah">
                                     <option value="" selected disabled>Cari Kepala Sekolah</option>
                                     @foreach($guru as $g)
                                         <option
@@ -109,11 +108,10 @@
                             <label for="tata_usaha" class="col-md-4 col-form-label text-md-right dispen-hide">Kasubbag. Tata
                                 Usaha</label>
                             <div class="col-md-6">
-                                <select class="tata-usaha custom-select" name="tata_usaha" id="tata_usaha" required>
+                                <select class="tata-usaha custom-select" name="tata_usaha" id="tata_usaha">
                                     <option value="" selected disabled>Cari Kasubbag. Tata Usaha</option>
                                     @foreach($tendik as $t)
-                                        <option
-                                            value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama . ' - ' . $t->nip }}</option>
+                                        <option value="{{ $t->nama . ' - ' . $t->nip }}">{{ $t->nama . ' - ' . $t->nip }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -122,7 +120,7 @@
                             <label for="guru_mapel" class="col-md-4 col-form-label text-md-right dispensasi">Guru Mapel / BK / Wali
                                 Kelas</label>
                             <div class="col-md-6">
-                                <select class="guru-mapel custom-select" name="guru_mapel" id="guru_mapel" required>
+                                <select class="guru-mapel custom-select" name="guru_mapel" id="guru_mapel">
                                     <option value="" selected disabled>Cari Guru Mapel / BK / Wali Kelas</option>
                                     @foreach($guru as $g)
                                         <option
@@ -132,11 +130,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="petugas_piket" class="col-md-4 col-form-label text-md-right dispensasi">Guru / Petugas
-                                Piket</label>
+                            <label for="petugas_piket" class="col-md-4 col-form-label text-md-right dispensasi">Guru / Petugas Piket</label>
                             <div class="col-md-6">
-                                <select class="petugas-piket custom-select" name="petugas_piket" id="petugas_piket"
-                                        required>
+                                <select class="petugas-piket custom-select" name="petugas_piket" id="petugas_piket">
                                     <option value="" selected disabled>Cari Guru / Petugas Piket</option>
                                     @foreach($guru as $g)
                                         <option
@@ -254,7 +250,7 @@
                 $('#alasan_dibuat').attr('disabled', false);
                 $('#tanda_tangan').val('').attr('disabled', true).hide();
                 $('.dispensasi').css('display', 'block');
-                $('.dispen-hide').hide();
+                $('.dispen-hide').val('').hide();
                 $('#jam_ke').attr('disabled', false).css('display', 'block');
                 $('#sampai_jam_ke').attr('disabled', false).css('display', 'block');
                 $('#tata_usaha').val('').attr('disabled', true);
