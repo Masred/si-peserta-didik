@@ -45,20 +45,14 @@ class SuratController extends Controller
         $peserta_didik_id = explode(' - ', $request->peserta_didik_id[0]);
         $pd = $request->all();
         $pd['peserta_didik_id'] = $peserta_didik_id[0];
+        Surat::create($pd);
+        $surat = Surat::all()->sortByDesc('id')->first();
 
-        $pdc = PesertaDidik::where('id', '=', $peserta_didik_id)->get('status')->first();
-
-        if ($request->jenis_surat == 'keterangan' and $pdc->status === 'aktif') {
-            Surat::create($pd);
-            $surat = Surat::all()->sortByDesc('id')->first();
+        if ($request->jenis_surat == 'keterangan') {
             $pdf = PDF::loadView('surat.keterangan', compact('surat', 'kepala_sekolah', 'nip_kepala_sekolah', 'tata_usaha', 'nip_tata_usaha'));
-        } elseif ($request->jenis_surat == 'mutasi' and $pdc->status === 'keluar') {
-            Surat::create($pd);
-            $surat = Surat::all()->sortByDesc('id')->first();
+        } elseif ($request->jenis_surat == 'mutasi') {
             $pdf = PDF::loadView('surat.mutasi', compact('surat', 'kepala_sekolah', 'nip_kepala_sekolah', 'tata_usaha', 'nip_tata_usaha'));
-        } elseif ($request->jenis_surat == 'dispensasi' and $pdc->status === 'aktif') {
-            Surat::create($pd);
-            $surat = Surat::all()->sortByDesc('id')->first();
+        } elseif ($request->jenis_surat == 'dispensasi') {
             $orang_tua = $request->orang_tua;
             $data_guru_mapel = explode(' - ', $request->guru_mapel);
             $data_petugas_piket = explode(' - ', $request->petugas_piket);
@@ -70,7 +64,7 @@ class SuratController extends Controller
             $sampai_jam_ke = $request->sampai_jam_ke;
             $pd_dispen = [];
             $i = 0;
-            foreach ($request->peserta_didik_id as $p){
+            foreach ($request->peserta_didik_id as $p) {
                 $e = explode(' - ', $p);
                 $pd_dispen[$i++] = [
                     'id' => $e[0],
@@ -80,13 +74,6 @@ class SuratController extends Controller
             }
 
             $pdf = PDF::loadView('surat.dispensasi', compact('surat', 'orang_tua', 'guru_mapel', 'nip_guru_mapel', 'petugas_piket', 'nip_petugas_piket', 'jam_ke', 'sampai_jam_ke', 'pd_dispen'));
-        } else {
-            if ($pdc->status === 'keluar') {
-                $pesan = 'Tidak dapat membuat surat karena peserta didik sudah tidak aktif';
-            } elseif ($pdc->status === 'aktif') {
-                $pesan = 'Tidak dapat membuat surat karena peserta didik masih aktif';
-            }
-            return redirect('/surat/create')->with('pesan', $pesan);
         }
         return $pdf->stream();
     }
