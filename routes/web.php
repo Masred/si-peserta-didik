@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\GuruController;
 use App\Http\Controllers\TenagaKependidikanController;
+use App\Http\Controllers\BackupRestoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('/', function () {
 });
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('auth');
+Route::post('backup-restore/restore', [BackupRestoreController::class, 'restore'])->name('backup-restore.restore')->middleware('auth');
+Route::post('backup-restore/backup', [BackupRestoreController::class, 'backup'])->name('backup-restore.backup')->middleware('auth');
+Route::get('backup-restore', [BackupRestoreController::class, 'index'])->name('backup-restore.index')->middleware('auth');
+
 
 Route::delete('jurusan/multiple-destroy', [JurusanController::class, 'multiple_destroy'])->name('jurusan.multiple-destroy')->middleware('auth');
 Route::resource('jurusan', JurusanController::class)->except(['destroy'])->middleware('auth');

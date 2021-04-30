@@ -236,6 +236,14 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('backup-restore.index') }}"
+                           class="nav-link @yield('backup-restore-menu')">
+                            <i class="nav-icon"> </i>
+                            <i class="fa fa-sync nav-icon"></i>
+                            <p>Backup & Restore</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
