@@ -35,7 +35,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Upload File .SQL</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Upload File Database (harus berformat .sql)</h5>
                         </div>
                         <form action="{{ route('backup-restore.restore') }}" method="post"
                               enctype="multipart/form-data">
