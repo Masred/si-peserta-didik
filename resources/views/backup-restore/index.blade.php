@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Dashboard')
-
+@section('title', 'Backup & Restore')
+@section('backup-restore-menu', 'active')
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-3">
