@@ -39,8 +39,7 @@ class PesertaDidikController extends Controller
      */
     public function create()
     {
-        $rombel = Rombel::all();
-        return view('peserta-didik.create', compact('rombel'));
+        return view('peserta-didik.create'));
     }
 
     /**
@@ -103,8 +102,7 @@ class PesertaDidikController extends Controller
      */
     public function edit(PesertaDidik $peserta_didik)
     {
-        $rombel = Rombel::all();
-        return view('peserta-didik.edit', compact('peserta_didik', 'rombel'));
+        return view('peserta-didik.edit', compact('peserta_didik'));
     }
 
     /**
@@ -144,7 +142,7 @@ class PesertaDidikController extends Controller
         ];
 
         $request->validate($rules, $customMessages);
-        PesertaDidik::find($peserta_didik->id)->update($request->all());
+        PesertaDidik::find($peserta_didik->nipd)->update($request->all());
         return redirect('/peserta-didik/aktif')->with('status', 'data berhasil diubah');
     }
 
@@ -175,13 +173,15 @@ class PesertaDidikController extends Controller
     // Import peserta didik from excel
     public function import(Request $request)
     {
-        $request->validate([
-            'fileImport' => ['required', 'mimes:xlsx,xls']
-        ],
+        $request->validate(
+            [
+                'fileImport' => ['required', 'mimes:xlsx,xls']
+            ],
             [
                 'required' => 'anda belum memilih file untuk diimport.',
                 'mimes' => 'file yang dipilih harus berformat xlsx atau xls.'
-            ]);
+            ]
+        );
         Excel::import(new PesertaDidikImport, $request->file('fileImport'));
 
         return redirect()->route('peserta-didik.index')->with('status', 'Data berhasil diimport');
@@ -190,7 +190,7 @@ class PesertaDidikController extends Controller
     // multiple delete data
     public function multiple_destroy(Request $request)
     {
-        foreach ($request->id as $i) {
+        foreach ($request->nipd as $i) {
             PesertaDidik::destroy($i);
         }
         return redirect()->back()->with('status', 'data berhasil dihapus.');
