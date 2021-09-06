@@ -14,12 +14,11 @@ class CreatePesertaDidikTable extends Migration
     public function up()
     {
         Schema::create('peserta_didik', function (Blueprint $table) {
-            $table->id();
+            $table->string('nipd')->primary();
             $table->enum('status', ['aktif', 'keluar'])->nullable()->default('aktif');
             $table->enum('jenis_pendaftaran', ['Siswa baru', 'Pindahan', 'Kembali bersekolah'])->nullable();
             $table->string('sekolah_asal')->nullable();
             $table->string('nama')->nullable();
-            $table->string('nipd')->nullable();
             $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
             $table->string('nisn')->nullable();
             $table->string('tempat_lahir')->nullable();
@@ -58,8 +57,6 @@ class CreatePesertaDidikTable extends Migration
             $table->string('penghasilan_wali')->nullable();
             $table->string('nik_wali')->nullable();
             $table->string('no_kk')->nullable();
-            $table->string('kode_rombel')->nullable();
-            $table->foreign('kode_rombel')->references('kode_rombel')->on('rombel')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 
