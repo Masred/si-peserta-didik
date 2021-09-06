@@ -11,10 +11,10 @@ class Surat extends Model
 
     public $timestamps = false;
     protected $table = 'surat';
-    protected $fillable = ['nomor_surat', 'jenis_surat', 'alasan_dibuat', 'tanggal', 'peserta_didik_id'];
+    protected $fillable = ['nomor_surat', 'jenis_surat', 'alasan_dibuat', 'tanggal', 'nipd'];
 
     public function pesertaDidik()
     {
-        return $this->belongsTo(PesertaDidik::class);
+        return $this->belongsTo(PesertaDidik::class, 'nipd');
     }
 }
