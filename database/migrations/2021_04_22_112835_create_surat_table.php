@@ -19,7 +19,8 @@ class CreateSuratTable extends Migration
             $table->string('jenis_surat')->nullable();
             $table->string('alasan_dibuat')->nullable();
             $table->date('tanggal')->nullable();
-            $table->foreignId('peserta_didik_id')->constrained('peserta_didik');
+            $table->string('nipd')->nullable();
+            $table->foreign('nipd')->references('nipd')->on('peserta_didik')->cascadeOnDelete()->cascadeOnUpdate();
         });
     }
 
