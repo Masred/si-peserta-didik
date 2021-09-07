@@ -39,7 +39,7 @@ class PesertaDidikController extends Controller
      */
     public function create()
     {
-        return view('peserta-didik.create'));
+        return view('peserta-didik.create');
     }
 
     /**
