@@ -10,8 +10,7 @@ class Rombel extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'rombel';
-    protected $primaryKey = 'kode_rombel';
-    protected $fillable = ['kelas', 'kode_jurusan', 'kelompok', 'guru_id'];
+    protected $fillable = ['kelas', 'kode_jurusan', 'kelompok', 'guru_id', 'tahun_ajaran'];
 
     public function jurusan()
     {
