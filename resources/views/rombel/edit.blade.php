@@ -14,7 +14,7 @@
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form action="{{ route('rombel.update', $rombel->kode_rombel) }}" method="post">
+                <form action="{{ route('rombel.update', $rombel->id) }}" method="post">
                     @method('patch')
                     @csrf
                     <div class="card-body">
@@ -22,12 +22,12 @@
                             <label for="kelas" class="col-md-4 col-form-label text-md-right">Kelas</label>
                             <div class="col-md-6">
                                 <select name="kelas" id="kelas" class="custom-select">
-                                    <option value="X" {{ (old('kelas', $rombel->kelas) === 'X')? 'selected': '' }}>X
+                                    <option value="X" {{ old('kelas', $rombel->kelas) === 'X' ? 'selected' : '' }}>X
                                     </option>
-                                    <option value="XI" {{ (old('kelas', $rombel->kelas) === 'XI')? 'selected': '' }}>
+                                    <option value="XI" {{ old('kelas', $rombel->kelas) === 'XI' ? 'selected' : '' }}>
                                         XI
                                     </option>
-                                    <option value="XII" {{ (old('kelas', $rombel->kelas) === 'XII')? 'selected': '' }}>
+                                    <option value="XII" {{ old('kelas', $rombel->kelas) === 'XII' ? 'selected' : '' }}>
                                         XII
                                     </option>
                                 </select>
@@ -36,11 +36,10 @@
                         <div class="form-group row">
                             <label for="jurusan" class="col-md-4 col-form-label text-md-right">Jurusan</label>
                             <div class="col-md-6">
-                                <select name="kode_jurusan" id="jurusan"
-                                        class="custom-select">
-                                    @foreach($jurusans as $jurusan)
-                                        <option
-                                            value="{{ $jurusan->kode_jurusan }}" {{ (old('kode_jurusan', $rombel->kode_jurusan) == $jurusan->kode_jurusan)? 'selected': '' }}>
+                                <select name="kode_jurusan" id="jurusan" class="custom-select">
+                                    @foreach ($jurusans as $jurusan)
+                                        <option value="{{ $jurusan->kode_jurusan }}"
+                                            {{ old('kode_jurusan', $rombel->kode_jurusan) == $jurusan->kode_jurusan ? 'selected' : '' }}>
                                             {{ $jurusan->nama_jurusan }}
                                         </option>
                                     @endforeach
@@ -50,25 +49,31 @@
                         <div class="form-group row">
                             <label for="kelompok" class="col-md-4 col-form-label text-md-right">Kelompok</label>
                             <div class="col-md-6">
-                                <input type="number" min="1" class="form-control"
-                                       id="kelompok"
-                                       placeholder="Contoh: 1, 2, 3" name="kelompok"
-                                       value="{{ old('kelompok', $rombel->kelompok) }}" required>
+                                <input type="number" min="1" class="form-control" id="kelompok"
+                                    placeholder="Contoh: 1, 2, 3" name="kelompok"
+                                    value="{{ old('kelompok', $rombel->kelompok) }}" required>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="guru_id" class="col-md-4 col-form-label text-md-right">Wali Kelas</label>
                             <div class="col-md-6">
-                                <select name="guru_id" id="guru_id"
-                                        class="custom-select">
+                                <select name="guru_id" id="guru_id" class="custom-select">
                                     <option value="">PILIH</option>
-                                    @foreach($guru as $gr)
-                                        <option
-                                            value="{{ $gr->id }}" {{ (old('guru_id', $rombel->guru_id) == $gr->id)? 'selected': '' }}>
+                                    @foreach ($guru as $gr)
+                                        <option value="{{ $gr->id }}"
+                                            {{ old('guru_id', $rombel->guru_id) == $gr->id ? 'selected' : '' }}>
                                             {{ $gr->nama }}
                                         </option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="tahun_ajaran" class="col-md-4 col-form-label text-md-right">Tahun Ajaran</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="tahun_ajaran" placeholder="Contoh: 2021/2022"
+                                    name="tahun_ajaran" value="{{ old('tahun_ajaran', $rombel->tahun_ajaran) }}"
+                                    required>
                             </div>
                         </div>
                     </div>
@@ -83,19 +88,19 @@
 @endsection
 
 @if ($errors->any())
-@section('script')
-    @foreach ($errors->all() as $error)
-        <script>
-            const Toast = Swal.mixin({
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true,
-            });
-            Toast.fire({
-                icon: 'error',
-                title: '{!! $error !!}'
-            });
-        </script>
-    @endforeach
-@endsection
+    @section('script')
+        @foreach ($errors->all() as $error)
+            <script>
+                const Toast = Swal.mixin({
+                    showConfirmButton: false,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
+                Toast.fire({
+                    icon: 'error',
+                    title: '{!! $error !!}'
+                });
+            </script>
+        @endforeach
+    @endsection
 @endif
