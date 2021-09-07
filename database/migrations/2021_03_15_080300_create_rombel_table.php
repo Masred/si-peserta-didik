@@ -19,7 +19,7 @@ class CreateRombelTable extends Migration
             $table->string('kode_jurusan');
             $table->foreign('kode_jurusan')->references('kode_jurusan')->on('jurusan')->cascadeOnDelete()->cascadeOnUpdate();
             $table->smallInteger('kelompok');
-            $table->integer('tahun_ajaran');
+            $table->string('tahun_ajaran');
         });
     }
 
