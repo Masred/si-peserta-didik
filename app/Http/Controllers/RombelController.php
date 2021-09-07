@@ -46,19 +46,12 @@ class RombelController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Request([
-            'kode_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
-            'kelas' => $request->kelas,
-            'kode_jurusan' => $request->kode_jurusan,
-            'kelompok' => $request->kelompok,
-            'guru_id' => $request->guru_id
-        ]);
-
         $rules = [
-            'kode_rombel' => ['required', 'unique:rombel'],
             'kelas' => ['required'],
             'kode_jurusan' => ['required'],
-            'kelompok' => ['required']
+            'kelompok' => ['required'],
+            'guru_id' => ['required'],
+            'tahun_ajaran' => ['required']
         ];
 
         $customMessages = [
@@ -66,8 +59,8 @@ class RombelController extends Controller
             'unique' => ':attribute telah digunakan'
         ];
 
-        $data->validate($rules, $customMessages);
-        Rombel::create($data->all());
+        $request->validate($rules, $customMessages);
+        Rombel::create($request->all());
 
         return redirect('/rombel')->with('status', 'data berhasil disimpan');
     }
@@ -108,27 +101,21 @@ class RombelController extends Controller
      */
     public function update(Request $request, Rombel $rombel)
     {
-        $data = new Request([
-            'kode_rombel' => $request->kelas . ' ' . $request->kode_jurusan . ' ' . $request->kelompok,
-            'kelas' => $request->kelas,
-            'kode_jurusan' => $request->kode_jurusan,
-            'kelompok' => $request->kelompok,
-            'guru_id' => $request->guru_id
-        ]);
 
         $rules = [
-            'kode_rombel' => ['required', Rule::unique('rombel')->ignore($rombel->kode_rombel, 'kode_rombel')],
             'kelas' => ['required'],
             'kode_jurusan' => ['required'],
-            'kelompok' => ['required']
+            'kelompok' => ['required'],
+            'guru_id' => ['required'],
+            'tahun_ajaran' => ['required']
         ];
 
         $customMessages = [
             'required' => ':attribute harus diisi!',
             'unique' => ':attribute telah digunakan'
         ];
-        $data->validate($rules, $customMessages);
-        Rombel::find($rombel->kode_rombel)->update($data->all());
+        $request->validate($rules, $customMessages);
+        Rombel::find($rombel->id)->update($request->all());
 
         return redirect('/rombel')->with('status', 'data berhasil diubah');
     }
