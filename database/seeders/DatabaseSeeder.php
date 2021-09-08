@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         ])->create();
         User::factory()->count(1)->create();
 
-        // Jurusan::factory()->create();
+        Jurusan::factory()->create();
 
         // $a = ['X KULIT 2', 'X TKR 3', 'XII TKR 1', 'XII KULIT 2', 'XII DKV 2', 'XII LOGAM 3', 'XII KAYU 1', 'X LOGAM 1', 'XI LOGAM 3', 'XI TKR 3', 'XII TKR 2', 'XI TKR 2', 'XI DKV 4', 'XI KAYU 2', 'X LOGAM 3', 'X KULIT 1', 'XII TKR 3', 'XII DKV 3', 'XI KAYU 3', 'XI LOGAM 4', 'XII LOGAM 4', 'XI KULIT 1', 'X TEKSTIL 2', 'X TEKSTIL 3', 'XII DKV 4', 'XII TEKSTIL 1', 'XII TEKSTIL 3', 'X TKR 2', 'XI DKV 3', 'XII KULIT 3', 'XI TKR 1', 'XII LOGAM 2', 'XI DKV 1', 'XI TEKSTIL 3', 'XI LOGAM 2', 'X TKR 1', 'XI LOGAM 1', 'X TEKSTIL 1', 'X KAYU 2', 'X DKV 4', 'X DKV 2', 'XII LOGAM 1', 'XI KAYU 1', 'X KAYU 1', 'XII DKV 1', 'XI TEKSTIL 2', 'XII KULIT 1', 'X LOGAM 4', 'XI TEKSTIL 1', 'XII TEKSTIL 2', 'X DKV 3', 'XII TEKSTIL 4', 'X LOGAM 2', 'XII KAYU 2', 'X DKV 1', 'XI KULIT 2', 'XI DKV 2'];
         // foreach ($a as $b) {
