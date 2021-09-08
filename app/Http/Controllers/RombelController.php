@@ -18,9 +18,10 @@ class RombelController extends Controller
      */
     public function index()
     {
-        $rombels = Rombel::withCount(['pesertaDidik' => function ($query) {
-            $query->where('status', '=', 'aktif');
-        }])->get();
+        // $rombels = Rombel::withCount(['pesertaDidik' => function ($query) {
+        //     $query->where('status', '=', 'aktif');
+        // }])->get();
+        $rombels = Rombel::all();
 
 
         return view('rombel.index', compact('rombels'));
@@ -128,15 +129,15 @@ class RombelController extends Controller
      */
     public function destroy(Rombel $rombel)
     {
-        Rombel::destroy($rombel->kode_rombel);
+        Rombel::destroy($rombel->id);
         return redirect('/rombel')->with('status', 'data berhasil dihapus.');
     }
 
     // multiple delete data
     public function multiple_destroy(Request $request)
     {
-        foreach ($request->kode_rombel as $kr) {
-            Rombel::destroy($kr);
+        foreach ($request->rombel_id as $id) {
+            Rombel::destroy($id);
         }
         return redirect()->back()->with('status', 'data berhasil dihapus.');
     }
