@@ -13,6 +13,21 @@
             <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12">
+                        <div class="input-group mb-3 d-block">
+                            <form action="{{ route('rombel.index') }}" method="get" class="d-flex">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Tahun Ajaran</span>
+                                </div>
+                                <select name="tahun_ajaran" id="tahun_ajaran" class="custom-select">
+                                    @foreach ($tahun_ajaran as $ta)
+                                        <option value="{{ $ta->tahun_ajaran }}">{{ $ta->tahun_ajaran }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-success" type="submit">Pilih</button>
+                                </div>
+                            </form>
+                        </div>
                         <form action="{{ route('rombel.multiple-destroy') }}" method="post">
                             @csrf
                             @method('delete')
@@ -127,9 +142,6 @@
                                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
                                             colspan="1" aria-label="Browser: activate to sort column ascending">Wali Kelas
                                         </th>
-                                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1"
-                                            colspan="1" aria-label="Browser: activate to sort column ascending">Tahun Ajaran
-                                        </th>
                                         <th class="sorting sorting_asc_disabled sorting_desc_disabled" tabindex="0"
                                             aria-controls="example1" rowspan="1" colspan="1"
                                             aria-label="Platform(s): activate to sort column ascending" style="width: 50px">
@@ -150,7 +162,6 @@
                                             <td>{{ $rombel->kelompok }}</td>
                                             <td></td>
                                             <td>{{ !empty($rombel->guru->nama) ? $rombel->guru->nama : '' }}</td>
-                                            <td>{{ $rombel->tahun_ajaran }}</td>
                                             <td>
                                                 <div class="row justify-content-center">
                                                     <div class="col d-flex justify-content-center">
