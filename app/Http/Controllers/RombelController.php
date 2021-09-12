@@ -16,15 +16,21 @@ class RombelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // $rombels = Rombel::withCount(['pesertaDidik' => function ($query) {
         //     $query->where('status', '=', 'aktif');
         // }])->get();
-        $rombels = Rombel::all();
+        $tahun_ajaran = Rombel::select('tahun_ajaran')->distinct()->orderBy('tahun_ajaran', 'desc')->get();
+
+        if ($request->tahun_ajaran) {
+            $rombels = Rombel::where('tahun_ajaran', $request->tahun_ajaran)->get();
+        } else {
+            $rombels = Rombel::where('tahun_ajaran', $tahun_ajaran[0]->tahun_ajaran)->get();
+        }
 
 
-        return view('rombel.index', compact('rombels'));
+        return view('rombel.index', compact('rombels', 'tahun_ajaran'));
     }
 
     /**
