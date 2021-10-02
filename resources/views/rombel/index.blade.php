@@ -19,9 +19,20 @@
                                     <span class="input-group-text">Tahun Ajaran</span>
                                 </div>
                                 <select name="tahun_ajaran" id="tahun_ajaran" class="custom-select">
-                                    @foreach ($tahun_ajaran as $ta)
-                                        <option value="{{ $ta->tahun_ajaran }}">{{ $ta->tahun_ajaran }}</option>
-                                    @endforeach
+                                    @if (isset($_GET['tahun_ajaran']))
+                                        @foreach ($tahun_ajaran as $ta)
+                                            <option value="{{ $ta->tahun_ajaran }}"
+                                                {{ $_GET['tahun_ajaran'] == $ta->tahun_ajaran ? 'selected' : '' }}>
+                                                {{ $ta->tahun_ajaran }}
+                                            </option>
+                                        @endforeach
+                                    @else
+                                        @foreach ($tahun_ajaran as $ta)
+                                            <option value="{{ $ta->tahun_ajaran }}">
+                                                {{ $ta->tahun_ajaran }}
+                                            </option>
+                                        @endforeach
+                                    @endif
                                 </select>
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-success" type="submit">Pilih</button>
